@@ -1,0 +1,19 @@
+@import 'main';
+
+.resume {
+  background-color: $black;
+  padding: 3rem 0;
+  p {
+    color: $white;
+  }
+  .container {
+    max-width: 1057px;
+    margin: 0 auto;
+  }
+  .job-title {
+    color: $babyBlue;
+  }
+  .job-info {
+    color: $white;
+  }
+}
