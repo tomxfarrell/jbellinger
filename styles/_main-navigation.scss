@@ -28,12 +28,35 @@ nav {
     gap: 30px;
     padding: 0;
     margin: 0;
-    a {
+    li {
+      overflow: hidden;
+      position: relative;
+      a {
+        color: $white;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 700;
+        text-decoration: none;
+        &:hover {
+          .nav-link-text {
+            transform: translateY(-100%);
+          }
+          .nav-link-text-reveal {
+            transform: translateY(-100%);
+            opacity: .75;
+          }
+        }
+      }
+    }
+    .nav-link-text-reveal {
+      position: absolute;
+      z-index: 999;
+      top: 100%;
+      left: 0;
       color: $white;
-      font-size: 16px;
-      line-height: 21px;
-      font-weight: 700;
-      text-decoration: none;
+    }
+    .nav-link-text, .nav-link-text-reveal {
+      transition: all .2s linear .2s;
     }
   }
   .linkedin {
