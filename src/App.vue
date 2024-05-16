@@ -8,7 +8,6 @@
   </div>
 </template>
 
-
 <script>
 import MainNavigation from '@/components/MainNavigation.vue';
 import FooterSection from '@/components/FooterSection.vue';

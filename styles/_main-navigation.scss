@@ -3,8 +3,7 @@
 #main-navigation {
   background-color: $black;
   .container {
-    max-width: 1284px;
-    margin: 0 auto;
+    max-width: $desktopLG;
     display: flex;
     width: 100%;
     justify-content: space-between;

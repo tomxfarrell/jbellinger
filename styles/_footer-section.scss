@@ -2,4 +2,48 @@
 
 footer {
   background-color: $black;
+  padding: 70px 0;
+  .container {
+    max-width: $desktopLG;
+  }
+  .row {
+    align-items: center;
+    gap: 2rem;
+    border-top: 1px solid $white;
+
+    .col {
+      padding: 2rem 2rem 1rem 0;
+      &:not(:last-child) {
+        border-right: 1px solid $white;
+      }
+    }
+    a, ul {
+      color: $white;
+    }
+    a {
+      text-decoration: none;
+    }
+    .footer-links {
+      a {
+        font-weight: 700;
+      }
+    }
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      li {
+
+      }
+    }
+    .social {
+      margin-left: auto;
+      img {
+        width: 40px;
+      }
+    }
+  }
 }
