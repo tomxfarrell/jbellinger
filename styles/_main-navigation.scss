@@ -1,11 +1,18 @@
 @import 'main';
 
 #main-navigation {
-  background-color: $black;
+  // background-color: $black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
   .container {
+    
     max-width: $desktopLG;
     display: flex;
-    width: 100%;
+    
     justify-content: space-between;
     align-items: center;
   }
@@ -67,4 +74,8 @@ nav {
   .linkedin-icon {
     max-width: 40px;
   }
+}
+
+.active-main-nav {
+  background-color: red !important;
 }

@@ -3,6 +3,10 @@
 footer {
   background-color: $black;
   padding: 70px 0;
+  .logo-footer {
+    width: 170px;
+    margin-bottom: 20px;
+  }
   .container {
     max-width: $desktopLG;
   }
@@ -19,13 +23,72 @@ footer {
     }
     a, ul {
       color: $white;
+      font-size: 16px;
     }
     a {
       text-decoration: none;
     }
+    .footer-info strong {
+      font-size: 18px;
+    }
+    .footer-contact {
+      li {
+        a {
+          display: flex;
+          align-items: center;
+        }
+        &:first-child,
+        &:nth-child(2),
+        &:nth-child(3) {
+          :before {
+            content: "";
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            display: inline-block;
+            width: 19px;
+            margin-right: 1em;    
+          }
+        }
+      }
+      li:first-child {
+        a {
+          &:before {
+            background-image: url(../assets/icon-phone.svg);
+            background-size: 11px 20px;
+            height: 20px;
+          }
+        }
+      }
+      li:nth-child(2) {
+        a {
+          &:before {
+            background-image: url(../assets/icon-envelope.svg);
+            background-size: 19px 13px;
+            height: 13px;
+          }
+        }
+      }
+      li:nth-child(3) {
+        span {
+          display: flex;
+          align-items: center;
+          &:before {
+            content: "";
+            background-image: url(../assets/icon-pin.svg);
+            background-size: 14px 19px;
+            height: 19px;
+          }
+        }
+      }
+    }
     .footer-links {
       a {
         font-weight: 700;
+        transition: all .3s ease;
+        &:hover {
+          color: $babyBlue;
+        }
       }
     }
     ul {
@@ -35,12 +98,15 @@ footer {
       gap: 1rem;
       margin: 0;
       padding: 0;
-      li {
-
-      }
     }
     .social {
       margin-left: auto;
+      a {
+        transition: all .3s ease;
+        &:hover {
+          opacity: .75;
+        }
+      }
       img {
         width: 40px;
       }

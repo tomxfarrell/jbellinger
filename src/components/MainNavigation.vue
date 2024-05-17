@@ -1,5 +1,5 @@
 <template>
-  <div id="main-navigation">
+  <div id="main-navigation" ref="nav">
     <div class="container">
       <div class="main-logo">
         <router-link to="/">
@@ -20,8 +20,34 @@
 </template>
 
 <script>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+
 export default {
   name: 'MainNavigation',
+  setup() {
+    const nav = ref(null);
+
+    onMounted(() => {
+      ScrollTrigger.create({
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom center',
+        onEnter: () => gsap.to(nav.value, { backgroundColor: '#333', duration: 0.2 }),
+        onLeaveBack: () => gsap.to(nav.value, { backgroundColor: 'transparent', duration: 0.2 }),
+      });
+    });
+
+    onUnmounted(() => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    });
+
+    return { nav };
+  }
 };
 </script>
 

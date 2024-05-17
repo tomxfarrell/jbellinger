@@ -1,20 +1,20 @@
 <template>
   <footer>
     <div class="container">
-      <!-- <img src="../assets/logo-footer-white.svg" alt="JBellinger logo"> -->
+      <img src="../assets/logo-footer-white.svg" alt="JBellinger logo" class="logo-footer">
       <div class="row">
-        <div class="col">
+        <div class="col footer-info">
           <ul>
             <li><strong>Jason (JB) Bellinger</strong></li>
             <li>VP, Associate Creative Director</li>
             <li>Design + UI + Experiential</li>
           </ul>
         </div>
-        <div class="col">
+        <div class="col footer-contact">
           <ul>
             <li><a href="tel:9174946885">917.494.6885</a></li>
             <li><a href="mailto:jason@jbellinger.com">jason@jbellinger.com</a></li>
-            <li>New York/New Jersey</li>
+            <li><span>New York/New Jersey</span></li>
           </ul>
         </div>
         <div class="col footer-links">

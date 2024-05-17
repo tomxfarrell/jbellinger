@@ -1,9 +1,11 @@
 @import '_variables';
 @import '_typography';
+@import '_reset';
 
 body {
   margin: 0;
   padding: 0;
+  background-color: $black;
 }
 
 .container {
@@ -15,4 +17,8 @@ body {
 
 .row {
   display: flex;
+}
+
+section.hero {
+  padding-top: 100px;
 }
