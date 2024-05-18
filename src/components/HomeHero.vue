@@ -39,17 +39,24 @@ export default {
 
       timeline
       .to(txtHero.value, {
-        scale: 15,
+        scale: 75,
         rotate: "-1deg",
-        opacity: 0,
+        
         duration: .15,
         ease: "power1.inOut"
       })
+      
       
       .from(bgGradient.value, {
         opacity: 0,
         duration: .25,
         ease: "power1.in"
+      }, ">")
+      .to(txtHero.value, {
+        
+        opacity: 0,
+        duration: .15,
+        ease: "power1.inOut"
       }, ">")
       .to(txtHero.value, {
         display: 'none'

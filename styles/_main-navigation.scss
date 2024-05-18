@@ -49,7 +49,7 @@ nav {
           }
           .nav-link-text-reveal {
             transform: translateY(-100%);
-            opacity: .75;
+            color: $babyBlue;
           }
         }
       }
@@ -62,13 +62,20 @@ nav {
       color: $white;
     }
     .nav-link-text, .nav-link-text-reveal {
-      transition: all .2s linear .2s;
+      transition: all .15s linear .15s;
     }
   }
   .linkedin {
     transition: all .2s ease;
+    img {
+      transition: all .2s ease;
+      transform: rotate(0);
+    }
     &:hover {
       opacity: .8;
+      img {
+        transform: rotate(360deg);
+      }
     }
   }
   .linkedin-icon {
