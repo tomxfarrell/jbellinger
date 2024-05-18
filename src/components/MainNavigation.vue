@@ -35,9 +35,9 @@ export default {
     onMounted(() => {
       ScrollTrigger.create({
         trigger: document.body,
-        start: 'top top',
+        start: 'bottom top',
         end: 'bottom center',
-        onEnter: () => gsap.to(nav.value, { backgroundColor: '#333', duration: 0.2 }),
+        onEnter: () => gsap.to(nav.value, { backgroundColor: 'rgba(0, 0, 0, 0.8)', duration: 0.2 }),
         onLeaveBack: () => gsap.to(nav.value, { backgroundColor: 'transparent', duration: 0.2 }),
       });
     });

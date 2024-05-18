@@ -2,6 +2,7 @@
 
 #main-navigation {
   // background-color: $black;
+  transition: background-color 0.2s ease;
   position: fixed;
   top: 0;
   left: 0;
@@ -85,4 +86,12 @@ nav {
 
 .active-main-nav {
   background-color: red !important;
+}
+
+.dark {
+  background-color: $black;
+}
+
+.light {
+  background-color: $white;
 }
