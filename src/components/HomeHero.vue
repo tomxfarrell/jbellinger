@@ -2,6 +2,9 @@
     <section class="hero home-hero" ref="hero">
       <img src="../assets/txt-hero.svg" alt="" class="txt-hero" ref="txtHero">
       <div class="bg-gradient" ref="bgGradient">
+        <video autoplay muted loop>
+          <source src="../assets/1037517047-preview.mp4" type="video/mp4">
+        </video>
         <p>Design is not just my profession; it's my passion, my very essence. I live and breathe design, and it permeates every aspect of my life. My mind constantly wanders, exploring new ideas, concepts, and possibilities. I find myself unable to turn my brain off, always seeking inspiration from the world around me. As an award-winning designer, I've had the privilege of working for top agencies across New York, where I've crafted everything from sleek websites to captivating campaigns to all immersive experiential events, aiming to engage, inspire, and react.</p>
         <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project I undertake.</p>
       </div>
@@ -39,14 +42,11 @@ export default {
 
       timeline
       .to(txtHero.value, {
-        scale: 75,
+        scale: 95,
         rotate: "-1deg",
-        
         duration: .15,
         ease: "power1.inOut"
       })
-      
-      
       .from(bgGradient.value, {
         opacity: 0,
         duration: .25,
@@ -60,7 +60,11 @@ export default {
       }, ">")
       .to(txtHero.value, {
         display: 'none'
-      }, ">");
+      }, ">")
+      .to(".bg-gradient p", {
+        y: -100,
+        opacity: 0
+      }, "bg-grad");
     });
 
     onUnmounted(() => {

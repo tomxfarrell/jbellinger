@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
   .txt-hero {
     max-width: 714px;
     display: block;
@@ -14,10 +15,19 @@
   }
 }
 
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index:-100;
+}
+
 .bg-gradient {
   padding: 150px 0;
-  background-image: url(../assets/bg-pink-blue-gradient.png);
-  background-repeat: no-repeat;
+  // background-image: url(../assets/bg-pink-blue-gradient.png);
+  // background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   position: absolute;
