@@ -16,7 +16,7 @@
   // }
 }
 
-.home-hero svg {
+.home-hero .txt-hero {
   position: absolute;
   top: 0;
   left: 0;
@@ -38,17 +38,19 @@
 }
 
 .bg-video {
-  margin:0 auto;
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
 }
 
 #mask-bg {
   mask:url("#mask");
 }
 
-video {
+.other-video {
   position: absolute;
   top: 0;
   left: 0;
