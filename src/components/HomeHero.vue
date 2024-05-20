@@ -1,6 +1,19 @@
 <template>
     <section class="hero home-hero" ref="hero">
-      <img src="../assets/txt-hero.svg" alt="" class="txt-hero" ref="txtHero">
+      <!--<img src="../assets/txt-hero.svg" alt="" class="txt-hero" ref="txtHero">-->
+      <video class="bg-video" src="../assets/1037517047-preview.mp4" loop muted autoplay></video>
+
+  <svg class="txt-hero" ref="txtHero">
+    <mask id="mask">
+      <rect fill="white" width="100%" height="100%"></rect>
+      <text id="engage" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">engage</text>
+      <text id="inspire" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">inspire</text>
+      <text id="react" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">react</text>
+    </mask>
+
+    <rect width="100%" height="100%" id="mask-bg"></rect>
+  </svg>
+
       <div class="bg-gradient" ref="bgGradient">
         <video autoplay muted loop>
           <source src="../assets/1037517047-preview.mp4" type="video/mp4">
@@ -42,7 +55,7 @@ export default {
 
       timeline
       .to(txtHero.value, {
-        scale: 95,
+        scale: 75,
         rotate: "-1deg",
         duration: .15,
         ease: "power1.inOut"
@@ -59,12 +72,13 @@ export default {
         ease: "power1.inOut"
       }, ">")
       .to(txtHero.value, {
-        display: 'none'
+        display: 'none',
+        scale: 1
       }, ">")
       .to(".bg-gradient p", {
         y: -100,
         opacity: 0
-      }, "bg-grad");
+      });
     });
 
     onUnmounted(() => {
