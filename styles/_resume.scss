@@ -10,10 +10,21 @@
     max-width: 1057px;
     margin: 0 auto;
   }
+  ul + .job-title {
+    margin-top: 2rem;
+  }
   .job-title {
     color: $babyBlue;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
   }
   .job-info {
     color: $white;
+    font-size: 18px;
+    line-height: 26px;
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 1rem;
   }
 }

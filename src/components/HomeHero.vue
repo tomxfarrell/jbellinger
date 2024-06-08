@@ -2,6 +2,7 @@
     <section class="hero home-hero" ref="hero">
       <!--<img src="../assets/txt-hero.svg" alt="" class="txt-hero" ref="txtHero">-->
       <video class="bg-video" src="../assets/1037517047-preview.mp4" loop muted autoplay></video>
+      
 
   <svg class="txt-hero" ref="txtHero">
     <mask id="mask">
@@ -49,7 +50,8 @@ export default {
           scrub: true,
           pin: true,
           immediateRender: false,
-          anticipatePin: true
+          anticipatePin: true,
+          snap: .55
         }
       });
 
