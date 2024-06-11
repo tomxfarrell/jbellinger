@@ -54,5 +54,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../../styles/_accordion.scss';
+  @import '@/styles/_accordion.scss';
 </style>

@@ -5,7 +5,7 @@ import { createMetaManager } from 'vue-meta'
 
 import { createRouter, createWebHistory } from 'vue-router';
 import { routes } from './routes'; // Import routes from routes.js
-import '../styles/main.scss';
+// import '@/styles/main.scss';
 
 
 // Create a router instance

@@ -52,5 +52,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/_main-navigation.scss';
+@import '@/styles/_main-navigation.scss';
 </style>

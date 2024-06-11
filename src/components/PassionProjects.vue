@@ -17,5 +17,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../styles/_passion-projects.scss';
+  @import '@/styles/_passion-projects.scss';
 </style>

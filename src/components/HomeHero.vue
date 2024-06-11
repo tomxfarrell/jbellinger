@@ -96,5 +96,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../styles/_home-hero.scss';
+  @import '@/styles/_home-hero.scss';
 </style>

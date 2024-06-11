@@ -1,7 +1,9 @@
 <template>
   <section class="resume">
     <div class="container">
-      <p>resume here</p>
+      <div class="section-heading dark mb-40">
+        <p>Resume</p>
+      </div>
 
       <Accordion :items="accordionItems" />
 
@@ -109,6 +111,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-  @import '../../../styles/_resume.scss';
+<style lang="scss" scoped>
+  @import '@/styles/_resume.scss';
 </style>

@@ -39,5 +39,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../styles/_footer-section.scss';
+@import '@/styles/_footer-section.scss';
 </style>

@@ -1,14 +1,18 @@
 <template>
   <div class="page">
-    <AboutHero />
-    <PassionProjects image="logo.png" content="about content" />
+    <StaticHero class="about-hero" />
+    <Bio />
+    <Testimonials />
     <Resume />
   </div>
 </template>
 
 <script>
-import AboutHero from '@/components/About/AboutHero.vue';
+import StaticHero from '@/components/StaticHero.vue';
+import Bio from '@/components/About/Bio.vue';
+import Testimonials from '@/components/About/Testimonials.vue';
 import Resume from '@/components/About/Resume.vue';
+
 import { useMeta } from 'vue-meta'
 
 export default {
@@ -17,12 +21,26 @@ export default {
     useMeta({ title: 'About' })
   },
   components: {
-    AboutHero,
-    Resume
+    StaticHero,
+    Resume,
+    Bio,
+    Testimonials
   }
 };
 </script>
 
-<style scoped>
+<style lang="scss">
+
 /* Page-specific styles */
+.about-hero {
+  background-color: $black; 
+  padding: 50px;
+  text-align: center;
+  background-image: url(../assets/bg-about-2x.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 600px;
+}
+
 </style>
