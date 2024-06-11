@@ -1,7 +1,5 @@
 <template>
-  <section class="about-hero">
-    <p>about</p>
-  </section>
+  <section class="about-hero"></section>
 </template>
  
 <script>

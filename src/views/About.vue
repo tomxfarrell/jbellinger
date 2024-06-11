@@ -9,7 +9,6 @@
 <script>
 import AboutHero from '@/components/About/AboutHero.vue';
 import Resume from '@/components/About/Resume.vue';
-import PassionProjects from '@/components/PassionProjects.vue';
 import { useMeta } from 'vue-meta'
 
 export default {
@@ -19,8 +18,7 @@ export default {
   },
   components: {
     AboutHero,
-    Resume,
-    PassionProjects
+    Resume
   }
 };
 </script>
