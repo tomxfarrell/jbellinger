@@ -52,6 +52,8 @@
         flex: 1;
         display: flex;
         align-items: center;
+        box-shadow: 0px 13px 14px -12px rgba(54,57,88,0.8);
+
         &:first-child {
           &:before {
             content: "“";

@@ -4,6 +4,7 @@
     <Bio />
     <Testimonials />
     <Resume />
+    <Clients />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import StaticHero from '@/components/StaticHero.vue';
 import Bio from '@/components/About/Bio.vue';
 import Testimonials from '@/components/About/Testimonials.vue';
 import Resume from '@/components/About/Resume.vue';
+import Clients from '@/components/About/Clients.vue';
 
 import { useMeta } from 'vue-meta'
 
@@ -22,9 +24,10 @@ export default {
   },
   components: {
     StaticHero,
-    Resume,
     Bio,
-    Testimonials
+    Testimonials,
+    Resume,
+    Clients
   }
 };
 </script>
