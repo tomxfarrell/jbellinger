@@ -10,7 +10,7 @@ import { routes } from './routes'; // Import routes from routes.js
 
 // Create a router instance
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 });
 
