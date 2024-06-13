@@ -20,34 +20,34 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { ref, onMounted, onUnmounted } from 'vue';
+// import { gsap } from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger);
 
 
 export default {
-  name: 'MainNavigation',
-  setup() {
-    const nav = ref(null);
+  // name: 'MainNavigation',
+  // setup() {
+  //   const nav = ref(null);
 
-    onMounted(() => {
-      ScrollTrigger.create({
-        trigger: document.body,
-        start: 'bottom top',
-        end: 'bottom center',
-        onEnter: () => gsap.to(nav.value, { backgroundColor: 'rgba(0, 0, 0, 0.8)', duration: 0.2 }),
-        onLeaveBack: () => gsap.to(nav.value, { backgroundColor: 'transparent', duration: 0.2 }),
-      });
-    });
+  //   onMounted(() => {
+  //     ScrollTrigger.create({
+  //       trigger: document.body,
+  //       start: 'bottom top',
+  //       end: 'bottom center',
+  //       onEnter: () => gsap.to(nav.value, { backgroundColor: 'rgba(0, 0, 0, 0.8)', duration: 0.2 }),
+  //       onLeaveBack: () => gsap.to(nav.value, { backgroundColor: 'transparent', duration: 0.2 }),
+  //     });
+  //   });
 
-    onUnmounted(() => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    });
+  //   onUnmounted(() => {
+  //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  //   });
 
-    return { nav };
-  }
+  //   return { nav };
+  // }
 };
 </script>
 
