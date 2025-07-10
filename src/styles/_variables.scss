@@ -1,0 +1,51 @@
+// Colors
+$black: #000;
+$white: #fff;
+$gray: #707070;
+$lightCoolGray: #C5C8CB;
+$blueGray: #363958;
+$babyBlue: #00D8FF;
+$royalBlue: #4241DC;
+$purple: #5600E8;
+
+// Spacing
+$m-lg: 90px;
+$m-md: 70px;
+$m-sm: 50px;
+$m-xs: 20px;
+
+// Fonts
+$fontHeadline: "mencken-std";
+
+// Breakpoints
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-mlg: 1300px;
+$breakpoint-xl: 1440px;
+$breakpoint-dxl: 2000px;
+
+:export {
+    black: #{$black};
+    white: #{$white};
+    gray: #{$gray};
+    lightCoolGray: #{$lightCoolGray};
+    blueGray: #{$blueGray};
+    babyBlue: #{$babyBlue};
+    royalBlue: #{$royalBlue};
+    purple: #{$purple};
+
+    m-lg: #{$m-lg};
+    m-md: #{$m-md};
+
+    fontHeadline: #{$fontHeadline};
+
+    breakpointXs: #{$breakpoint-xs};
+    breakpointSm: #{$breakpoint-sm};
+    breakpointMd: #{$breakpoint-md};
+    breakpointLg: #{$breakpoint-lg};
+    breakpointXl: #{$breakpoint-xl};
+    breakpointDxl: #{$breakpoint-dxl};
+    
+}

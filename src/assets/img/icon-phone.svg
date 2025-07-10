@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="11.649" height="20" viewBox="0 0 11.649 20">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_227" data-name="Path 227" d="M0,4.019H11.649v-20H0Z" transform="translate(0 15.981)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_193" data-name="Group 193" transform="translate(-379 -4210.981)">
+    <g id="Group_192" data-name="Group 192" transform="translate(379 4210.981)">
+      <g id="Group_191" data-name="Group 191" clip-path="url(#clip-path)">
+        <g id="Group_188" data-name="Group 188" transform="translate(0.469 0.469)">
+          <path id="Path_224" data-name="Path 224" d="M0,3.506v-15.83A1.6,1.6,0,0,1,1.593-13.94H9.116a1.6,1.6,0,0,1,1.594,1.616V3.506A1.6,1.6,0,0,1,9.116,5.121H1.593A1.6,1.6,0,0,1,0,3.506ZM.019-11.013H10.691M.121,1.689H10.8" transform="translate(0 13.94)" fill="none" stroke="#fff" stroke-width="1"/>
+        </g>
+        <g id="Group_189" data-name="Group 189" transform="translate(4.914 17.051)">
+          <path id="Path_225" data-name="Path 225" d="M.366.183a.91.91,0,0,1-.911.91.91.91,0,0,1-.91-.91.91.91,0,0,1,.91-.91.91.91,0,0,1,.911.91" transform="translate(1.455 0.727)" fill="#fff"/>
+        </g>
+        <g id="Group_190" data-name="Group 190" transform="translate(4.823 1.928)">
+          <path id="Path_226" data-name="Path 226" d="M0,0H2" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

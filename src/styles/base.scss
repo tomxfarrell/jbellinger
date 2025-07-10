@@ -1,0 +1,53 @@
+@use "@/styles/variables.scss" as *;
+
+body {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .row {
+    display: flex;
+  }
+
+  /* utility classes */
+
+  .text-center {
+    text-align: center;
+  }
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-xs {
+  margin-bottom: $m-xs;
+}
+
+.mb-lg {
+  margin-bottom: $m-lg;
+  @media (max-width: $breakpoint-sm) {
+    margin-bottom: $m-md;
+  }
+}
+
+.with-line {
+    position: relative;
+    margin-bottom: 20px;
+
+    &:after {
+        content: "";
+        width: 120px;
+        height: 4px;
+        background-color: $purple;
+        display: block;
+        left: 0;
+        right: 0;
+        margin: 30px auto 0 auto;
+    }
+}
