@@ -440,13 +440,13 @@ const carouselConfig = {
 
   .accordion {
     width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
   }
 
   .accordion-item {
     margin-bottom: 60px;
   }
-
-
 
   .accordion-title {
     cursor: pointer;

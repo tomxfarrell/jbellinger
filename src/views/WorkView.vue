@@ -200,6 +200,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
 </template>
 
 <style lang="scss">
+
 .work-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
