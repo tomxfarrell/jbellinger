@@ -1,5 +1,5 @@
 <script setup>
-import logoHeader from '@/assets/img/logo-white.svg';
+import logoHeader from '@/assets/img/logo-black.svg';
 import linkedIn from '@/assets/img/icon-linkedin-2x.png';
 import { ref } from 'vue'
 import ModalContact from '@/components/ModalContact.vue'
@@ -38,7 +38,12 @@ const showModal = ref(false)
 
 <style lang="scss">
 #main-navigation {
-  background-color: $black;
+ background-color: rgba(255, 255, 255, 0.8); /* light frosted background */
+  backdrop-filter: blur(20px);               /* key to the glass effect */
+  -webkit-backdrop-filter: blur(20px);       /* Safari support */
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);          /* optional soft shadow */
   transition: background-color 0.2s ease;
   position: fixed;
   top: 0;
@@ -59,8 +64,8 @@ const showModal = ref(false)
 .main-logo {
   color: $white;
   img {
-    width: 378px;
-    height: auto;
+    width: auto;
+    height: 18px;
   }
 }
 nav {
@@ -71,15 +76,15 @@ nav {
     display: flex;
     align-items: center;
     gap: 30px;
-    padding: 0;
+    padding: 13px 0 0 0;
     margin: 0;
     li {
       overflow: hidden;
       position: relative;
       padding-bottom: 10px;
       a {
-        color: $white;
-        font-size: 16px;
+        color: $black;
+        font-size: 14px;
         line-height: 21px;
         font-weight: 700;
         text-decoration: none;

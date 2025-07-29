@@ -24,8 +24,6 @@
             margin: 0 auto;
         }
         :deep(p){
-            font-size: 18px;
-            line-height: 26px;
             &:not(:last-child) {
                 margin-bottom: 30px;
             }

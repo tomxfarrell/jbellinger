@@ -78,11 +78,11 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
                     </router-link>
                 </div>
                 <div class="work-block">
-                    <router-link to="/work/the-whiskey-x">
+                    <router-link to="/work/the-whisky-x">
                     <div class="work-image">
-                        <img src="@/assets/img/thumb-the-whiskey-x-2x.png" alt="The Whiskey X" />
+                        <img src="@/assets/img/thumb-the-whisky-x-2x.png" alt="The Whisky X" />
                     </div>
-                    <h2 class="work-title">The Whiskey X</h2>
+                    <h2 class="work-title">The Whisky X</h2>
                     <h3>Website</h3>
                 </router-link>
                 </div>

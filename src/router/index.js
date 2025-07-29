@@ -97,6 +97,22 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/SaphneloView.vue'),
     },
+    {
+      path: '/work/the-whisky-x',
+      name: 'the-whisky-x',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/work/WhiskyXView.vue'),
+    },
+    {
+      path: '/work/peter-cooper-village',
+      name: 'peter-cooper-village',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/work/PeterCooperVillageView.vue'),
+    },
    
   ],
   scrollBehavior(to, from, savedPosition) {

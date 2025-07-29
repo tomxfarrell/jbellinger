@@ -24,7 +24,7 @@
         }
         
         h2 {
-            font-size: 32px;  
+            font-size: 22px;  
         }
         
     }

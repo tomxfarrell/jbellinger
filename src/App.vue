@@ -17,4 +17,10 @@ import Footer from '@/components/Footer.vue';
   <Footer />
 </template>
 
+<style>
+.wrapper {
+  margin-top: 50px;
+}
+</style>
+
 
