@@ -113,6 +113,14 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/PeterCooperVillageView.vue'),
     },
+    {
+      path: '/work/game-of-thrones',
+      name: 'game-of-thrones',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/work/GameOfThronesView.vue'),
+    },
    
   ],
   scrollBehavior(to, from, savedPosition) {
