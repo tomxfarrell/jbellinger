@@ -1,5 +1,15 @@
+
+<script setup>
+    defineProps({
+        className: {
+            type: String,
+            default: ''
+        }
+    });
+</script>
+
 <template>
-    <section class="headline-block">
+    <section  :class="['headline-block', className]">
         <div class="container">
             <slot></slot>
         </div>
@@ -23,8 +33,14 @@
             }
         }
         
-        h2 {
+        h1 + h2 {
             font-size: 22px;  
+        }
+        &.text-center {
+            .container:after {
+                margin-left: auto;
+                margin-right: auto;
+            }
         }
         
     }

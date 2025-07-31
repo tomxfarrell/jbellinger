@@ -23,6 +23,11 @@
             max-width: 860px;
             margin: 0 auto;
         }
+        &.large-container {
+            .container {
+                max-width: 1300px;
+            }
+        }
         :deep(p){
             &:not(:last-child) {
                 margin-bottom: 30px;

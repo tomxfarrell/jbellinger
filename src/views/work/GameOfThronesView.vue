@@ -13,6 +13,20 @@ import heroGameOfThronesMobile from '@/assets/img/hero-game-of-thrones-mobile-2x
 import gameOfThronesFacadeDesktop from '@/assets/img/game-of-thrones-exterior-facade-desktop-2x.png';
 import gameOfThronesFacadeMobile from '@/assets/img/game-of-thrones-exterior-facade-mobile-2x.png';
 
+import gameOfThronesBannerDesktop from '@/assets/img/game-of-thrones-banner-desktop-2x.png';
+import gameOfThronesBannerMobile from '@/assets/img/game-of-thrones-banner-mobile-2x.png';
+
+import gameOfThronesFlagDesktop from '@/assets/img/game-of-thrones-flag-desktop-2x.png';
+import gameOfThronesFlagMobile from '@/assets/img/game-of-thrones-flag-mobile-2x.png';
+
+import gameOfThronesTableDesktop from '@/assets/img/game-of-thrones-table-desktop-2x.png';
+import gameOfThronesTableMobile from '@/assets/img/game-of-thrones-table-mobile-2x.png';
+
+import gameOfThronesPosterDesktop from '@/assets/img/game-of-thrones-poster-desktop-2x.png';
+import gameOfThronesPosterMobile from '@/assets/img/game-of-thrones-poster-mobile-2x.png';
+
+import gameOfThronesThroneDesktop from '@/assets/img/game-of-thrones-throne-desktop-2x.png';
+import gameOfThronesThroneMobile from '@/assets/img/game-of-thrones-throne-mobile-2x.png';
 
 </script>
 
@@ -42,13 +56,59 @@ import gameOfThronesFacadeMobile from '@/assets/img/game-of-thrones-exterior-fac
         className="mw-1300 mb-20"
     />
 
-    <ContentBlock className="text-center">
+    <ContentBlock className="text-center large-container">
         <h2 class="mb-20">Designing for your favorite show? It doesn’t get better than this.</h2>
         <p><strong>This is what fuels me—what ignites my passion</strong> for design and pushes me to create at the highest level. Being part of something so globally beloved, a phenomenon that millions eagerly anticipate week after week, was nothing short of a dream come true. Game of Thrones wasn’t just a show; it was an experience, a cultural moment, a world people lost themselves in—including myself. To bring that world to life through design, and crafting an immersive space that let fans step into Westeros, was an honor and a challenge I’ll never forget.</p>
     </ContentBlock>
 
+    <section class="projects">
+        <div class="container">
+            <div class="work-single-grid">
+                <ImageInline
+                    :desktop="gameOfThronesBannerDesktop"
+                    :mobile="gameOfThronesBannerMobile"
+                    alt=""
+                    className="span-2"
+                />
+                <ImageInline
+                    :desktop="gameOfThronesFlagDesktop"
+                    :mobile="gameOfThronesFlagMobile"
+                    alt=""
+                    className=""
+                />
 
-    <NextProject link="/work/harley-davidson" />
+                <ImageInline
+                    :desktop="gameOfThronesTableDesktop"
+                    :mobile="gameOfThronesTableMobile"
+                    alt=""
+                    className="mb-lg"
+                />
+
+                <ImageInline
+                    :desktop="gameOfThronesPosterDesktop"
+                    :mobile="gameOfThronesPosterMobile"
+                    alt=""
+                    className="mb-lg"
+                />
+
+                <ImageInline
+                    :desktop="gameOfThronesThroneDesktop"
+                    :mobile="gameOfThronesThroneMobile"
+                    alt=""
+                    className="mb-lg"
+                />
+                
+            </div>
+        </div>
+    </section>
+
+    <ContentBlock className="text-center with-line">
+        <h3>A journey through the Seven Kingdoms, the Game of Thrones Exhibition Global Tour: Unveiled in New York, conquering Austin, Mexico City,
+Rio de Janeiro, Oslo, Toronto and Sydney</h3>
+    </ContentBlock>
+
+
+    <NextProject link="/work/diabetic-pain" />
 
 </template>
 
