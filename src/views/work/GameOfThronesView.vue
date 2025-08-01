@@ -28,6 +28,23 @@ import gameOfThronesPosterMobile from '@/assets/img/game-of-thrones-poster-mobil
 import gameOfThronesThroneDesktop from '@/assets/img/game-of-thrones-throne-desktop-2x.png';
 import gameOfThronesThroneMobile from '@/assets/img/game-of-thrones-throne-mobile-2x.png';
 
+import gameOfThronesDJDesktop from '@/assets/img/game-of-thrones-dj-desktop-2x.png';
+import gameOfThronesDJMobile from '@/assets/img/game-of-thrones-dj-mobile-2x.png';
+
+import gameOfThronesBoothDesktop from '@/assets/img/game-of-thrones-booth-desktop-2x.png';
+import gameOfThronesBoothMobile from '@/assets/img/game-of-thrones-booth-mobile-2x.png';
+import gameOfThronesCardDesktop from '@/assets/img/game-of-thrones-card-desktop-2x.png';
+import gameOfThronesCardMobile from '@/assets/img/game-of-thrones-card-mobile-2x.png';
+import gameOfThronesShowcaseDesktop from '@/assets/img/game-of-thrones-showcase-desktop-2x.png';
+import gameOfThronesShowcaseMobile from '@/assets/img/game-of-thrones-showcase-mobile-2x.png';
+
+import gameOfThronesCastDesktop from '@/assets/img/game-of-thrones-cast-desktop-2x.png';
+import gameOfThronesCastMobile from '@/assets/img/game-of-thrones-cast-mobile-2x.png';
+import gameOfThronesCast2Desktop from '@/assets/img/game-of-thrones-cast2-desktop-2x.png';
+import gameOfThronesCast2Mobile from '@/assets/img/game-of-thrones-cast2-mobile-2x.png';
+import gameOfThronesCast3Desktop from '@/assets/img/game-of-thrones-cast3-desktop-2x.png';
+import gameOfThronesCast3Mobile from '@/assets/img/game-of-thrones-cast3-mobile-2x.png';    
+
 </script>
 
 <template>
@@ -102,10 +119,64 @@ import gameOfThronesThroneMobile from '@/assets/img/game-of-thrones-throne-mobil
         </div>
     </section>
 
-    <ContentBlock className="text-center with-line">
+    <ContentBlock className="text-center large-container with-line">
         <h3>A journey through the Seven Kingdoms, the Game of Thrones Exhibition Global Tour: Unveiled in New York, conquering Austin, Mexico City,
 Rio de Janeiro, Oslo, Toronto and Sydney</h3>
     </ContentBlock>
+    
+    <section class="projects">
+        <div class="container">
+            <div class="work-single-grid">
+                <ImageInline
+                    :desktop="gameOfThronesDJDesktop"
+                    :mobile="gameOfThronesDJMobile"
+                    alt=""
+                    className="span-3"
+                />
+                <ImageInline
+                    :desktop="gameOfThronesBoothDesktop"
+                    :mobile="gameOfThronesBoothMobile"
+                    alt=""
+                    className="span-2"
+                />
+                <ImageInline
+                    :desktop="gameOfThronesCardDesktop"
+                    :mobile="gameOfThronesCardMobile"
+                    alt=""
+                    className=""
+                />
+                <ImageInline
+                    :desktop="gameOfThronesShowcaseDesktop"
+                    :mobile="gameOfThronesShowcaseMobile"
+                    alt=""
+                    className="span-3"
+                />
+                <ImageInline
+                    :desktop="gameOfThronesCast3Desktop"
+                    :mobile="gameOfThronesCast3Mobile"
+                    alt=""
+                    className=""
+                />
+
+                <ImageInline
+                    :desktop="gameOfThronesCastDesktop"
+                    :mobile="gameOfThronesCastMobile"
+                    alt=""
+                    className=""
+                />
+
+                <ImageInline
+                    :desktop="gameOfThronesCast2Desktop"
+                    :mobile="gameOfThronesCast2Mobile"
+                    alt=""
+                    className=""
+                />
+
+                
+            </div>
+        </div>
+    </section>
+
 
 
     <NextProject link="/work/diabetic-pain" />

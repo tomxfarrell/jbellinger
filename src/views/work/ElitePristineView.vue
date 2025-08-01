@@ -52,6 +52,12 @@ import elitShotMobile from '@/assets/img/elit-shot-mobile-2x.png';
         alt="Elit Brochure"
         className="full-width"
     />
+
+        <ContentBlock className="text-center large-container with-line">
+        <h2 class="mb-20">It’s not every day an incredible print brief lands on your desk.</h2>
+        <p><strong>Working with a prestigious brand, stunning materials, and full creative freedom was an absolute honor.</strong></p>
+    </ContentBlock>
+
     <ImageBlock
         :desktop="elitPrintDesktop"
         :mobile="elitPrintMobile"
@@ -78,6 +84,7 @@ import elitShotMobile from '@/assets/img/elit-shot-mobile-2x.png';
             </div>
         </div>
     </section>
+
 
     <ImageBlock
         :desktop="elitBrochure3Desktop"

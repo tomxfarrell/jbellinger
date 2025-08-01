@@ -25,7 +25,7 @@
         }
         &.large-container {
             .container {
-                max-width: 1300px;
+                max-width: 1000px;
             }
         }
         :deep(p){
