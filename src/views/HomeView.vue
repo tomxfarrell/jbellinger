@@ -14,7 +14,7 @@ onMounted(() => {
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: hero.value,
-      start: 'top top',
+      start: 'top +=50',
       end: `+=${hero.value.clientHeight}`,
       markers: false,
       scrub: true,
@@ -99,8 +99,10 @@ onUnmounted(() => {
         <video class="other-video" autoplay muted loop>
           <source src="@/assets/img/1037517047-preview.mp4" type="video/mp4">
         </video>
-        <p>Design is not just my profession; it's my passion, my very essence. I live and breathe design, and it permeates every aspect of my life. My mind constantly wanders, exploring new ideas, concepts, and possibilities. I find myself unable to turn my brain off, always seeking inspiration from the world around me. As an award-winning designer, I've had the privilege of working for top agencies across New York, where I've crafted everything from sleek websites to captivating campaigns to all immersive experiential events, aiming to engage, inspire, and react.</p>
+        <div class="gradient-text">
+          <p>Design is not just my profession; it's my passion, my very essence. I live and breathe design, and it permeates every aspect of my life. My mind constantly wanders, exploring new ideas, concepts, and possibilities. I find myself unable to turn my brain off, always seeking inspiration from the world around me. As an award-winning designer, I've had the privilege of working for top agencies across New York, where I've crafted everything from sleek websites to captivating campaigns to all immersive experiential events, aiming to engage, inspire, and react.</p>
         <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project I undertake.</p>
+        </div>
       </div>
     </section>
   </main>
@@ -159,13 +161,19 @@ onUnmounted(() => {
 }
 
 .bg-gradient {
-  padding: 150px 0;
+  // padding: 150px 0;
   // background-image: url(../assets/bg-pink-blue-gradient.png);
   // background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
   p, h3 {
     color: $white;
     max-width: 1300px;
@@ -177,5 +185,7 @@ onUnmounted(() => {
   p {
     margin-bottom: 20px;
   }
+  
 }
+
 </style>
