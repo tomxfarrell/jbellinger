@@ -233,6 +233,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
             position: relative;
             overflow: hidden;
             padding-top: 51.56%; // 330 / 640 * 100 = 51.56% aspect ratio
+            margin-bottom: 10px;
              img {
                 max-width: 100%;
                 height: auto;

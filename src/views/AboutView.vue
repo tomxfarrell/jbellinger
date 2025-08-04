@@ -1,8 +1,6 @@
 <script setup>
 import ContentBlock from '@/components/ContentBlock.vue';
-import ImageBlock from '@/components/ImageBlock.vue';
-import HeroBlock
- from '@/components/HeroBlock.vue';
+import HeroBlock from '@/components/HeroBlock.vue';
 import heroAboutDesktop from '@/assets/img/hero-about-desktop-2x.png';
 import heroAboutMobile from '@/assets/img/hero-about-mobile-2x.png';
 

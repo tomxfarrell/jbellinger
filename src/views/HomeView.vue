@@ -3,12 +3,23 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+import 'vue3-carousel/carousel.css'
+import { Carousel, Slide, Pagination } from 'vue3-carousel'
+
 gsap.registerPlugin(ScrollTrigger)
 
 const hero = ref(null)
 const txtHero = ref(null)
 const bgGradient = ref(null)
 
+const carouselConfig = {
+  itemsToShow: 1,
+  wrapAround: true,
+  autoplay: false,
+  gap: 20,
+  snapAlign: 'start',
+  transition: 500
+}
 
 onMounted(() => {
   const timeline = gsap.timeline({
@@ -80,7 +91,6 @@ onUnmounted(() => {
 
 
 <template>
-  <main>
     <section class="hero-home" ref="hero">
       <video class="bg-video" src="@/assets/img/1037517047-preview.mp4" loop muted autoplay></video>
 
@@ -101,11 +111,37 @@ onUnmounted(() => {
         </video>
         <div class="gradient-text">
           <p>Design is not just my profession; it's my passion, my very essence. I live and breathe design, and it permeates every aspect of my life. My mind constantly wanders, exploring new ideas, concepts, and possibilities. I find myself unable to turn my brain off, always seeking inspiration from the world around me. As an award-winning designer, I've had the privilege of working for top agencies across New York, where I've crafted everything from sleek websites to captivating campaigns to all immersive experiential events, aiming to engage, inspire, and react.</p>
-        <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project I undertake.</p>
+          <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project I undertake.</p>
         </div>
       </div>
     </section>
-  </main>
+    <section class="project-slider">
+      <div class="container">
+        <div class="slider-wrap">
+         
+          <img src="@/assets/img/txt-passion.svg" alt="Passion" class="txt-passion">
+          <img src="@/assets/img/txt-projects.svg" alt="Projects" class="txt-projects">
+          <Carousel v-bind="carouselConfig">
+             
+            <Slide>
+              <div class="slide">
+                
+                <!-- <p>Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the bells & whistles. Oh, and it won a Graphic Design USA Award!</p> -->
+                <!-- <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-1-img"> -->
+                                 <img src="@/assets/img//home-versace-desktop-2x.png" alt="" class="slide-2-img">
+
+                <!-- <p>A showcase of my most impactful and unforgettable design and project accomplishments amassed throughout my career.</p> -->
+                
+              </div>
+            </Slide>
+          
+            <template #addons>
+              <Pagination />
+            </template>
+          </Carousel>
+        </div>
+    </div>
+    </section>
 </template>
 
 <style lang="scss">
@@ -161,9 +197,6 @@ onUnmounted(() => {
 }
 
 .bg-gradient {
-  // padding: 150px 0;
-  // background-image: url(../assets/bg-pink-blue-gradient.png);
-  // background-repeat: no-repeat;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -187,5 +220,53 @@ onUnmounted(() => {
   }
   
 }
+
+.slider-wrap {
+  border: 2px solid red;
+  position: relative;
+
+  .carousel {
+   height: 100vh;
+   z-index: 1;
+  }
+  .carousel__slide {
+    align-items: start;
+  }
+}
+
+.txt-passion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 780px;
+    z-index: 0;
+  }
+  .txt-projects {
+    position: absolute;
+    bottom: 10vw;
+    right: 0;
+    width: 100%;
+    max-width: 780px;
+    z-index: 2;
+  }
+  .slide-1-img {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 1100px;
+    z-index: 1;
+  }
+  .slide-2-img {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 900px;
+    z-index: 1;
+  }
 
 </style>
