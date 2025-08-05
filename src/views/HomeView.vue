@@ -18,7 +18,7 @@ const carouselConfig = {
   autoplay: false,
   gap: 20,
   snapAlign: 'start',
-  transition: 500
+  transition: 500,
 }
 
 onMounted(() => {
@@ -121,16 +121,24 @@ onUnmounted(() => {
          
           <img src="@/assets/img/txt-passion.svg" alt="Passion" class="txt-passion">
           <img src="@/assets/img/txt-projects.svg" alt="Projects" class="txt-projects">
+
+          
           <Carousel v-bind="carouselConfig">
-             
+             <Slide>
+              <div class="slide">
+                
+                <p class="text-1">Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the bells & whistles. Oh, and it won a Graphic Design USA Award!</p>
+                <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-1-img">
+                <p class="text-2">A showcase of my most impactful and unforgettable design and project accomplishments amassed throughout my career.</p>
+                
+              </div>
+            </Slide>
             <Slide>
               <div class="slide">
                 
-                <!-- <p>Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the bells & whistles. Oh, and it won a Graphic Design USA Award!</p> -->
-                <!-- <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-1-img"> -->
-                                 <img src="@/assets/img//home-versace-desktop-2x.png" alt="" class="slide-2-img">
-
-                <!-- <p>A showcase of my most impactful and unforgettable design and project accomplishments amassed throughout my career.</p> -->
+                <p class="text-1">Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered results.</p>
+                <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-2-img">
+                <p class="text-2">A showcase of my most impactful and unforgettable design and project accomplishments amassed throughout my career.</p>
                 
               </div>
             </Slide>
@@ -232,9 +240,21 @@ onUnmounted(() => {
   .carousel__slide {
     align-items: start;
   }
+  .text-1 {
+    position: absolute;
+    top: 20vw;
+    left: 0;
+    width: 20vw;
+  }
+  .text-2 {
+    position: absolute;
+    top: 5vw;
+    right: 0;
+    width: 25vw;
+  }
 }
 
-.txt-passion {
+  .txt-passion {
     position: absolute;
     top: 0;
     left: 0;
@@ -244,7 +264,7 @@ onUnmounted(() => {
   }
   .txt-projects {
     position: absolute;
-    bottom: 10vw;
+    bottom: 15vw;
     right: 0;
     width: 100%;
     max-width: 780px;
@@ -253,19 +273,23 @@ onUnmounted(() => {
   .slide-1-img {
     position: absolute;
     margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     right: 0;
     width: 100%;
-    max-width: 1100px;
+    max-width: 800px;
     z-index: 1;
   }
   .slide-2-img {
     position: absolute;
     margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0;
     right: 0;
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
     z-index: 1;
   }
 
