@@ -17,8 +17,8 @@ const carouselConfig = {
   wrapAround: true,
   autoplay: false,
   gap: 20,
-  snapAlign: 'start',
   transition: 500,
+
 }
 
 onMounted(() => {
@@ -119,10 +119,8 @@ onUnmounted(() => {
       <div class="container">
         <div class="slider-wrap">
          
-          <img src="@/assets/img/txt-passion.svg" alt="Passion" class="txt-passion">
-          <img src="@/assets/img/txt-projects.svg" alt="Projects" class="txt-projects">
-
-          
+          <span class="txt-passion">Passion</span>
+        
           <Carousel v-bind="carouselConfig">
              <Slide>
               <div class="slide">
@@ -147,6 +145,8 @@ onUnmounted(() => {
               <Pagination />
             </template>
           </Carousel>
+
+          <span class="txt-projects">Projects</span>
         </div>
     </div>
     </section>
@@ -234,8 +234,21 @@ onUnmounted(() => {
   position: relative;
 
   .carousel {
-   height: 100vh;
+   position: relative;
+  overflow: hidden;
+  padding: 4rem 2rem;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
    z-index: 1;
+   img {
+    max-width: 70vw;
+    border: 1px solid red;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+   }
   }
   .carousel__slide {
     align-items: start;
@@ -254,43 +267,42 @@ onUnmounted(() => {
   }
 }
 
-  .txt-passion {
+  .txt-passion, .txt-projects {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 780px;
-    z-index: 0;
+    // top: 50%;
+    // transform: translateY(-50%);
+    font-size: clamp(5rem, 10vw, 12rem);
+    font-weight: bold;
+    color: #3f3de6;
+    pointer-events: none;
+    user-select: none;
   }
-  .txt-projects {
-    position: absolute;
-    bottom: 15vw;
-    right: 0;
-    width: 100%;
-    max-width: 780px;
-    z-index: 2;
-  }
-  .slide-1-img {
-    position: absolute;
-    margin: 0 auto;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 800px;
-    z-index: 1;
-  }
-  .slide-2-img {
-    position: absolute;
-    margin: 0 auto;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 800px;
-    z-index: 1;
-  }
+
+  .txt-passion { top: 0; left: 2%; z-index: 1; }
+  .txt-projects { bottom: 18%; right: 2%; z-index: 3; }
+
+
+  // .slide-1-img {
+  //   position: absolute;
+  //   margin: 0 auto;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   left: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   max-width: 800px;
+  //   z-index: 1;
+  // }
+  // .slide-2-img {
+  //   position: absolute;
+  //   margin: 0 auto;
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  //   left: 0;
+  //   right: 0;
+  //   width: 100%;
+  //   max-width: 800px;
+  //   z-index: 1;
+  // }
 
 </style>
