@@ -40,13 +40,14 @@ function fadeInText() {
     const textEls = active.querySelectorAll('.text-1, .text-2')
     gsap.fromTo(
       textEls,
-      { opacity: 0},
+      { opacity: 0, y: 20},
       {
         opacity: 1,
-        delay: 0.1,
+        y: 0,
+        delay: 0.3,
         duration: 0.7,
-        ease: 'cubic-bezier(0.65, 0.05, 0.36, 1)',
-        stagger: 0.1
+        ease: "sine.out",
+        // stagger: 0.1
       }
     )
   })
@@ -356,8 +357,6 @@ onUnmounted(() => {
   
 .text-1, .text-2 {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
 }
   .text-1 {
     position: absolute;
