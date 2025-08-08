@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -15,13 +15,65 @@ const bgGradient = ref(null)
 const carouselConfig = {
   itemsToShow: 1,
   wrapAround: true,
-  autoplay: false,
-  gap: 20,
+  autoplay: 10000,
   transition: 500,
-
 }
 
+let firstAnimationPlayed = false // ✅ track if first animation happened
+
+function fadeOutText() {
+  if (!firstAnimationPlayed) return // don't fade if first animation hasn't run yet
+  const active = document.querySelector('.carousel__slide--active')
+  if (!active) return
+  const textEls = active.querySelectorAll('.text-1, .text-2')
+  gsap.to(textEls, {
+    opacity: 0,
+    duration: 0.1,
+    ease: 'power1.out'
+  })
+}
+
+function fadeInText() {
+  nextTick(() => {
+    const active = document.querySelector('.carousel__slide--active')
+    if (!active) return
+    const textEls = active.querySelectorAll('.text-1, .text-2')
+    gsap.fromTo(
+      textEls,
+      { opacity: 0},
+      {
+        opacity: 1,
+        delay: 0.1,
+        duration: 0.7,
+        ease: 'cubic-bezier(0.65, 0.05, 0.36, 1)',
+        stagger: 0.1
+      }
+    )
+  })
+}
+
+function onSlideStart() {
+  fadeOutText()
+}
+
+function onSlideEnd() {
+  fadeInText()
+}
+
+
 onMounted(() => {
+  nextTick(() => {
+    ScrollTrigger.create({
+    trigger: '.project-slider',
+    start: 'top center',
+    once: true,
+    onEnter: () => {
+      fadeInText()
+      firstAnimationPlayed = true // ✅ allow slide animations after this
+    }
+  })
+  })
+  // Your existing ScrollTrigger for the main timeline
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: hero.value,
@@ -34,7 +86,7 @@ onMounted(() => {
       anticipatePin: true,
       snap: 0.55
     }
-  })
+  });
 
   timeline
     .to(txtHero.value, {
@@ -72,10 +124,9 @@ onMounted(() => {
     )
     .to(bgGradient.value, {
       y: -100,
-      opacity: 0,
-
-    })
-})
+      opacity: 0
+    });
+});
 
 onUnmounted(() => {
 
@@ -83,6 +134,8 @@ onUnmounted(() => {
   if (video) {
     video.playbackRate = 3.0 // 🔁 change to desired speed (e.g., 2.0 for 2x)
   }
+
+  
 
   ScrollTrigger.getAll().forEach(trigger => trigger.kill())
 })
@@ -128,7 +181,7 @@ onUnmounted(() => {
 
         <span class="txt-passion">Passion</span>
 
-        <Carousel v-bind="carouselConfig">
+        <Carousel v-bind="carouselConfig" @slide-start="onSlideStart" @slide-end="onSlideEnd">
           <Slide>
             <div class="slide">
               <div class="text-1">
@@ -148,11 +201,17 @@ onUnmounted(() => {
           <Slide>
             <div class="slide">
 
-              <p class="text-1">Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
+              <div class="text-1">
+                <img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace">
+                <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
                 results.</p>
-              <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img">
-              <p class="text-2">A showcase of my most impactful and unforgettable design and project accomplishments
+              </div>
+              <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
+              <div class="text-2 with-plus">
+                <p><strong>Featured Work</strong></p>
+                <p>A showcase of my most impactful and unforgettable design and project accomplishments
                 amassed throughout my career.</p>
+                </div>
 
             </div>
           </Slide>
@@ -274,6 +333,9 @@ onUnmounted(() => {
       height: auto;
       object-fit: contain;
     }
+    .slide-img-versace {
+      max-width: 50vw;
+    }
   }
 
   .carousel__slide {
@@ -292,7 +354,11 @@ onUnmounted(() => {
   }
 
   
-
+.text-1, .text-2 {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
   .text-1 {
     position: absolute;
     top: 7vw;
@@ -319,6 +385,10 @@ onUnmounted(() => {
 
   .slide-logo-elit {
     width: 65px;
+    margin-bottom: 20px;
+  }
+  .slide-logo-versace {
+    width: 120px;
     margin-bottom: 20px;
   }
 
