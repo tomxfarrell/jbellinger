@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import 'vue3-carousel/carousel.css'
-import { Carousel, Slide, Pagination } from 'vue3-carousel'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -53,12 +53,77 @@ function fadeInText() {
   })
 }
 
+function fadeInImg() {
+  nextTick(() => {
+    const active = document.querySelector('.carousel__slide--active')
+    if (!active) return
+    const imgEl = active.querySelector('.slide-img')
+    gsap.fromTo(
+      imgEl,
+      { opacity: 0, y: -50},
+      {
+        opacity: 1,
+        y: 0,
+        delay: 0.3,
+        duration: 0.7,
+        ease: "sine.out",
+        // stagger: 0.1
+      }
+    )
+  })
+}
+
+function fadeOutImg() {
+  if (!firstAnimationPlayed) return // don't fade if first animation hasn't run yet
+  const active = document.querySelector('.carousel__slide--active')
+  if (!active) return
+  const imgEl = active.querySelector('.slide-img')
+  gsap.to(imgEl, {
+    opacity: 0,
+    duration: 0.1,
+    ease: 'power1.out'
+  })
+} 
+
+function animateText() {
+  nextTick(() => {
+    const active = document.querySelector('.carousel__slide--active')
+    if (!active) return
+    gsap.fromTo(
+      '.txt-passion',
+      { opacity: 0, x: -50},
+      {
+        opacity: 1,
+        x: 0,
+        delay: 0.3,
+        duration: 0.7,
+        ease: "sine.out",
+        // stagger: 0.1
+      }
+    )
+    gsap.fromTo(
+      '.txt-projects',
+      { opacity: 0, x: 50},
+      {
+        opacity: 1,
+        x: 0,
+        delay: 0.3,
+        duration: 0.7,
+        ease: "sine.out",
+        // stagger: 0.1
+      }
+    )
+  })
+} 
+
 function onSlideStart() {
   fadeOutText()
+  fadeOutImg()
 }
 
 function onSlideEnd() {
   fadeInText()
+  fadeInImg()
 }
 
 
@@ -69,7 +134,9 @@ onMounted(() => {
     start: 'top center',
     once: true,
     onEnter: () => {
+      animateText()
       fadeInText()
+      fadeInImg()
       firstAnimationPlayed = true // ✅ allow slide animations after this
     }
   })
@@ -218,6 +285,7 @@ onUnmounted(() => {
           </Slide>
 
           <template #addons>
+            <Navigation />
             <Pagination />
           </template>
         </Carousel>
@@ -313,6 +381,10 @@ onUnmounted(() => {
 
 }
 
+.project-slider {
+  padding-top: 4rem;
+}
+
 .slider-wrap {
   // border: 2px solid red;
   position: relative;
@@ -355,19 +427,21 @@ onUnmounted(() => {
   }
 
   
-.text-1, .text-2 {
+.text-1,
+.text-2,
+.slide-img {
   opacity: 0;
 }
   .text-1 {
     position: absolute;
-    top: 7vw;
+    top: 8vw;
     left: 0;
     width: 20vw;
   }
 
   .text-2 {
     position: absolute;
-    top: 5vw;
+    top: 2vw;
     right: 0;
     width: 25vw;
     &.with-plus {
@@ -395,6 +469,7 @@ onUnmounted(() => {
 
 .txt-passion,
 .txt-projects {
+  opacity: 0;
   position: absolute;
   font-family: $fontHeadline;
   font-size: clamp(10rem, 10vw, 12rem);
@@ -402,6 +477,9 @@ onUnmounted(() => {
   color: #3f3de6;
   pointer-events: none;
   user-select: none;
+  @media (max-width: 1100px) {
+    font-size: clamp(8rem, 8vw, 10rem);
+  }
 }
 
 .txt-passion {
@@ -411,9 +489,15 @@ onUnmounted(() => {
 }
 
 .txt-projects {
-  bottom: 25%;
+  bottom: 40%;
   right: 5%;
   z-index: 3;
+  @media (max-width: 1100px) {
+    bottom: 30%;
+  }
+  @media (max-width: 930px) {
+    bottom: 10%;
+  }
 }
 
 
