@@ -129,71 +129,93 @@ function onSlideEnd() {
 
 onMounted(() => {
   nextTick(() => {
-    ScrollTrigger.create({
-    trigger: '.project-slider',
-    start: 'top center',
-    once: true,
-    onEnter: () => {
-      animateText()
-      fadeInText()
-      fadeInImg()
-      firstAnimationPlayed = true // ✅ allow slide animations after this
-    }
-  })
-  })
-  // Your existing ScrollTrigger for the main timeline
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: hero.value,
-      start: 'top +=50',
-      end: `+=${hero.value.clientHeight}`,
-      markers: false,
-      scrub: true,
-      pin: true,
-      immediateRender: false,
-      anticipatePin: true,
-      snap: 0.55
-    }
-  });
-
-  timeline
-    .to(txtHero.value, {
-      scale: 75,
-      rotate: '-1deg',
-      duration: 0.15,
-      opacity: 0,
-      ease: 'power1.inOut'
-    })
-    .from(
-      bgGradient.value,
-      {
-        opacity: 0,
-        duration: 0.25,
-        ease: 'power1.in'
-      },
-      '>'
-    )
-    .to(
-      txtHero.value,
-      {
-        opacity: 0,
-        duration: 0.15,
-        ease: 'power1.inOut'
-      },
-      '>'
-    )
-    .to(
-      txtHero.value,
-      {
-        display: 'none',
-        scale: 1
-      },
-      '>'
-    )
-    .to(bgGradient.value, {
-      y: -100,
-      opacity: 0
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: hero.value,
+        start: 'top +=50',
+        end: `+=${hero.value.clientHeight}`,
+        markers: false,
+        scrub: true,
+        pin: true,
+        immediateRender: false,
+        anticipatePin: true,
+        snap: 0.5
+      }
     });
+
+   timeline
+  .to(txtHero.value, {
+    scale: 75,
+    rotate: '-1deg',
+    duration: 0.15,
+    opacity: 0,
+    ease: 'power1.inOut'
+  })
+  .from(
+    bgGradient.value,
+    {
+      opacity: 0,
+      duration: 0.25,
+      ease: 'power1.in'
+    },
+    '>'
+  )
+  .to(
+    txtHero.value,
+    {
+      opacity: 0,
+      duration: 0.15,
+      ease: 'power1.inOut'
+    },
+    '>'
+  )
+  .to(
+    txtHero.value,
+    {
+      display: 'none',
+      scale: 1
+    },
+    '>'
+  )
+  // 🔹 Fade OUT bg-gradient and bg-video before showing project-slider
+  .to(
+    [bgGradient.value, '.bg-video'],
+    {
+      opacity: 0,
+      pointerEvents: 'none',
+      duration: 0.4,
+      ease: 'power1.inOut'
+    },
+    '>'
+  )
+  // 🔹 Set white background for hero-home
+  .to(
+    hero.value,
+    {
+      backgroundColor: '#fff',
+      duration: 0.2
+    },
+    '<' // run at the same time as fade out
+  )
+  // 🔹 Fade IN project-slider
+  .fromTo(
+    '.project-slider',
+    { opacity: 0, pointerEvents: 'none' },
+    {
+      opacity: 1,
+      pointerEvents: 'auto',
+      duration: 0.5,
+      ease: 'power1.out',
+      onStart: () => {
+        animateText()
+        fadeInText()
+        fadeInImg()
+        firstAnimationPlayed = true
+      }
+    },
+    '>'
+  );
+  });
 });
 
 onUnmounted(() => {
@@ -242,8 +264,8 @@ onUnmounted(() => {
           undertake.</p>
       </div>
     </div>
-  </section>
-  <section class="project-slider">
+
+    <div class="project-slider">
     <div class="container">
       <div class="slider-wrap">
 
@@ -293,10 +315,17 @@ onUnmounted(() => {
         <span class="txt-projects">Projects</span>
       </div>
     </div>
+  </div>
   </section>
+  
 </template>
 
 <style lang="scss">
+
+.project-slider {
+  opacity: 0;
+  pointer-events: none;
+}
 .hero-home {
   background-color: $black;
   width: 100vw;
