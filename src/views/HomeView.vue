@@ -227,7 +227,20 @@ onUnmounted(() => {
 
   
 
+ onUnmounted(() => {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+
+  // Kill ongoing tweens
+  gsap.killTweensOf("*")
+
+  // Reset inline styles for this component’s elements
+  gsap.set([
+    '.project-slider',
+    '.bg-gradient',
+    '.bg-video',
+    hero.value
+  ], { clearProps: "all" })
+})
 })
 </script>
 
