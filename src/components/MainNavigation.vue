@@ -473,12 +473,12 @@ watch(isMenuOpen, (isOpen) => {
 
   @media (max-width: $breakpoint-sm) {
     display: block;
-    background: linear-gradient(to top, $white 0%, rgba($white, 0) 100%);
+    // background: linear-gradient(to top, $white 0%, rgba($white, 0) 100%);
     /* Create a blur gradient effect instead of a solid color fade */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
+    // backdrop-filter: blur(5px);
+    // -webkit-backdrop-filter: blur(5px);
+    // mask-image: linear-gradient(to top, black 40%, transparent 100%);
+    // -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
     padding: 80px 0 15px; /* Increased top padding for smoother fade area */
     pointer-events: none;
 
