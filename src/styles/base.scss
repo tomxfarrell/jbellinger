@@ -14,10 +14,15 @@ body {
         pointer-events: none;
         z-index: 90;
         display: none;
+        transition: opacity 0.3s ease;
 
         @media (max-width: $breakpoint-sm) {
             display: block;
         }
+    }
+
+    &.footer-visible::after {
+        opacity: 0;
     }
   }
 

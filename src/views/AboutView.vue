@@ -27,26 +27,12 @@ function toggleItem(index) {
 }
 
 const aboutCarouselConfig = {
-  itemsToShow: 4.5,
+  itemsToShow: 'auto',
   wrapAround: true,
   autoplay: 5000,
   gap: 20,
   snapAlign: 'start',
-  transition: 500,
-  breakpoints: {
-    1200: {
-      itemsToShow: 4.5,
-    },
-    992: {
-      itemsToShow: 3.5,
-    },
-    768: {
-      itemsToShow: 2.5,
-    },
-    400: {
-      itemsToShow: 1.5
-    }
-  }
+  transition: 500
 }
 
 </script>
@@ -394,10 +380,30 @@ const aboutCarouselConfig = {
     display: block;
     background: linear-gradient(0deg, #5600E8 0%, #22D9F1 100%)
   }
+  @media (max-width: $breakpoint-sm) {
+
+     .stat {
+      padding: 0 10px;
+     }
+
+    .row-stats {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .line {
+      transform: rotate(90deg);
+      
+    }
+  }
 }
 
 .testimonials {
 padding: 150px 0;
+.container {
+  padding-right: 0;
+  max-width: 100%;
+}
 }
 
 .carousel {
@@ -406,13 +412,14 @@ padding: 150px 0;
   .slide {
     background: linear-gradient(57.81deg, #5600E8 28.04%, #22D9F1 98.27%);
     border-radius: 12px;
-    max-width: 406px;
     height: 100%;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
+
+    
     .quote,
     .name {
       color: $white;
@@ -438,6 +445,12 @@ padding: 150px 0;
     }
   }
 
+  :deep(.carousel__slide) {
+    width: 406px;
+    max-width: 90vw;
+    flex-shrink: 0;
+  }
+
   :deep(.carousel__viewport) {
     padding-bottom: 50px;
   }
@@ -458,6 +471,8 @@ padding: 150px 0;
     width: 9px;
     height: 9px;
   }
+
+ 
 }
 
 .resume {
@@ -627,6 +642,11 @@ padding: 150px 0;
         font-size: 18px;
         line-height: 28px;
       }
+    }
+  }
+  @media (max-width: $breakpoint-sm) {
+    .client-list, .client-logos {
+      grid-template-columns: 1fr 1fr;
     }
   }
 }

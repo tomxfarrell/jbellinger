@@ -1,6 +1,26 @@
 <script setup>
 import logoFooterWhite from '@/assets/img/logo-footer-white.svg';
 import linkedIn from '@/assets/img/icon-linkedin-2x.png';
+import { onMounted, onUnmounted } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+let trigger;
+
+onMounted(() => {
+  trigger = ScrollTrigger.create({
+    trigger: '#footer',
+    start: 'top bottom',
+    toggleClass: { targets: 'body', className: 'footer-visible' }
+  });
+});
+
+onUnmounted(() => {
+  if (trigger) trigger.kill();
+  document.body.classList.remove('footer-visible');
+});
 </script>
 
 <template>

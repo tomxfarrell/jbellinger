@@ -387,6 +387,11 @@ watch(isMenuOpen, (isOpen) => {
         }
       }
     }
+    @media (max-width: $breakpoint-xxs) {
+      &.mobile-open {
+        transform: translateY(14vh);
+      }
+    }
   }
 }
 
@@ -404,6 +409,7 @@ watch(isMenuOpen, (isOpen) => {
     font-weight: 700;
     text-align: center;
     margin: 3px auto 0 auto;
+    transition: color 0.3s ease;
   }
 
   &.is-open {
@@ -488,6 +494,12 @@ watch(isMenuOpen, (isOpen) => {
       -webkit-backdrop-filter: none;
       mask-image: none;
       -webkit-mask-image: none;
+    }
+  }
+
+  body.footer-visible & {
+    .hamburger-text {
+      color: $white;
     }
   }
 }
