@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import MainNavigation from '@/components/MainNavigation.vue';
 import Footer from '@/components/Footer.vue';
 
@@ -16,11 +16,3 @@ import Footer from '@/components/Footer.vue';
 
   <Footer />
 </template>
-
-<style>
-.wrapper {
-  margin-top: 50px;
-}
-</style>
-
-

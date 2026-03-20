@@ -79,7 +79,7 @@
   </transition>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .modal-fade-enter-active,
 .modal-fade-leave-active {
@@ -277,6 +277,9 @@
         height: 45px;
       }
     }
+  }
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
   }
 }
 </style>

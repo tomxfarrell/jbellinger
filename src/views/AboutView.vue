@@ -7,7 +7,7 @@ import heroAboutMobile from '@/assets/img/hero-about-mobile-2x.png';
 import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Pagination } from 'vue3-carousel'
 
-import { ref, nextTick } from 'vue'
+import { ref } from 'vue'
 
 const { items } = defineProps({
   items: {
@@ -17,107 +17,16 @@ const { items } = defineProps({
 })
 
 const activeIndex = ref(null)
-const accordionTitles = ref([])
 
 function toggleItem(index) {
   if (activeIndex.value === index) {
     activeIndex.value = null
   } else {
     activeIndex.value = index
-    nextTick(() => {
-      accordionTitles.value[index]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      })
-    })
   }
 }
 
-const accordionItems = [
-  {
-    title: 'Key<br>Highlights',
-    content:
-      `
-          <ul>
-            <li><span>Achieved an Ogilvy Health Team Impact Award in December 2023, a distinguished internal recognition program where colleagues nominate individuals or teams for their exceptional work ethic and contributions</span></li>
-            <li><span>Successfully introduced Figma to the Ogilvy Health team, resulting in a more streamlined process among a cross-functional team of 30+ members consisting of UX, Creative, Copy, Production, and Development. Conducted bootcamp sessions to facilitate the adoption and proficiency of the tool</span></li>
-            <li><span>Over twenty five awards won including a recent Reggie Award, Communication Arts and GD USA</span></li>
-            <li><span>Featured articles/designs have appeared in the New York Times, The Real Deal magazine, Adrants.com and Curbed.com</span></li>
-          </ul>
-          `
-  },
-  {
-    title: 'Specialized<br>Skills',
-    content:
-      `
-          <div class="job-title">Vice President, Associate Creative Director / 2022 - Present</div>
-          <div class="job-info">Ogilvy Health - Parsippany, NJ / Remote</div>
-          <ul>
-            <li><span>Recruited to spearhead, oversee and manage all digital design experiences, including responsive website designs, email campaigns, banners, and social projects</span></li>
-            <li><span>Optimized the design process by creating standardized digital templates and components, streamlining workflows and boosting agency-wide productivity</span></li>
-            <li><span>Established digital and web best practices to ensure that the creative team produces high-quality deliverables that are on-brand, on-time, on-budget, and pass ADA compliances</span></li>
-            <li><span>Played a crucial role in the successful launch of a global pharmaceutical drug, contributing to increased sales and brand recognition</span></li>
-          </ul>
-
-          <div class="job-title">Associate Creative Director / 2014 - 2022</div>
-          <div class="job-info">Real Chemistry - New York, NY / Remote</div>
-          <ul>
-            <li><span>Conceptualized and designed compelling, unique digital experiences for various national and global pharmaceutical clients, including web, mobile, email campaigns, banner ads, storyboards, and more</span></li>
-            <li><span>Completed multiple projects under allocated creative time, leading to increased profitability per project</span></li>
-            <li><span>Led the creative direction and owned the aesthetic of various website designs, brands, and new business pitches</span></li>
-            <li><span>Ensured the delivery of best-in-class digital experiences that exceeded client expectations</span></li>
-            <li><span>Collaborated effectively with cross-functional teams, including Strategy, Web Developers, UX, Producers, Motion Graphic, Account Executives, and Social teams, to create and produce innovative creative solutions across all channels</span></li>
-          </ul>
-
-          <div class="job-title">Senior Experiential Designer / 2012 - 2014</div>
-          <div class="job-info">Relevent Partners - New York, NY</div>
-          <ul>
-            <li><span>Conceptualized, designed, and executed highly engaging and memorable experiential marketing campaigns that successfully brought brands to life, connecting consumers with some of the top brands in the world through unique interactive experiences, unforgettable brand engagements, sponsored events and concerts, stunts, and pop-up shops</span></li>
-            <li><span>Served as a creative lead for significant new business initiatives from ideation through execution, design and production</span></li>
-            <li><span>Oversaw the creation of creative assets, including renderings, layouts, schematics, and technical specifications, and ensured that all materials were ready for fabrication and installation</span></li>
-            <li><span>Led a team of designers, producers, and creative collaborators to ideate, develop, and produce    activations that drew in crowds and generated buzz</span></li>
-            <li><span>Worked closely with account teams and clients to understand their objectives, brand messaging,    and target audience, and translated those insights into impactful experiential concepts</span></li>
-          </ul>
-
-          <div class="job-title">Freelance Associate Creative Director / 2008 - Present</div>
-          <div class="job-info">Anomaly, Landor Associates, Ogilvy, Saatchi X, Iris Worldwide, Mirrorball, Global Hue, Porter Novelli, Public Label,    The A Team, NYL Media, iGo Marketing, Genuine Overkill, Stockeld Creamery</div>
-          <ul>
-            <li><span>Played a pivotal role in securing the Smirnoff Vodka account against competing agencies with a winning presentation and creative</span></li>
-            <li><span>Art directed and designed numerous successful local, regional, and national campaigns across various media and for diverse clients</span></li>
-            <li><span>Developed and designed compelling concepts for aggressive new business initiatives</span></li>
-            <li><span>Maintained accurate creative scope, schedules, and budgets while staying up-to-date on  project deliverables</span></li>
-          </ul>
-          `
-  },
-  {
-    title: 'Career<br>Experience',
-    content: `
-          <ul>
-            <li><span>Possess expert knowledge of both print and digital/web design, including best practices and the development of ADA compliant websites</span></li>
-            <li><span>Demonstrated mastery of a variety of creative tools, including Figma, Prototyping, XD, Sketch, Photoshop, Illustrator, and InDesign</span></li>
-            <li><span>Extensive experience across a diverse range of industries, from healthcare and pharmaceutical experential and events, spirits, real estate, automotive, beauty and consumer products. Established reputation for UX leadership on significant healthcare initiatives</span></li>
-            <li><span>Proficient in Agile and Lean UX methodologies to drive efficiency and flexibility in project execution</span></li>
-            <li><span>Leverage expert knowledge of traditional and non-traditional advertising to deliver innovative and impactful design solutions across multiple mediums</span></li>
-            <li><span>Consistently produce clean, on trend, eye-catching, and effective design solutions</span></li>
-            <li><span>Proven track record of leading teams and nurturing the careers of emerging design professionals</span></li>
-            <li><span>Demonstrated ownership and guidance in steering both individual and team-wide design processes</span></li>
-          </ul>
-          `
-  },
-  {
-    title: 'Education',
-    content: `
-          <ul>
-            <li><span><strong>Nobel Desktop</strong> / Figma Bootcamp</span></li>
-            <li><span><strong>Maven</strong> / Midjourney for Creatives</span></li>
-            <li><span><strong>Parsons School of Design</strong> / Continuing Education, Interactive Design</span></li>
-            <li><span><strong>Mercer County Community College </strong> / Advertising and Design</span></li>
-          </ul>
-          `
-  }
-]
-
-const carouselConfig = {
+const aboutCarouselConfig = {
   itemsToShow: 4.5,
   wrapAround: true,
   autoplay: 5000,
@@ -175,9 +84,9 @@ const carouselConfig = {
       each project with three goals for the consumer: capture attention, engage interest; and drive action.</p>
   </ContentBlock>
 
-  <section class="carousel">
+  <section class="testimonials">
     <div class="container">
-      <Carousel v-bind="carouselConfig">
+      <Carousel v-bind="aboutCarouselConfig">
         <Slide>
           <div class="slide">
             <p class="quote">Jason works around the clock to put his clean & modern design touch on all deliverables to
@@ -231,15 +140,128 @@ const carouselConfig = {
   <section class="resume">
     <div class="container">
       <div class="accordion">
-        <div v-for="(item, index) in accordionItems" :key="index" class="accordion-item"
-          :class="{ 'active': activeIndex === index }">
-          <div ref="accordionTitles" class="accordion-title" @click="toggleItem(index)">
-            <span v-html="item.title"></span>
-            <span class="arrow" :class="{ 'open': activeIndex === index }">
+
+        <!-- Key Highlights -->
+        <div class="accordion-item" :class="{ 'active': activeIndex === 0 }">
+          <div class="accordion-title" @click="toggleItem(0)">
+            <span>Key<br>Highlights</span>
+            <span class="arrow" :class="{ 'open': activeIndex === 0 }">
               <img src="@/assets/img/icon-plus.svg">
             </span>
           </div>
-          <div v-if="activeIndex === index" class="accordion-content" v-html="item.content"></div>
+          <div v-if="activeIndex === 0" class="accordion-content">
+            <ul>
+              <li><span><strong>Successfully introduced Figma to the Ogilvy Health team,</strong> resulting in a more streamlined process among a cross-functional team of 30+ members consisting of UX, Creative, Copy, Production, and Development. Conducted bootcamp sessions to facilitate the adoption and proficiency of the tool</span></li>
+              <li><span><strong>Over twenty awards won including two recent Ogilvy Health Team Impact Awards,</strong> Beverage Dynamics Advertising & Promotion Award, Reggie Award, and GD USA .</span></li>
+              <li><span><strong>Known for exceptional design skills and creative excellence,</strong> frequently requested by colleagues and regularly invited to collaborate on high-profile brands across the agency.</span></li>
+              <li><span>Accolades have appeared in the New York Times, The Real Deal magazine, Adrants.com and Curbed.com.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Specialized Skills -->
+        <div class="accordion-item" :class="{ 'active': activeIndex === 1 }">
+          <div class="accordion-title" @click="toggleItem(1)">
+            <span>Specialized<br>Skills</span>
+            <span class="arrow" :class="{ 'open': activeIndex === 1 }">
+              <img src="@/assets/img/icon-plus.svg">
+            </span>
+          </div>
+          <div v-if="activeIndex === 1" class="accordion-content">
+            <ul>
+              <li><span><strong>Possess expert knowledge of digital/web design,</strong> including best practices and the development of ADA compliant websites</span></li>
+              <li><span><strong>Strong expertise in concepting and ideation,</strong> and leveraging Midjourney for rapid ideation, delivering unique and thoughtful art direction, smart design solutions, and strategic creative thinking to drive innovative user experiences.</span></li>
+              <li><span>Demonstrated mastery of a variety of creative tools, including <strong>Midjourney, Figma, Prototyping,</strong> XD, Sketch, Photoshop, Illustrator, and InDesign.</span></li>
+              <li><span><strong>Extensive experience across diverse industries,</strong> including spirits, real estate, automotive, beauty, consumer products, healthcare and pharmaceuticals, spanning multiple media platforms.</span></li>
+              <li><span><strong>Skilled in traditional and non-traditional advertising,</strong> including experiential design and rendering mockups, to create innovative, high-impact designs across various mediums.</span></li>
+              <li><span><strong>Consistently deliver clean, modern, and visually compelling design solutions</strong> tailored for multiple media platforms.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Career Experience -->
+        <div class="accordion-item" :class="{ 'active': activeIndex === 2 }">
+          <div class="accordion-title" @click="toggleItem(2)">
+            <span>Career<br>Experience</span>
+            <span class="arrow" :class="{ 'open': activeIndex === 2 }">
+              <img src="@/assets/img/icon-plus.svg">
+            </span>
+          </div>
+          <div v-if="activeIndex === 2" class="accordion-content">
+            <div class="job-title">Vice President, Associate Creative Director</div>
+            <div class="job-info">Ogilvy Health, WPP - Parsippany, NJ / Remote / 2022 - Present</div>
+            <p>Recruited to lead all digital design initiatives, I currently oversee a wide range of experiences from responsive websites and email campaigns to banners and social content. As an integral part of Ogilvy Health’s new business team, I regularly contribute to high-level concepting and creative development for pitches. Most recently, my work helped secure a major account win, with the concept chosen over multiple competing agencies, a proud moment that showcased the power of strategic, smart, insight-driven creative.</p>
+
+            <p>I currently manage four national and global brands, driving creative strategy and leading a team of four art directors to ensure cohesive, high-impact execution across all channels. Within the agency, I’m known not only for design excellence but also for my ability to collaborate and deliver under pressure, frequently tapped to support high-profile brands and cross-functional initiatives. My contributions have been recognized with two Ogilvy Health Team Impact Awards (Dec 2023 & July 2024), a peer-nominated honor for outstanding performance and leadership.</p>
+
+            <p>I introduced Figma to the agency, streamlining collaboration across a 30+ member cross-functional team. To support adoption, I led training bootcamps and created standardized digital templates and components, elevating both efficiency and consistency. I also established best practices for digital and web, ensuring that all creative is on-brand, ADA-compliant, and delivered on time and within budget.</p>
+
+            <p>A standout project includes leading the creative for the launch of a national pharmaceutical brand targeting desmoid tumors. This end-to-end campaign spanned DTC and HCP marketing, including brand guidelines, email, print, social, and multiple websites (Unbranded, Branded, Day 10, Now Approved). The result: a meaningful, memorable launch that drove awareness, engagement, and strong market performance.</p>
+
+            <div class="job-title">Associate Creative Director</div>
+            <div class="job-info">Real Chemistry - Florham Park, NJ / Remote | 2014-2022</div>
+            
+            <p>I started at the agency back when it was still Sentient, a scrappy shop with around 30 people and a big vision. From day one, I jumped in as an Art Director, designing fast, thinking strategically, and helping create digital work that delivered beyond expectations. Over time, I grew into the role of Associate Creative Director, and watched the agency evolve into Real Chemistry, a powerhouse in healthcare marketing.</p>
+
+            <p>During that transformation, I led the creative development of high performing digital experiences for national and global pharmaceutical brands. From responsive websites and mobile platforms to campaign ecosystems, emails, and branded storytelling, I oversaw the creative strategy and execution across a range of touchpoints, always aiming to blend clarity with empathy.</p>
+
+            <p>I collaborated closely with UX, strategy, development, and motion teams to bring ideas to life, making sure they were not only beautifully designed but smart, scalable, and grounded in user insight. I helped build design systems, establish brand guidelines, and lead new business pitches that expanded the agency’s footprint in both consumer and HCP markets.</p>
+            
+            <p>Even in a regulated industry, I found ways to champion creativity, helping brands stand out, stay human, and connect in ways that mattered. And as we grew from startup energy into enterprise scale, I never lost that hands on drive to create great work and help others do the same.</p>
+
+            <div class="job-title">Senior Experiential Designer</div>
+            <div class="job-info">Relevent Partners - New York, NY | 2012-2014</div>
+            <p>At the heart of my experiential work was the goal to make brands unforgettable. I had the opportunity to lead and create immersive campaigns that brought global brands like Jeep, Audi, Samsung, HBO’s Game of Thrones, and Victoria’s Secret to life in bold, unexpected ways. Whether it was a high impact stunt, a fully branded pop-up shop, or a sponsored concert experience, the goal was always the same: create moments that people don’t just see... but feel.</p>
+
+            <p>What made it even more rewarding was getting to design for brands and artists I genuinely love. I helped concept and produce the Game of Thrones touring exhibit, a one-of-a-kind VIP concert featuring Eminem, and a record release party for Jay-Z... projects that blurred the line between work and pure fan joy. It never felt like just a job when I was helping bring to life the kind of culture shaping experiences I’d line up for myself.</p>
+
+            <p>As a creative lead, I oversaw everything from ideation to execution, design to production and installations, collaborating closely with clients and account teams to understand their audience and brand messaging, and then translating that into emotionally charged, immersive environments. I led a team of designers, producers, and creative collaborators, ensuring every detail, from renderings and schematics to final production, was flawless and fabrication ready. The energy was fast-paced, the stakes were high, and the work was pure excitement, creative adrenaline.</p>
+
+            <div class="job-title">Freelance Senior Experiential Art Director</div>
+            <div class="job-info">Mirrorball - New York, NY | 2009-2012</div>
+
+            <p>Working at Mirrorball was one of the most memorable experiences of my career. It was one of those rare agencies where creativity wasn’t just encouraged, it was expected to go further. The team was wildly talented, the energy was electric, and the projects were the kind that stick with you. I built lasting friendships there, and to this day, I still freelance for the CCO and several former colleagues whenever they need someone they trust to deliver standout creative.</p>
+
+            <p>While at Mirrorball, I concepted and designed for a wide range of experiential campaigns that pushed the boundaries of branding and immersive storytelling. One of my favorite projects was creating the full brand identity for Harley-Davidson’s Badass Bootcamp... an event that introduced new riders to the Harley lifestyle. I developed the event’s look and feel from the ground up, including the logo, environmental graphics, posters, brochures, banners, and more. It was the kind of project that let me dive deep into a brand’s culture and bring it to life in bold, authentic, unforgettable ways.</p>
+
+            <p>Then there was Dos Equis, a constant source of offbeat creative. We launched multiple national activations, including the Feast of the Brave, where we designed a food truck topped with a massive scorpion, serving scorpion tacos and other adventurous eats. Another standout? Taking over the historic Freemason building (which had never hosted an outside event) and turning it into a multi-room immersive experience.</p>
+
+            <p>Other projects included a VIP parties for Société Perrier, the Amstel Light Burger Bash in Miami (where I designed a custom “Best Burger” trophy), and countless other creative-led moments that merged culture, community, and design in unexpected ways.</p>
+            
+            <p>Mirrorball raised the bar on everything it touched and being part of that energy was something special. It wasn’t just great work... it was great people, great ideas, and the kind of creative environment that keeps calling you back.</p>
+
+
+            <div class="job-title">Freelance ACD/Sr Art Director</div>
+            <div class="job-info">2012-Present<br>Anomaly, Landor Associates, Saatchi X, Iris Worldwide, Mirrorball, Global Hue, Porter Novelli, Public Label, The A Team, NYL Media, iGo Marketing, Genuine Overkill, Stockeld Creamery</div>
+
+            <p>As a freelance Associate Creative Director specializing in UI, design, and experiential, I had the chance to collaborate with some of the most exciting agencies and brands in the world, from Ogilvy to Saatchi & Saatchi, Versace to cult favorites like Stockeld Cream Cheese. No two days looked the same. One week I’d be concepting a wild retail experience, the next I'd be deep in pitch mode for a global spirits brand.</p>
+
+            <p>One of the highlights? Leading the creative that won the Smirnoff Vodka account, beating out several agencies with a bold, experiential pitch that landed the business. That win opened the door to even more work, from regional rollouts to national brand campaigns.</p>
+
+            <p>I art directed and designed campaigns across nearly every medium: web, pop-up experiences, social content, event collateral, 3D retail displays, you name it. I thrived in the fast pace of new business, helping teams land major accounts with sharp creative ideas that cut through. And while I was deeply hands-on with the work, I also kept things on track, managing scope, schedules, and deliverables, all while keeping the creative energy high.</p>
+
+            <p>One thing I’m proud of is the relationships I’ve built along the way. I’ve always formed deep respect with colleagues and clients at past agencies, they’ve seen my work ethic, my creativity, and my ability to deliver under pressure. So much so that I’m still called back to support them when they move on to new agencies and need someone they trust to deliver great creative.</p>
+
+            <p>It was a stretch of pure creative momentum, collaborating with talented teams from agencies like Anomaly, Iris Worldwide, Landor Associates, Saatchi & Saatchi, Mirrorball, and The A Team, among many others. And through it all, I brought the same mix of hustle, drive, curiosity, and craft, because great work should feel as fun to make as it is to experience.</p>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="accordion-item" :class="{ 'active': activeIndex === 3 }">
+          <div class="accordion-title" @click="toggleItem(3)">
+            <span>Education</span>
+            <span class="arrow" :class="{ 'open': activeIndex === 3 }">
+              <img src="@/assets/img/icon-plus.svg">
+            </span>
+          </div>
+          <div v-if="activeIndex === 3" class="accordion-content">
+            <ul>
+              <li><span><strong>Parsons School of Design</strong> / Continuing Education, Interactive Design</span></li>
+              <li><span><strong>Mercer County Community College </strong> / Advertising and Design</span></li>
+              <li><span><strong>Nobel Desktop</strong> / Figma Bootcamp</span></li>
+              <li><span><strong>Maven</strong> / Midjourney for Creatives</span></li>
+            </ul>
+          </div>
         </div>
       </div>
 
@@ -342,7 +364,7 @@ const carouselConfig = {
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .stats {
   .row-stats {
     display: flex;
@@ -374,7 +396,13 @@ const carouselConfig = {
   }
 }
 
+.testimonials {
+padding: 150px 0;
+}
+
 .carousel {
+  
+
   .slide {
     background: linear-gradient(57.81deg, #5600E8 28.04%, #22D9F1 98.27%);
     border-radius: 12px;
@@ -410,22 +438,22 @@ const carouselConfig = {
     }
   }
 
-  .carousel__viewport {
+  :deep(.carousel__viewport) {
     padding-bottom: 50px;
   }
 
-  .carousel__pagination {
+  :deep(.carousel__pagination) {
     align-items: center;
   }
 
-  .carousel__pagination-button {
+  :deep(.carousel__pagination-button) {
     height: 7px;
     width: 7px;
     border-radius: 5px;
     background-color: $gray;
   }
 
-  .carousel__pagination-button--active {
+  :deep(.carousel__pagination-button--active) {
     background-color: $purple;
     width: 9px;
     height: 9px;
@@ -498,22 +526,45 @@ const carouselConfig = {
     padding: 40px 60px;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+    color: $white;
+    font-size: 18px;
+    line-height: 26px;
 
     ul {
-      color: $babyBlue;
-    }
-
-    ul span,
-    p {
-      font-size: 18px;
-      line-height: 26px;
-      color: $white;
-    }
-
-    ul li {
-      &:not(:last-child) {
-        margin-bottom: 1rem;
+      color: $purple;
+      list-style-type: disc;
+      li {
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+        span {
+          color: $white;
+        }
       }
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    .job-title, .job-info {
+      font-size: 20px;
+    }
+
+    .job-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 40px;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    .job-info {
+      margin-bottom: 15px;
+    }
+    strong {
+      font-weight: 700;
     }
   }
 

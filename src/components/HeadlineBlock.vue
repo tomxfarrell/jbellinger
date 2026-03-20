@@ -16,7 +16,7 @@
     </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .headline-block {
         margin: 100px auto 60px auto;
 
@@ -33,8 +33,11 @@
             }
         }
         
-        h1 + h2 {
-            font-size: 22px;  
+        // h1 + h2 {
+        //     font-size: 22px;  
+        // }
+        :deep h2 {
+            font-size: 22px;
         }
         &.text-center {
             .container:after {

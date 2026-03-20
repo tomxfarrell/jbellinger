@@ -38,8 +38,7 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
   </footer>
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
 #footer {
   background-color: $black;
   padding: 70px 0;
@@ -95,7 +94,7 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
       li:first-child {
         a {
           &:before {
-            background-image: url(../assets/icon-phone.svg);
+            background-image: url(../assets/img/icon-phone.svg);
             background-size: 11px 20px;
             height: 20px;
           }
@@ -104,7 +103,7 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
       li:nth-child(2) {
         a {
           &:before {
-            background-image: url(../assets/icon-envelope.svg);
+            background-image: url(../assets/img/icon-envelope.svg);
             background-size: 19px 13px;
             height: 13px;
           }
@@ -116,7 +115,7 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
           align-items: center;
           &:before {
             content: "";
-            background-image: url(../assets/icon-pin.svg);
+            background-image: url(../assets/img/icon-pin.svg);
             background-size: 14px 19px;
             height: 19px;
           }
@@ -157,6 +156,24 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
       img {
         width: 40px;
       }
+    }
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      align-items: start;
+      border-top: 0;
+      gap: 0;
+
+      .col {
+        padding: 28px 0;
+        width: 100%;
+        border-bottom: 1px solid rgba($white, .3);
+      &:not(:last-child) {
+        border-right: 0;
+      }
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
     }
   }
 }

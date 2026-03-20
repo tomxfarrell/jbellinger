@@ -199,7 +199,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
     </section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .work-grid {
     display: grid;

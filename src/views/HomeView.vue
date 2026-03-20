@@ -8,9 +8,15 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Wrap *everything* in this container
+const homeContainer = ref(null)
+
 const hero = ref(null)
 const txtHero = ref(null)
 const bgGradient = ref(null)
+const bgVideo = ref(null)
+const otherVideo = ref(null)
+const projectSlider = ref(null)
 
 const carouselConfig = {
   itemsToShow: 1,
@@ -19,11 +25,12 @@ const carouselConfig = {
   transition: 500,
 }
 
-let firstAnimationPlayed = false // ✅ track if first animation happened
+let firstAnimationPlayed = false
+let ctx // gsap.context()
 
 function fadeOutText() {
-  if (!firstAnimationPlayed) return // don't fade if first animation hasn't run yet
-  const active = document.querySelector('.carousel__slide--active')
+  if (!firstAnimationPlayed) return
+  const active = projectSlider.value?.querySelector('.carousel__slide--active')
   if (!active) return
   const textEls = active.querySelectorAll('.text-1, .text-2')
   gsap.to(textEls, {
@@ -35,47 +42,37 @@ function fadeOutText() {
 
 function fadeInText() {
   nextTick(() => {
-    const active = document.querySelector('.carousel__slide--active')
+    const active = projectSlider.value?.querySelector('.carousel__slide--active')
     if (!active) return
     const textEls = active.querySelectorAll('.text-1, .text-2')
-    gsap.fromTo(
-      textEls,
-      { opacity: 0, y: 20},
-      {
-        opacity: 1,
-        y: 0,
-        delay: 0.3,
-        duration: 0.7,
-        ease: "sine.out",
-        // stagger: 0.1
-      }
-    )
+    gsap.fromTo(textEls, { opacity: 0, y: 20 }, {
+      opacity: 1,
+      y: 0,
+      delay: 0.3,
+      duration: 0.7,
+      ease: "sine.out"
+    })
   })
 }
 
 function fadeInImg() {
   nextTick(() => {
-    const active = document.querySelector('.carousel__slide--active')
+    const active = projectSlider.value?.querySelector('.carousel__slide--active')
     if (!active) return
     const imgEl = active.querySelector('.slide-img')
-    gsap.fromTo(
-      imgEl,
-      { opacity: 0, y: -50},
-      {
-        opacity: 1,
-        y: 0,
-        delay: 0.3,
-        duration: 0.7,
-        ease: "sine.out",
-        // stagger: 0.1
-      }
-    )
+    gsap.fromTo(imgEl, { opacity: 0, y: -50 }, {
+      opacity: 1,
+      y: 0,
+      delay: 0.3,
+      duration: 0.7,
+      ease: "sine.out"
+    })
   })
 }
 
 function fadeOutImg() {
-  if (!firstAnimationPlayed) return // don't fade if first animation hasn't run yet
-  const active = document.querySelector('.carousel__slide--active')
+  if (!firstAnimationPlayed) return
+  const active = projectSlider.value?.querySelector('.carousel__slide--active')
   if (!active) return
   const imgEl = active.querySelector('.slide-img')
   gsap.to(imgEl, {
@@ -83,38 +80,26 @@ function fadeOutImg() {
     duration: 0.1,
     ease: 'power1.out'
   })
-} 
+}
 
 function animateText() {
   nextTick(() => {
-    const active = document.querySelector('.carousel__slide--active')
-    if (!active) return
-    gsap.fromTo(
-      '.txt-passion',
-      { opacity: 0, x: -50},
-      {
-        opacity: 1,
-        x: 0,
-        delay: 0.3,
-        duration: 0.7,
-        ease: "sine.out",
-        // stagger: 0.1
-      }
-    )
-    gsap.fromTo(
-      '.txt-projects',
-      { opacity: 0, x: 50},
-      {
-        opacity: 1,
-        x: 0,
-        delay: 0.3,
-        duration: 0.7,
-        ease: "sine.out",
-        // stagger: 0.1
-      }
-    )
+    gsap.fromTo('.txt-passion', { opacity: 0, x: -50 }, {
+      opacity: 1,
+      x: 0,
+      delay: 0.5,
+      duration: 0.7,
+      ease: "sine.out"
+    })
+    gsap.fromTo('.txt-projects', { opacity: 0, x: 50 }, {
+      opacity: 1,
+      x: 0,
+      delay: 0.5,
+      duration: 0.7,
+      ease: "sine.out"
+    })
   })
-} 
+}
 
 function onSlideStart() {
   fadeOutText()
@@ -126,219 +111,189 @@ function onSlideEnd() {
   fadeInImg()
 }
 
-
 onMounted(() => {
-  nextTick(() => {
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: hero.value,
-        start: 'top +=50',
-        end: `+=${hero.value.clientHeight}`,
-        markers: false,
-        scrub: true,
-        pin: true,
-        immediateRender: false,
-        anticipatePin: true,
-        snap: 0.5
-      }
-    });
+  ctx = gsap.context(() => {
+    nextTick(() => {
+      if (!hero.value || !txtHero.value || !bgGradient.value || !projectSlider.value) return
 
-   timeline
-  .to(txtHero.value, {
-    scale: 75,
-    rotate: '-1deg',
-    duration: 0.15,
-    opacity: 0,
-    ease: 'power1.inOut'
-  })
-  .from(
-    bgGradient.value,
-    {
-      opacity: 0,
-      duration: 0.25,
-      ease: 'power1.in'
-    },
-    '>'
-  )
-  .to(
-    txtHero.value,
-    {
-      opacity: 0,
-      duration: 0.15,
-      ease: 'power1.inOut'
-    },
-    '>'
-  )
-  .to(
-    txtHero.value,
-    {
-      display: 'none',
-      scale: 1
-    },
-    '>'
-  )
-  // 🔹 Fade OUT bg-gradient and bg-video before showing project-slider
-  .to(
-    [bgGradient.value, '.bg-video'],
-    {
-      opacity: 0,
-      pointerEvents: 'none',
-      duration: 0.4,
-      ease: 'power1.inOut'
-    },
-    '>'
-  )
-  // 🔹 Set white background for hero-home
-  .to(
-    hero.value,
-    {
-      backgroundColor: '#fff',
-      duration: 0.2
-    },
-    '<' // run at the same time as fade out
-  )
-  // 🔹 Fade IN project-slider
-  .fromTo(
-    '.project-slider',
-    { opacity: 0, pointerEvents: 'none' },
-    {
-      opacity: 1,
-      pointerEvents: 'auto',
-      duration: 0.5,
-      ease: 'power1.out',
-      onStart: () => {
-        animateText()
-        fadeInText()
-        fadeInImg()
-        firstAnimationPlayed = true
-      }
-    },
-    '>'
-  );
-  });
-});
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          id: 'hero-home-pin',
+          trigger: hero.value,
+          start: 'top +=50',
+          end: `+=${hero.value.clientHeight}`,
+          scrub: true,
+          pin: true,
+          immediateRender: false,
+          anticipatePin: true,
+          snap: {
+            snapTo: .5,
+            duration: { min: 0.1, max: 0.3 },
+            ease: 'power1.inOut'
+          }
+        }
+      })
+
+      timeline
+        .to(txtHero.value, { scale: 75, rotate: '-1deg', duration: 0.15, opacity: 0, ease: 'power1.inOut' })
+        .from(bgGradient.value, { opacity: 0, duration: 0.25, ease: 'power1.in' }, '>')
+        .to(txtHero.value, { opacity: 0, duration: 0.15, ease: 'power1.inOut' }, '>')
+        .to(txtHero.value, { display: 'none', scale: 1 }, '>')
+        .to([bgGradient.value, bgVideo.value, otherVideo.value], {
+          opacity: 0,
+          pointerEvents: 'none',
+          duration: 0.4,
+          ease: 'power1.inOut'
+        }, '>')
+        .to(hero.value, { backgroundColor: '#fff', duration: 0.2 }, '<')
+        .fromTo(projectSlider.value,
+          { opacity: 0, pointerEvents: 'none' },
+          {
+            backgroundColor: '#fff',
+            opacity: 1,
+            pointerEvents: 'auto',
+            duration: 0.5,
+            ease: 'power1.out',
+            onStart: () => {
+              animateText()
+              fadeInText()
+              fadeInImg()
+              firstAnimationPlayed = true
+            }
+          },
+          '>'
+        )
+    })
+  }, homeContainer) // scope to container
+})
 
 onUnmounted(() => {
+  ctx?.revert()
+  firstAnimationPlayed = false
 
-  const video = document.querySelector('.bg-video')
-  if (video) {
-    video.playbackRate = 3.0 // 🔁 change to desired speed (e.g., 2.0 for 2x)
+  // Remove all GSAP inline styles from *everything* in this component
+  if (homeContainer.value) {
+    gsap.set(homeContainer.value.querySelectorAll('*'), { clearProps: 'all' })
   }
-
-  
-
- onUnmounted(() => {
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-
-  // Kill ongoing tweens
-  gsap.killTweensOf("*")
-
-  // Reset inline styles for this component’s elements
-  gsap.set([
-    '.project-slider',
-    '.bg-gradient',
-    '.bg-video',
-    hero.value
-  ], { clearProps: "all" })
-})
 })
 </script>
 
 
 
 
+
 <template>
-  <section class="hero-home" ref="hero">
-    <video class="bg-video" src="@/assets/img/1037517047-preview.mp4" loop muted autoplay></video>
+  <div ref="homeContainer">
+    <section class="hero-home" ref="hero">
+      <video class="bg-video" src="@/assets/img/1037517047-preview.mp4" loop muted autoplay ref="bgVideo"></video>
 
-    <svg class="txt-hero" ref="txtHero">
-      <mask id="mask">
-        <rect fill="white" width="100%" height="100%"></rect>
-        <text id="engage" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">engage</text>
-        <text id="inspire" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">inspire</text>
-        <text id="delight" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">delight</text>
-      </mask>
+      <svg class="txt-hero" ref="txtHero">
+        <mask id="mask">
+          <rect fill="white" width="100%" height="100%"></rect>
+          <text id="engage" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">engage</text>
+          <text id="inspire" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">inspire</text>
+          <text id="delight" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">delight</text>
+        </mask>
 
-      <rect width="100%" height="100%" id="mask-bg"></rect>
-    </svg>
+        <rect width="100%" height="100%" id="mask-bg"></rect>
+      </svg>
 
-    <div class="bg-gradient" ref="bgGradient">
-      <video class="other-video" autoplay muted loop>
-        <source src="@/assets/img/1037517047-preview.mp4" type="video/mp4">
-      </video>
-      <div class="container">
-        <p>Design is not just my profession; it's my passion, my very essence. I live and breathe design, and it
-          permeates every aspect of my life. My mind constantly wanders, exploring new ideas, concepts, and
-          possibilities. I find myself unable to turn my brain off, always seeking inspiration from the world around me.
-          As an award-winning designer, I've had the privilege of working for top agencies across New York, where I've
-          crafted everything from sleek websites to captivating campaigns to all immersive experiential events, aiming
-          to engage, inspire, and react.</p>
-        <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project I
-          undertake.</p>
+      <div class="bg-gradient" ref="bgGradient">
+        <video class="other-video" autoplay muted loop ref="otherVideo">
+          <source src="@/assets/img/1037517047-preview.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+          <p>Design is not just my profession; it's my passion, my very essence. I live and breathe design, and it
+            permeates every aspect of my life. My mind constantly wanders, exploring new ideas, concepts, and
+            possibilities. I find myself unable to turn my brain off, always seeking inspiration from the world around
+            me.
+            As an award-winning designer, I've had the privilege of working for top agencies across New York, where I've
+            crafted everything from sleek websites to captivating campaigns to all immersive experiential events, aiming
+            to engage, inspire, and react.</p>
+          <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project
+            I
+            undertake.</p>
+        </div>
       </div>
-    </div>
 
-    <div class="project-slider">
-    <div class="container">
-      <div class="slider-wrap">
+      <div class="project-slider" ref="projectSlider">
+        <div class="container">
+          <div class="slider-wrap">
 
-        <span class="txt-passion">Passion</span>
+            <span class="txt-passion">Passion</span>
 
-        <Carousel v-bind="carouselConfig" @slide-start="onSlideStart" @slide-end="onSlideEnd">
-          <Slide>
-            <div class="slide">
-              <div class="text-1">
-                <img src="@/assets/img/logo-elit-2x.png" alt="" class="slide-logo-elit">
-                <p>Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the
-                  bells & whistles. <strong>Oh, and it won a Graphic Design USA Award!</strong></p>
-              </div>
-              <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-img">
-              <div class="text-2 with-plus">
-                <p><strong>Featured Work</strong></p>
-                <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                amassed throughout my career.</p>
-              </div>
+            <Carousel v-bind="carouselConfig" @slide-start="onSlideStart" @slide-end="onSlideEnd">
+              <Slide>
+                <div class="slide">
+                  <div class="text-1">
+                    <img src="@/assets/img/logo-elit-2x.png" alt="" class="slide-logo-elit">
+                    <p>Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the
+                      bells & whistles. <strong>Oh, and it won a Graphic Design USA Award!</strong></p>
+                  </div>
+                  <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-img">
+                  <div class="text-2 with-plus">
+                    <p><strong>Featured Work</strong></p>
+                    <p>A showcase of my most impactful and unforgettable design and project accomplishments
+                      amassed throughout my career.</p>
+                  </div>
 
-            </div>
-          </Slide>
-          <Slide>
-            <div class="slide">
-
-              <div class="text-1">
-                <img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace">
-                <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
-                results.</p>
-              </div>
-              <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
-              <div class="text-2 with-plus">
-                <p><strong>Featured Work</strong></p>
-                <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                amassed throughout my career.</p>
                 </div>
+              </Slide>
+              <Slide>
+                <div class="slide">
 
-            </div>
-          </Slide>
+                  <div class="text-1">
+                    <img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace">
+                    <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
+                      results.</p>
+                  </div>
+                  <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
+                  <div class="text-2 with-plus">
+                    <p><strong>Featured Work</strong></p>
+                    <p>A showcase of my most impactful and unforgettable design and project accomplishments
+                      amassed throughout my career.</p>
+                  </div>
 
-          <template #addons>
-            <Navigation />
-            <Pagination />
-          </template>
-        </Carousel>
+                </div>
+              </Slide>
+              <Slide>
+                <div class="slide">
 
-        <span class="txt-projects">Projects</span>
+                  <div class="text-1">
+                    <img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace">
+                    <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
+                      results.</p>
+                  </div>
+                  <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
+                  <div class="text-2 with-plus">
+                    <p><strong>Featured Work</strong></p>
+                    <p>A showcase of my most impactful and unforgettable design and project accomplishments
+                      amassed throughout my career.</p>
+                  </div>
+
+                </div>
+              </Slide>
+
+              <template #addons>
+                <Navigation />
+                <Pagination />
+              </template>
+            </Carousel>
+
+            <span class="txt-projects">Projects</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
-  </section>
-  
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
 .project-slider {
   opacity: 0;
   pointer-events: none;
 }
+
 .hero-home {
   background-color: $black;
   width: 100vw;
@@ -448,6 +403,7 @@ onUnmounted(() => {
       height: auto;
       object-fit: contain;
     }
+
     .slide-img-versace {
       max-width: 50vw;
     }
@@ -456,7 +412,7 @@ onUnmounted(() => {
   .carousel__slide {
     align-items: start;
   }
- 
+
   .carousel__pagination-button {
     background-color: $lightCoolGray;
     height: 10px;
@@ -468,12 +424,13 @@ onUnmounted(() => {
     background-color: $purple;
   }
 
-  
-.text-1,
-.text-2,
-.slide-img {
-  opacity: 0;
-}
+
+  .text-1,
+  .text-2,
+  .slide-img {
+    opacity: 0;
+  }
+
   .text-1 {
     position: absolute;
     top: 8vw;
@@ -486,6 +443,7 @@ onUnmounted(() => {
     top: 2vw;
     right: 0;
     width: 25vw;
+
     &.with-plus {
       &:before {
         content: '+';
@@ -494,6 +452,7 @@ onUnmounted(() => {
         position: absolute;
         left: 0;
       }
+
       padding-left: 20px;
     }
   }
@@ -502,6 +461,7 @@ onUnmounted(() => {
     width: 65px;
     margin-bottom: 20px;
   }
+
   .slide-logo-versace {
     width: 120px;
     margin-bottom: 20px;
@@ -519,6 +479,7 @@ onUnmounted(() => {
   color: #3f3de6;
   pointer-events: none;
   user-select: none;
+
   @media (max-width: 1100px) {
     font-size: clamp(8rem, 8vw, 10rem);
   }
@@ -534,13 +495,13 @@ onUnmounted(() => {
   bottom: 40%;
   right: 5%;
   z-index: 3;
+
   @media (max-width: 1100px) {
     bottom: 30%;
   }
+
   @media (max-width: 930px) {
     bottom: 10%;
   }
 }
-
-
 </style>
