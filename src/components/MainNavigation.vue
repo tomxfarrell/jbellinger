@@ -485,7 +485,7 @@ watch(isMenuOpen, (isOpen) => {
     -webkit-backdrop-filter: blur(5px);
     mask-image: linear-gradient(to top, black 40%, transparent 100%);
     -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    padding: 60px 0 17px; /* Increased top padding for smoother fade area */
+    padding: 50px 0 17px; /* Increased top padding for smoother fade area */
     pointer-events: none;
 
     &.is-open {

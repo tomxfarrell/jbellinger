@@ -46,7 +46,8 @@
           <div class="col-form">
             <button @click="close" id="btn-close">
               <span>Close</span>
-              <img src="@/assets/img/icon-close-circle-white.svg" alt="Close" />
+              <img src="@/assets/img/icon-close-circle-white.svg" alt="Close" class="desktop-only" />
+              <img src="@/assets/img/icon-close-circle-gradient.svg" alt="Close" class="mobile-only" />
             </button>
             <form @submit.prevent="handleSubmit">
               <div class="form-group">
@@ -280,6 +281,51 @@
   }
   @media (max-width: $breakpoint-sm) {
     grid-template-columns: 1fr;
-  }
+   
+      .col-info {
+         padding: 0 20px;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+
+        .img-row {
+              grid-template-columns: 1fr;
+              position: relative;
+              z-index: 1;
+        }
+        .forest {
+          max-width: 100%;
+        }
+        .say-hello {
+          margin-top: -150px;
+          margin-left: 0;
+
+        }
+        .contact-info {
+          ul {
+            margin: 0;
+            text-align: left;
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .col-form {
+        padding: 40px 20px;
+        form {
+          .form-control, textarea {
+            box-sizing: border-box;
+          }
+        }
+        #btn-close {
+          position: absolute;
+          top: -20px;
+          right: -20px;
+          z-index: 10;
+        }
+      }
+    }
+  
 }
 </style>
