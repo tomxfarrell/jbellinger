@@ -117,8 +117,9 @@ watch(isMenuOpen, (isOpen) => {
           <div class="hamburger-line"></div>
           <div class="hamburger-line"></div>
         </div>
+        <div class="hamburger-text">{{ isMenuOpen ? 'Close' : 'Menu' }}</div>
       </button>
-       <div class="hamburger-text">{{ isMenuOpen ? 'Close' : 'Menu' }}</div>
+       
     </div>
 
     <ModalContact :showModal="showModal" @close="showModal = false" />
@@ -403,12 +404,12 @@ watch(isMenuOpen, (isOpen) => {
   display: none;
 
   .hamburger-text {
-    font-size: 12px;
-    color: $white;
+    font-size: 8px;
+    color: $black;
     text-transform: lowercase;
     font-weight: 700;
     text-align: center;
-    margin: 3px auto 0 auto;
+    margin: 0 auto;
     transition: color 0.3s ease;
   }
 
@@ -431,23 +432,26 @@ watch(isMenuOpen, (isOpen) => {
   .mobile-hamburger {
     display: none;
     margin: 0 auto;
-    width: 45px;
-    height: 45px;
-    background-color: $white;
-    border: 2px solid $black;
+    width: 46px;
+    height: 46px;
+    background-color: rgba($white, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #BFBFBF;
     border-radius: 50%;
     cursor: pointer;
     pointer-events: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 2px;
     transition: opacity 0.3s ease;
 
     .hamburger-lines {
       display: flex;
       flex-direction: column;
       gap: 4px;
+      margin-top: 4px;
     }
 
     .hamburger-line {
@@ -479,12 +483,12 @@ watch(isMenuOpen, (isOpen) => {
 
   @media (max-width: $breakpoint-sm) {
     display: block;
-    background: linear-gradient(to top, $black 0%, rgba($white, 0) 100%);
+    // background: linear-gradient(to top, $black 0%, rgba($white, 0) 100%);
     /* Create a blur gradient effect instead of a solid color fade */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
+    // backdrop-filter: blur(5px);
+    // -webkit-backdrop-filter: blur(5px);
+    // mask-image: linear-gradient(to top, black 40%, transparent 100%);
+    // -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
     padding: 50px 0 17px; /* Increased top padding for smoother fade area */
     pointer-events: none;
 
