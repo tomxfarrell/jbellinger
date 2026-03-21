@@ -159,16 +159,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
                 </router-link>
                 </div>
                 <div class="work-block span-1">
-                    <router-link to="/work/lorem-ipsum">
-                    <div class="work-image">
-                        <img src="@/assets/img/thumb-blank-2x.png" alt="" />
-                    </div>
-                    <h2 class="work-title">Lorem Ipsum</h2>
-                    <h3>Web & Digital Campaign</h3>
-                </router-link>
-                </div>
-                <div class="work-block">
-                    <router-link to="/work/graphite-bio">
+                        <router-link to="/work/graphite-bio">
                     <div class="work-image">
                         <img src="@/assets/img/thumb-graphite-bio-2x.png" alt="Graphite Bio" />
                     </div>
@@ -176,7 +167,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
                     <h3>Web & Digital Campaign</h3>
                 </router-link>
                 </div>
-                
+               
             </div>
         </div>
     </section>

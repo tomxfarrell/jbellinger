@@ -362,6 +362,9 @@ const aboutCarouselConfig = {
     font-weight: 700;
     max-width: 1078px;
     margin: 0 auto 30px auto;
+    @media (max-width: $breakpoint-sm) {
+      margin-left: 28px;
+    }
   }
 .stats {
   
@@ -538,6 +541,9 @@ padding: 50px 0 100px 0;
       background: linear-gradient(90deg, rgba(172, 9, 236, 1) 0%, rgba(65, 134, 241, 1) 50%, rgba(0, 216, 255, 1) 100%);
       transition: width .45s ease-in-out;
     }
+    @media (max-width: $breakpoint-sm) {
+      font-size: 56px;
+    }
   }
 
   .accordion-item.active {
@@ -598,6 +604,10 @@ padding: 50px 0 100px 0;
     strong {
       font-weight: 700;
     }
+    @media (max-width: $breakpoint-sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   .accordion-content.show {
@@ -616,6 +626,12 @@ padding: 50px 0 100px 0;
 
   .arrow.open {
     transform: rotate(45deg);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    .container {
+      padding: 0 45px;
+    }
   }
 }
 
