@@ -404,7 +404,7 @@ watch(isMenuOpen, (isOpen) => {
   display: none;
 
   .hamburger-text {
-    font-size: 8px;
+    font-size: 9px;
     color: $black;
     text-transform: lowercase;
     font-weight: 700;
@@ -432,8 +432,8 @@ watch(isMenuOpen, (isOpen) => {
   .mobile-hamburger {
     display: none;
     margin: 0 auto;
-    width: 46px;
-    height: 46px;
+    width: 50px;
+    height: 50px;
     background-color: rgba($white, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
