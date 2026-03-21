@@ -283,4 +283,22 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
         margin-bottom: 20px;
     }
 }
+ @media (max-width: $breakpoint-sm) {
+        .work-grid {
+            grid-template-columns: 1fr;
+            .work-block-double {
+                grid-template-columns: 1fr;
+                grid-column: auto;
+            }
+            .span-2, .span-3 {
+                grid-column: auto;
+            }
+            .span-3 {
+                
+                .work-image {
+                    min-height: 89px;
+                }
+            }
+        }
+    }
 </style>

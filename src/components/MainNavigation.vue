@@ -94,13 +94,13 @@ watch(isMenuOpen, (isOpen) => {
                 <div class="nav-link-text">About/<span>Resume</span></div>
                 <div class="nav-link-text-reveal" aria-hidden="true">About/<span>Resume</span></div>
               </router-link></li>
-            <li class="link-contact"><a href="#" @click.prevent="showModal = true">
+            <li class="link-contact"><a href="#" @click.prevent="showModal = true; isMenuOpen = false">
                 <div class="nav-link-text">Contact</div>
                 <div class="nav-link-text-reveal" aria-hidden="true">Contact</div>
               </a></li>
             <li class="desktop-only"><a href="http://linkedin.com/in/jasonbellinger" target="_blank" class="linkedin"><img :src="linkedIn"
                   alt="Linkedin Logo" class="linkedin-icon"></a></li>
-            <li class="mobile-only linkedin-mobile"><a href="http://linkedin.com/in/jasonbellinger" target="_blank" class="linkedin"><img :src="linkedInMobile"
+            <li class="mobile-only linkedin-mobile"><a href="http://linkedin.com/in/jasonbellinger" target="_blank" class="linkedin" @click="isMenuOpen = false"><img :src="linkedInMobile"
                   alt="Linkedin Logo" class="linkedin-icon"></a>
                 Let's Link Up!
               </li>
