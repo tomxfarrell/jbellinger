@@ -40,6 +40,7 @@ const aboutCarouselConfig = {
 <template>
   <HeroBlock :desktop="heroAboutDesktop" :mobile="heroAboutMobile" alt="About Jason Bellinger" className="full-width" />
 
+  <div class="headline-plus"><img src="../assets/img/icon-plus-purple.svg" alt=""> My Journey/Bio</div>
   <ContentBlock>
     <p>My career path has varied greatly, which has given me a uniquely wide range of experience in the advertising and
       design industry. But what I love to do is at the heart of every job: Design. I have the great fortune of loving my
@@ -71,6 +72,7 @@ const aboutCarouselConfig = {
   </ContentBlock>
 
   <section class="testimonials">
+    <div class="headline-plus"><img src="../assets/img/icon-plus-purple.svg" alt=""> Feedback That Matters</div>
     <div class="container">
       <Carousel v-bind="aboutCarouselConfig">
         <Slide>
@@ -124,6 +126,7 @@ const aboutCarouselConfig = {
   </section>
 
   <section class="resume">
+    <div class="headline-plus"><img src="../assets/img/icon-plus-purple.svg" alt=""> Resume</div>
     <div class="container">
       <div class="accordion">
 
@@ -255,10 +258,9 @@ const aboutCarouselConfig = {
   </section>
 
   <section class="clients">
+    <div class="headline-plus"><img src="../assets/img/icon-plus-purple.svg" alt=""> Clients</div>
     <div class="container">
-      <div class="section-heading light mb-40">
-        <p>Clients</p>
-      </div>
+      
 
       <div class="client-logos">
         <div><img src="@/assets/img/logo-absolut.svg"></div>
@@ -351,7 +353,18 @@ const aboutCarouselConfig = {
 </template>
 
 <style lang="scss" scoped>
+
+.headline-plus {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    max-width: 1078px;
+    margin: 0 auto 30px auto;
+  }
 .stats {
+  
   .row-stats {
     display: flex;
     justify-content: space-between;
@@ -399,7 +412,7 @@ const aboutCarouselConfig = {
 }
 
 .testimonials {
-padding: 150px 0;
+padding: 50px 0 100px 0;
 .container {
   padding-right: 0;
   max-width: 100%;
@@ -477,7 +490,11 @@ padding: 150px 0;
 
 .resume {
   background-color: $black;
-  padding: 150px 0;
+  padding: 100px 0;
+
+  .headline-plus {
+    color: $white;
+  }
 
   .accordion {
     width: 100%;
@@ -618,7 +635,7 @@ padding: 150px 0;
     justify-content: space-between;
     gap: 1rem;
     border-bottom: 1px solid rgba(112, 112, 112, .30);
-    padding-bottom: 60px;
+    padding: 0 40px 60px 40px;
 
     div {
       display: flex;

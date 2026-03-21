@@ -176,24 +176,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
                     <h3>Web & Digital Campaign</h3>
                 </router-link>
                 </div>
-                <div class="work-block">
-                    <router-link to="/work/password-protected">
-                    <div class="work-image">
-                        <img src="@/assets/img/thumb-gray-2x.png" alt="Password Protected" />
-                    </div>
-                    <h2 class="work-title">Password Protected</h2>
-                    <h3>Login Required</h3>
-                </router-link>
-                </div>
-                <div class="work-block">
-                    <router-link to="/work/password-protected">
-                    <div class="work-image">
-                        <img src="@/assets/img/thumb-gray-2x.png" alt="Password Protected" />
-                    </div>
-                    <h2 class="work-title">Password Protected</h2>
-                    <h3>Login Required</h3>
-                </router-link>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -292,9 +275,6 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
             }
             .span-2, .span-3 {
                 grid-column: auto;
-            }
-            .span-3 {
-                
                 .work-image {
                     min-height: 89px;
                 }
