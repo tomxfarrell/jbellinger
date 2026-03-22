@@ -23,6 +23,8 @@ const carouselConfig = {
   wrapAround: true,
   autoplay: 10000,
   transition: 500,
+  mouseDrag: false,
+  touchDrag: false,
 }
 
 let firstAnimationPlayed = false
@@ -139,30 +141,17 @@ onMounted(() => {
         .from(bgGradient.value, { opacity: 0, duration: 0.25, ease: 'power1.in' }, '>')
         .to(txtHero.value, { opacity: 0, duration: 0.15, ease: 'power1.inOut' }, '>')
         .to(txtHero.value, { display: 'none', scale: 1 }, '>')
-        .to([bgGradient.value, bgVideo.value, otherVideo.value], {
-          opacity: 0,
-          pointerEvents: 'none',
-          duration: 0.4,
-          ease: 'power1.inOut'
-        }, '>')
-        .to(hero.value, { backgroundColor: '#fff', duration: 0.2 }, '<')
-        .fromTo(projectSlider.value,
-          { opacity: 0, pointerEvents: 'none' },
-          {
-            backgroundColor: '#fff',
-            opacity: 1,
-            pointerEvents: 'auto',
-            duration: 0.5,
-            ease: 'power1.out',
-            onStart: () => {
-              animateText()
-              fadeInText()
-              fadeInImg()
-              firstAnimationPlayed = true
-            }
-          },
-          '>'
-        )
+
+      ScrollTrigger.create({
+        trigger: projectSlider.value,
+        start: 'top 60%',
+        onEnter: () => {
+          animateText()
+          fadeInText()
+          fadeInImg()
+          firstAnimationPlayed = true
+        }
+      })
     })
   }, homeContainer) // scope to container
 })
@@ -215,85 +204,80 @@ onUnmounted(() => {
             undertake.</p>
         </div>
       </div>
+    </section>
 
-      <div class="project-slider" ref="projectSlider">
-        <div class="container">
-          <div class="slider-wrap">
+    <div class="project-slider" ref="projectSlider">
+      <div class="container">
+        <div class="slider-wrap">
 
-            <span class="txt-passion">Passion</span>
+          <span class="txt-passion">Passion</span>
 
-            <Carousel v-bind="carouselConfig" @slide-start="onSlideStart" @slide-end="onSlideEnd">
-              <Slide>
-                <div class="slide">
-                  <div class="text-1">
-                    <img src="@/assets/img/logo-elit-2x.png" alt="" class="slide-logo-elit">
-                    <p>Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the
-                      bells & whistles. <strong>Oh, and it won a Graphic Design USA Award!</strong></p>
-                  </div>
-                  <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-img">
-                  <div class="text-2 with-plus">
-                    <p><strong>Featured Work</strong></p>
-                    <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                      amassed throughout my career.</p>
-                  </div>
-
+          <Carousel v-bind="carouselConfig" @slide-start="onSlideStart" @slide-end="onSlideEnd">
+            <Slide>
+              <div class="slide">
+                <div class="text-1">
+                  <div class="text-img"><img src="@/assets/img/logo-elit-2x.png" alt="" class="slide-logo-elit"></div>
+                  <p>Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the
+                    bells & whistles. <strong>Oh, and it won a Graphic Design USA Award!</strong></p>
                 </div>
-              </Slide>
-              <Slide>
-                <div class="slide">
-
-                  <div class="text-1">
-                    <img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace">
-                    <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
-                      results.</p>
-                  </div>
-                  <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
-                  <div class="text-2 with-plus">
-                    <p><strong>Featured Work</strong></p>
-                    <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                      amassed throughout my career.</p>
-                  </div>
-
+                <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-img">
+                <div class="text-2 with-plus">
+                  <p><strong>Featured Work</strong></p>
+                  <p>A showcase of my most impactful and unforgettable design and project accomplishments
+                    amassed throughout my career.</p>
                 </div>
-              </Slide>
-              <Slide>
-                <div class="slide">
 
-                  <div class="text-1">
-                    <img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace">
-                    <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
-                      results.</p>
-                  </div>
-                  <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
-                  <div class="text-2 with-plus">
-                    <p><strong>Featured Work</strong></p>
-                    <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                      amassed throughout my career.</p>
-                  </div>
+              </div>
+            </Slide>
+            <Slide>
+              <div class="slide">
 
+                <div class="text-1">
+                  <div class="text-img"><img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace"></div>
+                  <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
+                    results.</p>
                 </div>
-              </Slide>
+                <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
+                <div class="text-2 with-plus">
+                  <p><strong>Featured Work</strong></p>
+                  <p>A showcase of my most impactful and unforgettable design and project accomplishments
+                    amassed throughout my career.</p>
+                </div>
 
-              <template #addons>
-                <Navigation />
-                <Pagination />
-              </template>
-            </Carousel>
+              </div>
+            </Slide>
+            <Slide>
+              <div class="slide">
 
-            <span class="txt-projects">Projects</span>
-          </div>
+                <div class="text-1">
+                  <div class="text-img"><img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace"></div>
+                  <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
+                    results.</p>
+                </div>
+                <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
+                <div class="text-2 with-plus">
+                  <p><strong>Featured Work</strong></p>
+                  <p>A showcase of my most impactful and unforgettable design and project accomplishments
+                    amassed throughout my career.</p>
+                </div>
+
+              </div>
+            </Slide>
+
+            <template #addons>
+              <Navigation />
+              <!-- <Pagination /> -->
+            </template>
+          </Carousel>
+
+          <span class="txt-projects">Projects</span>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.project-slider {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .hero-home {
   background-color: $black;
   width: 100vw;
@@ -380,11 +364,15 @@ onUnmounted(() => {
 
 .project-slider {
   padding-top: 4rem;
+  background-color: $white;
 }
 
+
+
+
 .slider-wrap {
-  // border: 2px solid red;
   position: relative;
+ pointer-events: none;
 
   .carousel {
     position: relative;
@@ -394,7 +382,8 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
+   
+    
 
     .slide-img {
       max-width: 70vw;
@@ -407,8 +396,17 @@ onUnmounted(() => {
     .slide-img-versace {
       max-width: 50vw;
     }
+
+   
+
+    :deep(.carousel__slide),
+    :deep(.carousel__track),
+    :deep(.carousel__viewport) {
+      touch-action: pan-y !important;
+    }
   }
 
+  
   .carousel__slide {
     align-items: start;
   }
@@ -418,6 +416,7 @@ onUnmounted(() => {
     height: 10px;
     width: 10px;
     border-radius: 50%;
+    z-index: 10;
   }
 
   .carousel__pagination-button--active {
@@ -425,6 +424,15 @@ onUnmounted(() => {
   }
 
 
+  .text-img {
+    height: 87px;
+    display: flex;
+
+    img {
+      display: block;
+      align-self: flex-end;
+    }
+  }
   .text-1,
   .text-2,
   .slide-img {
@@ -433,14 +441,15 @@ onUnmounted(() => {
 
   .text-1 {
     position: absolute;
-    top: 8vw;
+    top: 15vw;
     left: 0;
     width: 20vw;
+    
   }
 
   .text-2 {
     position: absolute;
-    top: 2vw;
+    top: 4vw;
     right: 0;
     width: 25vw;
 
@@ -469,6 +478,10 @@ onUnmounted(() => {
 
 }
 
+:deep(.carousel__next), :deep(.carousel__prev) {
+  pointer-events: auto !important;
+}
+
 .txt-passion,
 .txt-projects {
   opacity: 0;
@@ -486,7 +499,7 @@ onUnmounted(() => {
 }
 
 .txt-passion {
-  top: 0;
+  top: 6vw;
   left: 2%;
   z-index: 1;
 }
