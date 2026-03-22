@@ -131,7 +131,7 @@ const aboutCarouselConfig = {
       <div class="accordion">
 
         <!-- Key Highlights -->
-        <div class="accordion-item" :class="{ 'active': activeIndex === 0 }">
+        <div class="accordion-item key-highlights" :class="{ 'active': activeIndex === 0 }">
           <div class="accordion-title" @click="toggleItem(0)">
             <span>Key<br>Highlights</span>
             <span class="arrow" :class="{ 'open': activeIndex === 0 }">
@@ -149,7 +149,7 @@ const aboutCarouselConfig = {
         </div>
 
         <!-- Specialized Skills -->
-        <div class="accordion-item" :class="{ 'active': activeIndex === 1 }">
+        <div class="accordion-item specialized-skills" :class="{ 'active': activeIndex === 1 }">
           <div class="accordion-title" @click="toggleItem(1)">
             <span>Specialized<br>Skills</span>
             <span class="arrow" :class="{ 'open': activeIndex === 1 }">
@@ -169,7 +169,7 @@ const aboutCarouselConfig = {
         </div>
 
         <!-- Career Experience -->
-        <div class="accordion-item" :class="{ 'active': activeIndex === 2 }">
+        <div class="accordion-item career-experience" :class="{ 'active': activeIndex === 2 }">
           <div class="accordion-title" @click="toggleItem(2)">
             <span>Career<br>Experience</span>
             <span class="arrow" :class="{ 'open': activeIndex === 2 }">
@@ -236,7 +236,7 @@ const aboutCarouselConfig = {
         </div>
 
         <!-- Education -->
-        <div class="accordion-item" :class="{ 'active': activeIndex === 3 }">
+        <div class="accordion-item education" :class="{ 'active': activeIndex === 3 }">
           <div class="accordion-title" @click="toggleItem(3)">
             <span>Education</span>
             <span class="arrow" :class="{ 'open': activeIndex === 3 }">
@@ -365,6 +365,9 @@ const aboutCarouselConfig = {
     @media (max-width: $breakpoint-sm) {
       margin-left: 28px;
     }
+    @media (max-width: $breakpoint-xs) {
+      margin-left: 18px;
+    }
   }
 .stats {
   
@@ -408,8 +411,10 @@ const aboutCarouselConfig = {
     }
 
     .line {
-      transform: rotate(90deg);
-      
+      width: 225px;
+      height: 4px;
+      background: linear-gradient(90deg, #5600E8 0%, #22D9F1 100%);
+      margin: 50px 0 40px 0;
     }
   }
 }
@@ -507,6 +512,36 @@ padding: 50px 0 100px 0;
 
   .accordion-item {
     margin-bottom: 60px;
+    @media (max-width: $breakpoint-sm) {
+     .arrow {
+      position: absolute;
+      right: 0;
+      z-index: 10;
+      width: 30px;
+      height: 30px;
+      img {
+        width: 30px;
+      }
+     }
+      &.key-highlights, &.career-experience {
+        .arrow {
+          top: 5px;
+        }
+      }
+      &.specialized-skills {
+        .arrow {
+          bottom: 30px;
+        }
+      }
+      &.education {
+        .arrow {
+          top: 10px;
+        }
+     
+        
+      }
+      
+    }
   }
 
   .accordion-title {
@@ -542,7 +577,7 @@ padding: 50px 0 100px 0;
       transition: width .45s ease-in-out;
     }
     @media (max-width: $breakpoint-sm) {
-      font-size: 56px;
+      font-size: 48px;
     }
   }
 
@@ -605,8 +640,8 @@ padding: 50px 0 100px 0;
       font-weight: 700;
     }
     @media (max-width: $breakpoint-sm) {
-      padding-left: 0;
-      padding-right: 0;
+      padding-left: 10px;
+      padding-right:  10px;
     }
   }
 
@@ -656,6 +691,12 @@ padding: 50px 0 100px 0;
     div {
       display: flex;
       justify-content: center;
+    }
+    @media (max-width: $breakpoint-sm) {
+      gap: 40px;
+      img {
+        max-width: 100%;
+      }
     }
   }
 

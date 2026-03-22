@@ -260,7 +260,7 @@ watch(isMenuOpen, (isOpen) => {
 
             .nav-link-text-reveal {
               transform: translateY(-100%);
-              color: $babyBlue;
+              color: $purple;
               padding-bottom: 10px;
             }
           }
