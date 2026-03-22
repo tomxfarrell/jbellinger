@@ -274,6 +274,21 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
+
+    <div class="cta-blocks">
+      <div class="container">
+        <div class="cta-blocks-row">
+          <div class="quote">
+            <blockquote>
+               There are three responses to a piece of design—yes, no, and WOW! Wow is the one to aim for.
+            </blockquote>
+          </div>
+        <div class="view-work">View All Work</div>
+        <div class="linkup">let's link up!</div>
+        <div class="about-jason">about me</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -515,6 +530,50 @@ onUnmounted(() => {
 
   @media (max-width: 930px) {
     bottom: 10%;
+  }
+}
+
+.cta-blocks {
+   background: linear-gradient(180deg, $white 80px, $black 80px);
+}
+
+.cta-blocks-row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  width: 100%;
+  gap: 20px;
+
+  div {
+    height: 200px;
+    border-radius: 12px;
+    padding: 40px;
+  }
+
+  .quote {
+    grid-column: span 7;
+  
+    blockquote {
+      font-size: 56px;
+      color: $white; 
+    }
+  }
+
+  .quote,  .about-jason  {
+    background: linear-gradient(66.06deg, #5600E8 34.63%, #22D9F1 98.74%);
+  }
+
+  .view-work {
+    grid-column: span 3;
+    background-color: blue;
+  }
+
+  .view-work, .linkup {
+    background-color: $blueGray;
+  }
+
+  .linkup,
+  .about-jason {
+    grid-column: span 5;
   }
 }
 </style>
