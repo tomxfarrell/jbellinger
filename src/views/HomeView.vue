@@ -514,10 +514,14 @@ onUnmounted(() => {
       <div class="container">
         <div class="cta-blocks-row">
           <div class="quote">
-            <blockquote>
-              There are three responses to a piece of design—yes, no, and WOW!
-              Wow is the one to aim for.
-            </blockquote>
+            <p class="quote-label">Words to live by</p>
+            <figure>
+              <blockquote>
+                There are three responses to a piece of design—yes, no, and WOW!
+                Wow is the one to aim for.
+              </blockquote>
+              <figcaption>- Milton Glaser</figcaption>
+            </figure>
           </div>
           <router-link to="/work" class="view-work">
             View<br />All<br />Work
@@ -825,12 +829,45 @@ onUnmounted(() => {
 
   .quote {
     grid-column: span 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 90px;
+    .quote-label {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: $babyBlue;
+    }
+
+    figure {
+      margin: 0;
+    }
 
     blockquote {
       font-size: 56px;
       line-height: 68px;
       color: $white;
       font-family: $fontHeadline;
+      margin: 0 0 20px 0;
+      &:before,
+      &:after {
+        font-size: 160px;
+        line-height: 1;
+        position: absolute;
+      }
+      &:before {
+        content: '“';
+        left: 10px;
+        top: 70px;
+      }
+      &:after {
+        content: '”';
+      }
+    }
+
+    figcaption {
+      font-size: 24px;
     }
   }
 
