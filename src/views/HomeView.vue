@@ -680,6 +680,10 @@ onUnmounted(() => {
 .project-slider {
   padding-top: 4rem;
   background-color: $white;
+
+  @media (max-width: $breakpoint-sm) {
+    padding-top: 0;
+  }
 }
 
 .slider-wrap {
@@ -765,7 +769,7 @@ onUnmounted(() => {
     width: 20vw;
     @media (max-width: $breakpoint-sm) {
       position: relative;
-      top: -50px;
+      top: 0;
       left: auto;
       width: 100%;
       order: 3;
@@ -798,7 +802,25 @@ onUnmounted(() => {
       order: 1;
       margin-bottom: 30px;
       // border: 1px solid red;
-      height: 200px;
+      height: 140px;
+
+      text-align: right;
+      &.with-plus {
+        &:before {
+          display: none;
+        }
+      }
+      p:first-child {
+        &:before {
+          content: '+';
+          color: $purple;
+          font-size: 25px;
+          font-weight: 700;
+          display: inline-block;
+          vertical-align: bottom;
+          padding-right: 10px;
+        }
+      }
     }
   }
 
@@ -825,6 +847,10 @@ onUnmounted(() => {
 :deep(.carousel__next),
 :deep(.carousel__prev) {
   pointer-events: auto !important;
+  @media (max-width: $breakpoint-sm) {
+    top: auto;
+    bottom: 41%;
+  }
 }
 
 .txt-passion,
@@ -874,6 +900,9 @@ onUnmounted(() => {
 
 .cta-blocks {
   background: linear-gradient(180deg, $white 80px, $black 80px);
+  @media (max-width: $breakpoint-sm) {
+    margin-top: 50px;
+  }
 }
 
 .cta-blocks-row {
