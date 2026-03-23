@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import 'vue3-carousel/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import { Carousel, Slide, Navigation } from 'vue3-carousel';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -554,7 +554,6 @@ onUnmounted(() => {
   height: 100vh;
   position: relative;
   overflow: hidden;
-
   .txt-hero {
     position: absolute;
     top: 0;
@@ -568,6 +567,9 @@ onUnmounted(() => {
   #delight {
     font-family: 'DM Serif Display', serif;
     font-size: 180.23px;
+    @media (max-width: $breakpoint-sm) {
+      font-size: 30vw;
+    }
   }
 
   #engage {
@@ -576,10 +578,16 @@ onUnmounted(() => {
 
   #inspire {
     transform: translateY(110px) translateX(140px);
+    @media (max-width: $breakpoint-sm) {
+      transform: translateY(60px) translateX(-20px);
+    }
   }
 
   #delight {
     transform: translateY(245px) translateX(-60px);
+    @media (max-width: $breakpoint-sm) {
+      transform: translateY(158px) translateX(30px);
+    }
   }
 
   .bg-video {
@@ -778,6 +786,9 @@ onUnmounted(() => {
   @media (max-width: 1100px) {
     font-size: clamp(8rem, 8vw, 10rem);
   }
+  @media (max-width: $breakpoint-sm) {
+    font-size: 100px;
+  }
 }
 
 .txt-passion {
@@ -920,6 +931,38 @@ onUnmounted(() => {
       bottom: 21px;
       right: 15px;
       width: 30px;
+    }
+  }
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+
+    .quote,
+    .view-work,
+    .linkup,
+    .about-jason {
+      grid-column: auto;
+    }
+
+    .quote {
+      blockquote {
+        font-size: 38px;
+      }
+    }
+    .view-work {
+      font-size: 72px;
+    }
+    .linkup,
+    .about-jason {
+      font-size: 82px;
+      line-height: 1;
+    }
+
+    .about-jason {
+      display: flex;
+      flex-direction: column;
+      span {
+        margin-left: 0;
+      }
     }
   }
 }
