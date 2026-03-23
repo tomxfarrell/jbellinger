@@ -16,6 +16,8 @@ const txtHero = ref(null);
 const bgGradient = ref(null);
 const projectSlider = ref(null);
 const scrollDown = ref(null);
+const txtPassion = ref(null);
+const txtProjects = ref(null);
 
 const carouselConfig = {
   itemsToShow: 1,
@@ -98,8 +100,10 @@ function fadeOutImg() {
 
 function animateText() {
   nextTick(() => {
+    if (!txtPassion.value || !txtProjects.value) return;
+
     gsap.fromTo(
-      '.txt-passion',
+      txtPassion.value,
       { opacity: 0, x: -50 },
       {
         opacity: 1,
@@ -110,7 +114,7 @@ function animateText() {
       }
     );
     gsap.fromTo(
-      '.txt-projects',
+      txtProjects.value,
       { opacity: 0, x: 50 },
       {
         opacity: 1,
@@ -370,7 +374,7 @@ onUnmounted(() => {
     <div class="project-slider" ref="projectSlider">
       <div class="container">
         <div class="slider-wrap">
-          <span class="txt-passion">Passion</span>
+          <span class="txt-passion" ref="txtPassion">Passion</span>
 
           <Carousel
             v-bind="carouselConfig"
@@ -501,7 +505,7 @@ onUnmounted(() => {
             </template>
           </Carousel>
 
-          <span class="txt-projects">Projects</span>
+          <span class="txt-projects" ref="txtProjects">Projects</span>
         </div>
       </div>
     </div>
@@ -515,12 +519,24 @@ onUnmounted(() => {
               Wow is the one to aim for.
             </blockquote>
           </div>
-          <div class="view-work">View All Work</div>
-          <div class="linkup">let's link up!</div>
-          <div class="about-jason">
-            <img src="@/assets/img/photo-jb-circle-2x.png" alt="JB" />
+          <router-link to="/work" class="view-work">
+            View<br />All<br />Work
+            <img src="@/assets/img/icon-arrow-right-gradient.svg" alt="" />
+          </router-link>
+
+          <a href="mailto:jason@jasonbellinger.com" class="linkup">
+            let's link up!
+            <img src="@/assets/img/icon-linkedin-white-txt-2x.png" alt="" />
+          </a>
+          <router-link to="/about" class="about-jason">
+            <img
+              src="@/assets/img/photo-jb-circle-2x.png"
+              alt="JB"
+              class="photo-jb-circle"
+            />
             <span>about me</span>
-          </div>
+            <img src="@/assets/img/icon-arrow-right-muted.svg" alt="" />
+          </router-link>
         </div>
       </div>
     </div>
@@ -550,12 +566,16 @@ onUnmounted(() => {
     font-size: 180.23px;
   }
 
+  #engage {
+    transform: translateY(-30px);
+  }
+
   #inspire {
-    transform: translateY(140px) translateX(140px);
+    transform: translateY(110px) translateX(140px);
   }
 
   #delight {
-    transform: translateY(275px) translateX(-60px);
+    transform: translateY(245px) translateX(-60px);
   }
 
   .bg-video {
@@ -786,11 +806,21 @@ onUnmounted(() => {
   width: 100%;
   gap: 20px;
 
-  div {
+  .quote,
+  a {
     min-height: 200px;
     border-radius: 12px;
     padding: 40px;
     color: $white;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    transition: transform 0.4s ease;
+
+    &:hover {
+      transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+      z-index: 10;
+    }
   }
 
   .quote {
@@ -811,8 +841,18 @@ onUnmounted(() => {
 
   .view-work {
     grid-column: span 3;
-    font-size: 72px;
+    font-size: 70px;
     font-weight: 100;
+  }
+
+  .view-work,
+  .about-jason {
+    img:not(.photo-jb-circle) {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 30px;
+    }
   }
 
   .view-work,
@@ -836,6 +876,14 @@ onUnmounted(() => {
     font-size: 130px;
     line-height: 110px;
     font-weight: 700;
+  }
+  .linkup {
+    img {
+      position: absolute;
+      bottom: 21px;
+      right: 15px;
+      width: 30px;
+    }
   }
 }
 </style>
