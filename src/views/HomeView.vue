@@ -22,7 +22,8 @@ const txtProjects = ref(null);
 const carouselConfig = {
   itemsToShow: 1,
   wrapAround: true,
-  autoplay: 10000,
+  // autoplay: 10000,
+  autoplay: false,
   transition: 600,
   mouseDrag: false,
   touchDrag: false,
@@ -694,12 +695,23 @@ onUnmounted(() => {
     align-items: center;
     justify-content: center;
 
+    .slide {
+      @media (max-width: $breakpoint-sm) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
     .slide-img {
       max-width: 70vw;
       // border: 1px solid red;
       width: 100%;
       height: auto;
       object-fit: contain;
+      @media (max-width: $breakpoint-sm) {
+        max-width: 100%;
+        order: 2;
+        margin-bottom: 30px;
+      }
     }
 
     .slide-img-game-of-thrones,
@@ -751,6 +763,13 @@ onUnmounted(() => {
     top: 15vw;
     left: 0;
     width: 20vw;
+    @media (max-width: $breakpoint-sm) {
+      position: relative;
+      top: -50px;
+      left: auto;
+      width: 100%;
+      order: 3;
+    }
   }
 
   .text-2 {
@@ -769,6 +788,17 @@ onUnmounted(() => {
       }
 
       padding-left: 20px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      position: relative;
+      top: auto;
+      right: auto;
+      width: 100%;
+      order: 1;
+      margin-bottom: 30px;
+      // border: 1px solid red;
+      height: 200px;
     }
   }
 
@@ -812,7 +842,7 @@ onUnmounted(() => {
     font-size: clamp(8rem, 8vw, 10rem);
   }
   @media (max-width: $breakpoint-sm) {
-    font-size: 100px;
+    font-size: clamp(4rem, 4vw, 100px);
   }
 }
 
@@ -820,6 +850,9 @@ onUnmounted(() => {
   top: 6vw;
   left: 2%;
   z-index: 1;
+  @media (max-width: $breakpoint-sm) {
+    top: 42%;
+  }
 }
 
 .txt-projects {
@@ -833,6 +866,9 @@ onUnmounted(() => {
 
   @media (max-width: 930px) {
     bottom: 10%;
+  }
+  @media (max-width: $breakpoint-sm) {
+    bottom: 35%;
   }
 }
 
