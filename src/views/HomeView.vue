@@ -1,122 +1,149 @@
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import 'vue3-carousel/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import 'vue3-carousel/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 // Wrap *everything* in this container
-const homeContainer = ref(null)
+const homeContainer = ref(null);
 
-const hero = ref(null)
-const txtHero = ref(null)
-const bgGradient = ref(null)
-const bgVideo = ref(null)
-const otherVideo = ref(null)
-const projectSlider = ref(null)
+const hero = ref(null);
+const txtHero = ref(null);
+const bgGradient = ref(null);
+const projectSlider = ref(null);
+const scrollDown = ref(null);
 
 const carouselConfig = {
   itemsToShow: 1,
   wrapAround: true,
   autoplay: 10000,
-  transition: 500,
+  transition: 600,
   mouseDrag: false,
   touchDrag: false,
-}
+};
 
-let firstAnimationPlayed = false
-let ctx // gsap.context()
+let firstAnimationPlayed = false;
+let ctx; // gsap.context()
+let scrollLoop; // reference for the infinite loop tween
 
 function fadeOutText() {
-  if (!firstAnimationPlayed) return
-  const active = projectSlider.value?.querySelector('.carousel__slide--active')
-  if (!active) return
-  const textEls = active.querySelectorAll('.text-1, .text-2')
+  if (!firstAnimationPlayed) return;
+  const active = projectSlider.value?.querySelector('.carousel__slide--active');
+  if (!active) return;
+  const textEls = active.querySelectorAll('.text-1, .text-2');
   gsap.to(textEls, {
     opacity: 0,
-    duration: 0.1,
-    ease: 'power1.out'
-  })
+    duration: 0.2,
+    ease: 'power1.out',
+  });
 }
 
 function fadeInText() {
   nextTick(() => {
-    const active = projectSlider.value?.querySelector('.carousel__slide--active')
-    if (!active) return
-    const textEls = active.querySelectorAll('.text-1, .text-2')
-    gsap.fromTo(textEls, { opacity: 0, y: 20 }, {
-      opacity: 1,
-      y: 0,
-      delay: 0.3,
-      duration: 0.7,
-      ease: "sine.out"
-    })
-  })
+    const active = projectSlider.value?.querySelector(
+      '.carousel__slide--active'
+    );
+    if (!active) return;
+    const textEls = active.querySelectorAll('.text-1, .text-2');
+    gsap.fromTo(
+      textEls,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        delay: 0.3,
+        duration: 0.7,
+        ease: 'sine.out',
+      }
+    );
+  });
 }
 
 function fadeInImg() {
   nextTick(() => {
-    const active = projectSlider.value?.querySelector('.carousel__slide--active')
-    if (!active) return
-    const imgEl = active.querySelector('.slide-img')
-    gsap.fromTo(imgEl, { opacity: 0, y: -50 }, {
-      opacity: 1,
-      y: 0,
-      delay: 0.3,
-      duration: 0.7,
-      ease: "sine.out"
-    })
-  })
+    const active = projectSlider.value?.querySelector(
+      '.carousel__slide--active'
+    );
+    if (!active) return;
+    const imgEl = active.querySelector('.slide-img');
+    gsap.fromTo(
+      imgEl,
+      { opacity: 0, y: -50 },
+      {
+        opacity: 1,
+        y: 0,
+        delay: 0.3,
+        duration: 0.7,
+        ease: 'sine.out',
+      }
+    );
+  });
 }
 
 function fadeOutImg() {
-  if (!firstAnimationPlayed) return
-  const active = projectSlider.value?.querySelector('.carousel__slide--active')
-  if (!active) return
-  const imgEl = active.querySelector('.slide-img')
+  if (!firstAnimationPlayed) return;
+  const active = projectSlider.value?.querySelector('.carousel__slide--active');
+  if (!active) return;
+  const imgEl = active.querySelector('.slide-img');
   gsap.to(imgEl, {
     opacity: 0,
-    duration: 0.1,
-    ease: 'power1.out'
-  })
+    duration: 0.3,
+    ease: 'power1.out',
+  });
 }
 
 function animateText() {
   nextTick(() => {
-    gsap.fromTo('.txt-passion', { opacity: 0, x: -50 }, {
-      opacity: 1,
-      x: 0,
-      delay: 0.5,
-      duration: 0.7,
-      ease: "sine.out"
-    })
-    gsap.fromTo('.txt-projects', { opacity: 0, x: 50 }, {
-      opacity: 1,
-      x: 0,
-      delay: 0.5,
-      duration: 0.7,
-      ease: "sine.out"
-    })
-  })
+    gsap.fromTo(
+      '.txt-passion',
+      { opacity: 0, x: -50 },
+      {
+        opacity: 1,
+        x: 0,
+        delay: 0.5,
+        duration: 0.7,
+        ease: 'sine.out',
+      }
+    );
+    gsap.fromTo(
+      '.txt-projects',
+      { opacity: 0, x: 50 },
+      {
+        opacity: 1,
+        x: 0,
+        delay: 0.5,
+        duration: 0.7,
+        ease: 'sine.out',
+      }
+    );
+  });
 }
 
 function onSlideStart() {
-  fadeOutText()
-  fadeOutImg()
+  fadeOutText();
+  fadeOutImg();
 }
 
 function onSlideEnd() {
-  fadeInText()
-  fadeInImg()
+  fadeInText();
+  fadeInImg();
 }
 
 onMounted(() => {
   ctx = gsap.context(() => {
     nextTick(() => {
-      if (!hero.value || !txtHero.value || !bgGradient.value || !projectSlider.value) return
+      if (
+        !hero.value ||
+        !txtHero.value ||
+        !bgGradient.value ||
+        !projectSlider.value ||
+        !scrollDown.value
+      )
+        return;
 
       const timeline = gsap.timeline({
         scrollTrigger: {
@@ -129,59 +156,163 @@ onMounted(() => {
           immediateRender: false,
           anticipatePin: true,
           snap: {
-            snapTo: .5,
+            snapTo: 0.5,
             duration: { min: 0.1, max: 0.3 },
-            ease: 'power1.inOut'
-          }
+            ease: 'power1.inOut',
+          },
+        },
+      });
+
+      // Setup Scroll Down Icon
+      const circle = scrollDown.value.querySelector('.scroll-circle');
+      const arrow = scrollDown.value.querySelector('.scroll-arrow');
+      // Circle circumference approx 151 (r=24)
+      // Rotate -90 to start at top, scaleX(-1) to draw counter-clockwise
+      gsap.set(circle, {
+        strokeDasharray: 151,
+        strokeDashoffset: 151,
+        rotate: -90,
+        scaleX: -1,
+        transformOrigin: 'center',
+      });
+      gsap.set(arrow, { opacity: 0, y: 0 });
+
+      const playScrollAnimation = () => {
+        // Entry animation
+        gsap.to(circle, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          ease: 'power2.out',
+        });
+        gsap.to(
+          arrow,
+          {
+            opacity: 1,
+            duration: 1.5,
+            onComplete: () => {
+              // Start loop
+              if (!scrollLoop) {
+                scrollLoop = gsap.to(arrow, {
+                  y: 5,
+                  duration: 0.8,
+                  yoyo: true,
+                  repeat: -1,
+                  ease: 'sine.inOut',
+                });
+              } else {
+                scrollLoop.play();
+              }
+            },
+          },
+          '<'
+        );
+      };
+
+      const resetScrollAnimation = () => {
+        if (scrollLoop) {
+          scrollLoop.pause(0); // Stop and reset loop
         }
-      })
+        gsap.to(circle, { strokeDashoffset: 151, duration: 0.5 });
+        gsap.to(arrow, { opacity: 0, duration: 0.5 });
+      };
 
       timeline
-        .to(txtHero.value, { scale: 75, rotate: '-1deg', duration: 0.15, opacity: 0, ease: 'power1.inOut' })
-        .from(bgGradient.value, { opacity: 0, duration: 0.25, ease: 'power1.in' }, '>')
-        .to(txtHero.value, { opacity: 0, duration: 0.15, ease: 'power1.inOut' }, '>')
+        .to(txtHero.value, {
+          scale: 75,
+          rotate: '-1deg',
+          duration: 0.15,
+          opacity: 0,
+          ease: 'power1.inOut',
+        })
+        .from(
+          bgGradient.value,
+          { opacity: 0, duration: 0.25, ease: 'power1.in' },
+          '>'
+        )
+        .to(
+          txtHero.value,
+          { opacity: 0, duration: 0.15, ease: 'power1.inOut' },
+          '>'
+        )
         .to(txtHero.value, { display: 'none', scale: 1 }, '>')
+        // Trigger icon animation at the end of the timeline
+        .to(
+          {},
+          {
+            duration: 0.01,
+            onStart: playScrollAnimation,
+            onReverseComplete: resetScrollAnimation,
+          }
+        );
 
       ScrollTrigger.create({
         trigger: projectSlider.value,
         start: 'top 60%',
         onEnter: () => {
-          animateText()
-          fadeInText()
-          fadeInImg()
-          firstAnimationPlayed = true
-        }
-      })
-    })
-  }, homeContainer) // scope to container
-})
+          animateText();
+          fadeInText();
+          fadeInImg();
+          firstAnimationPlayed = true;
+        },
+      });
+    });
+  }, homeContainer); // scope to container
+});
 
 onUnmounted(() => {
-  ctx?.revert()
-  firstAnimationPlayed = false
+  ctx?.revert();
+  firstAnimationPlayed = false;
+  if (scrollLoop) scrollLoop.kill();
 
   // Remove all GSAP inline styles from *everything* in this component
   if (homeContainer.value) {
-    gsap.set(homeContainer.value.querySelectorAll('*'), { clearProps: 'all' })
+    gsap.set(homeContainer.value.querySelectorAll('*'), { clearProps: 'all' });
   }
-})
+});
 </script>
-
-
-
-
 
 <template>
   <div ref="homeContainer">
     <section class="hero-home" ref="hero">
-      <video class="bg-video" src="@/assets/img/1037517047-preview.mp4" loop muted autoplay ref="bgVideo"></video>
+      <video
+        class="bg-video"
+        src="@/assets/img/1037517047-preview.mp4"
+        loop
+        muted
+        autoplay
+        ref="bgVideo"
+      ></video>
 
       <svg class="txt-hero" ref="txtHero">
         <mask id="mask">
           <rect fill="white" width="100%" height="100%"></rect>
-          <text id="engage" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">engage</text>
-          <text id="inspire" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">inspire</text>
-          <text id="delight" dominant-baseline="central" x="50%" y="30%" text-anchor="middle">delight</text>
+          <text
+            id="engage"
+            dominant-baseline="central"
+            x="50%"
+            y="30%"
+            text-anchor="middle"
+          >
+            engage
+          </text>
+          <text
+            id="inspire"
+            dominant-baseline="central"
+            x="50%"
+            y="30%"
+            text-anchor="middle"
+          >
+            inspire
+          </text>
+          <text
+            id="delight"
+            dominant-baseline="central"
+            x="50%"
+            y="30%"
+            text-anchor="middle"
+          >
+            delight
+          </text>
         </mask>
 
         <rect width="100%" height="100%" id="mask-bg"></rect>
@@ -189,20 +320,49 @@ onUnmounted(() => {
 
       <div class="bg-gradient" ref="bgGradient">
         <video class="other-video" autoplay muted loop ref="otherVideo">
-          <source src="@/assets/img/1037517047-preview.mp4" type="video/mp4">
+          <source src="@/assets/img/1037517047-preview.mp4" type="video/mp4" />
         </video>
         <div class="container">
-          <p>Design is not just my profession; it's my passion, my very essence. I live and breathe design, and it
-            permeates every aspect of my life. My mind constantly wanders, exploring new ideas, concepts, and
-            possibilities. I find myself unable to turn my brain off, always seeking inspiration from the world around
-            me.
-            As an award-winning designer, I've had the privilege of working for top agencies across New York, where I've
-            crafted everything from sleek websites to captivating campaigns to all immersive experiential events, aiming
-            to engage, inspire, and react.</p>
-          <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project
-            I
-            undertake.</p>
-            <img src="@/assets/img/icon-arrow-down-white-circle.svg" alt="Scroll down" class="scroll-down">
+          <p>
+            Design is not just my profession; it's my passion, my very essence.
+            I live and breathe design, and it permeates every aspect of my life.
+            My mind constantly wanders, exploring new ideas, concepts, and
+            possibilities. I find myself unable to turn my brain off, always
+            seeking inspiration from the world around me. As an award-winning
+            designer, I've had the privilege of working for top agencies across
+            New York, where I've crafted everything from sleek websites to
+            captivating campaigns to all immersive experiential events, aiming
+            to engage, inspire, and react.
+          </p>
+          <p class="callout">
+            Design isn't just what I do—it's who I am, and I pour my heart and
+            soul into every project I undertake.
+          </p>
+
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="scroll-down"
+            ref="scrollDown"
+          >
+            <circle
+              cx="25"
+              cy="25"
+              r="24"
+              stroke="white"
+              stroke-width="2"
+              class="scroll-circle"
+            />
+
+            <path
+              d="M19.2987 21.3926L24.5067 26.6007L29.7148 21.3926C30.2383 20.8691 31.0839 20.8691 31.6074 21.3926C32.1309 21.9161 32.1309 22.7617 31.6074 23.2852L25.4463 29.4463C24.9228 29.9698 24.0772 29.9698 23.5537 29.4463L17.3926 23.2852C16.8691 22.7617 16.8691 21.9161 17.3926 21.3926C17.9161 20.8826 18.7752 20.8691 19.2987 21.3926Z"
+              fill="white"
+              class="scroll-arrow"
+            />
+          </svg>
         </div>
       </div>
     </section>
@@ -210,64 +370,134 @@ onUnmounted(() => {
     <div class="project-slider" ref="projectSlider">
       <div class="container">
         <div class="slider-wrap">
-
           <span class="txt-passion">Passion</span>
 
-          <Carousel v-bind="carouselConfig" @slide-start="onSlideStart" @slide-end="onSlideEnd">
+          <Carousel
+            v-bind="carouselConfig"
+            @slide-start="onSlideStart"
+            @slide-end="onSlideEnd"
+          >
             <Slide>
               <div class="slide">
                 <div class="text-1">
-                  <div class="text-img"><img src="@/assets/img/logo-elit-2x.png" alt="" class="slide-logo-elit"></div>
-                  <p>Handcrafted leather, die cuts, debossing—this Pristine Water brochure has all the
-                    bells & whistles. <strong>Oh, and it won a Graphic Design USA Award!</strong></p>
+                  <div class="text-img">
+                    <img
+                      src="@/assets/img/logo-elit-2x.png"
+                      alt=""
+                      class="slide-logo-elit"
+                    />
+                  </div>
+                  <p>
+                    Handcrafted leather, die cuts, debossing—this Pristine Water
+                    brochure has all the bells & whistles.
+                    <strong>Oh, and it won a Graphic Design USA Award!</strong>
+                  </p>
                 </div>
-                <img src="@/assets/img/home-elit-brochure-desktop-2x.png" alt="" class="slide-img">
+                <img
+                  src="@/assets/img/home-elit-brochure-desktop-2x.png"
+                  alt=""
+                  class="slide-img"
+                />
                 <div class="text-2 with-plus">
                   <p><strong>Featured Work</strong></p>
-                  <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                    amassed throughout my career.</p>
+                  <p>
+                    A showcase of my most impactful and unforgettable design and
+                    project accomplishments amassed throughout my career.
+                  </p>
                 </div>
-
               </div>
             </Slide>
             <Slide>
               <div class="slide">
-
                 <div class="text-1">
-                  <div class="text-img"><img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace"></div>
-                  <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
-                    results.</p>
+                  <div class="text-img">
+                    <img
+                      src="@/assets/img/logo-game-of-thrones-2x.png"
+                      alt=""
+                      class="slide-logo-game-of-thrones"
+                    />
+                  </div>
+                  <p>
+                    The Exhibition – A behind-the-scenes journey into the world
+                    of Westeros, complete with immersive experiences that were
+                    blowing minds before VR went mainstream.
+                  </p>
                 </div>
-                <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
+                <img
+                  src="@/assets/img/home-game-of-thrones-desktop-2x.png"
+                  alt=""
+                  class="slide-img slide-img-game-of-thrones"
+                />
                 <div class="text-2 with-plus">
                   <p><strong>Featured Work</strong></p>
-                  <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                    amassed throughout my career.</p>
+                  <p>
+                    A showcase of my most impactful and unforgettable design and
+                    project accomplishments amassed throughout my career.
+                  </p>
                 </div>
-
               </div>
             </Slide>
             <Slide>
               <div class="slide">
-
                 <div class="text-1">
-                  <div class="text-img"><img src="@/assets/img/logo-versace-2x.png" alt="" class="slide-logo-versace"></div>
-                  <p>Sleek websites, scroll-stopping socials, and digital campaigns that truly delivered
-                    results.</p>
+                  <div class="text-img">
+                    <img
+                      src="@/assets/img/logo-versace-2x.png"
+                      alt=""
+                      class="slide-logo-versace"
+                    />
+                  </div>
+                  <p>
+                    Sleek websites, scroll-stopping socials, and digital
+                    campaigns that truly delivered results.
+                  </p>
                 </div>
-                <img src="@/assets/img/home-versace-desktop-2x.png" alt="" class="slide-img slide-img-versace">
+                <img
+                  src="@/assets/img/home-versace-desktop-2x.png"
+                  alt=""
+                  class="slide-img slide-img-versace"
+                />
                 <div class="text-2 with-plus">
                   <p><strong>Featured Work</strong></p>
-                  <p>A showcase of my most impactful and unforgettable design and project accomplishments
-                    amassed throughout my career.</p>
+                  <p>
+                    A showcase of my most impactful and unforgettable design and
+                    project accomplishments amassed throughout my career.
+                  </p>
                 </div>
-
+              </div>
+            </Slide>
+            <Slide>
+              <div class="slide">
+                <div class="text-1">
+                  <div class="text-img">
+                    <img
+                      src="@/assets/img/logo-dos-equis-2x.png"
+                      alt=""
+                      class="slide-logo-dos-equis"
+                    />
+                  </div>
+                  <p>
+                    A national Masquerade Parade,a custom float, and one big
+                    Reggie Award—stay thirsty for greatness.
+                  </p>
+                </div>
+                <img
+                  src="@/assets/img/home-dos-equis-desktop-2x.png"
+                  alt=""
+                  class="slide-img slide-img-dos-equis"
+                />
+                <div class="text-2 with-plus">
+                  <p><strong>Featured Work</strong></p>
+                  <p>
+                    A showcase of my most impactful and unforgettable design and
+                    project accomplishments amassed throughout my career.
+                  </p>
+                </div>
               </div>
             </Slide>
 
             <template #addons>
               <Navigation />
-              <!-- <Pagination /> -->
             </template>
           </Carousel>
 
@@ -281,14 +511,16 @@ onUnmounted(() => {
         <div class="cta-blocks-row">
           <div class="quote">
             <blockquote>
-               There are three responses to a piece of design—yes, no, and WOW! Wow is the one to aim for.
+              There are three responses to a piece of design—yes, no, and WOW!
+              Wow is the one to aim for.
             </blockquote>
           </div>
-        <div class="view-work">View All Work</div>
-        <div class="linkup">let's link up!</div>
-        <div class="about-jason">
-          <img src="@/assets/img/photo-jb-circle-2x.png" alt="JB">
-          <span>about me</span></div>
+          <div class="view-work">View All Work</div>
+          <div class="linkup">let's link up!</div>
+          <div class="about-jason">
+            <img src="@/assets/img/photo-jb-circle-2x.png" alt="JB" />
+            <span>about me</span>
+          </div>
         </div>
       </div>
     </div>
@@ -314,16 +546,16 @@ onUnmounted(() => {
   #inspire,
   #engage,
   #delight {
-    font-family: "DM Serif Display", serif;
+    font-family: 'DM Serif Display', serif;
     font-size: 180.23px;
   }
 
   #inspire {
-    transform: translateY(140px)translateX(140px);
+    transform: translateY(140px) translateX(140px);
   }
 
   #delight {
-    transform: translateY(275px)translateX(-60px);
+    transform: translateY(275px) translateX(-60px);
   }
 
   .bg-video {
@@ -336,7 +568,7 @@ onUnmounted(() => {
   }
 
   #mask-bg {
-    mask: url("#mask");
+    mask: url('#mask');
   }
 
   .other-video {
@@ -375,8 +607,8 @@ onUnmounted(() => {
   }
 
   p {
-    font-size: 26px;
-    line-height: 46px;
+    font-size: 20px;
+    line-height: 40px;
     margin-bottom: 20px;
   }
 
@@ -385,7 +617,6 @@ onUnmounted(() => {
     right: 3vw;
     bottom: 4vw;
   }
-
 }
 
 .project-slider {
@@ -393,12 +624,9 @@ onUnmounted(() => {
   background-color: $white;
 }
 
-
-
-
 .slider-wrap {
   position: relative;
- pointer-events: none;
+  pointer-events: none;
 
   .carousel {
     position: relative;
@@ -408,8 +636,6 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-   
-    
 
     .slide-img {
       max-width: 70vw;
@@ -419,11 +645,11 @@ onUnmounted(() => {
       object-fit: contain;
     }
 
-    .slide-img-versace {
+    .slide-img-game-of-thrones,
+    .slide-img-versace,
+    .slide-img-dos-equis {
       max-width: 50vw;
     }
-
-   
 
     :deep(.carousel__slide),
     :deep(.carousel__track),
@@ -432,7 +658,6 @@ onUnmounted(() => {
     }
   }
 
-  
   .carousel__slide {
     align-items: start;
   }
@@ -448,7 +673,6 @@ onUnmounted(() => {
   .carousel__pagination-button--active {
     background-color: $purple;
   }
-
 
   .text-img {
     height: 87px;
@@ -470,7 +694,6 @@ onUnmounted(() => {
     top: 15vw;
     left: 0;
     width: 20vw;
-    
   }
 
   .text-2 {
@@ -497,14 +720,23 @@ onUnmounted(() => {
     margin-bottom: 20px;
   }
 
+  .slide-logo-game-of-thrones {
+    width: 218px;
+    margin-bottom: 20px;
+  }
+
   .slide-logo-versace {
     width: 120px;
     margin-bottom: 20px;
   }
-
+  .slide-logo-dos-equis {
+    width: 105px;
+    margin-bottom: 20px;
+  }
 }
 
-:deep(.carousel__next), :deep(.carousel__prev) {
+:deep(.carousel__next),
+:deep(.carousel__prev) {
   pointer-events: auto !important;
 }
 
@@ -545,7 +777,7 @@ onUnmounted(() => {
 }
 
 .cta-blocks {
-   background: linear-gradient(180deg, $white 80px, $black 80px);
+  background: linear-gradient(180deg, $white 80px, $black 80px);
 }
 
 .cta-blocks-row {
@@ -563,18 +795,18 @@ onUnmounted(() => {
 
   .quote {
     grid-column: span 7;
-  
+
     blockquote {
       font-size: 56px;
       line-height: 68px;
-      color: $white; 
+      color: $white;
       font-family: $fontHeadline;
     }
   }
-  
 
-  .quote,  .about-jason  {
-    background: linear-gradient(66.06deg, #5600E8 34.63%, #22D9F1 98.74%);
+  .quote,
+  .about-jason {
+    background: linear-gradient(66.06deg, #5600e8 34.63%, #22d9f1 98.74%);
   }
 
   .view-work {
@@ -583,15 +815,16 @@ onUnmounted(() => {
     font-weight: 100;
   }
 
-  .view-work, .linkup {
+  .view-work,
+  .linkup {
     background-color: $blueGray;
   }
 
   .about-jason {
     display: flex;
-   span {
-    margin-left: -80px;
-   }
+    span {
+      margin-left: -80px;
+    }
     img {
       max-width: 260px;
     }
@@ -604,6 +837,5 @@ onUnmounted(() => {
     line-height: 110px;
     font-weight: 700;
   }
-
 }
 </style>
