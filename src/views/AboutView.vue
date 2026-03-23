@@ -703,7 +703,7 @@ padding: 50px 0 100px 0;
   .client-list {
     display: grid;
     grid-template-columns: repeat(5, auto);
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
     padding-top: 60px;
 

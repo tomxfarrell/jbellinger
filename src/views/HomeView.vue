@@ -202,6 +202,7 @@ onUnmounted(() => {
           <p class="callout">Design isn't just what I do—it's who I am, and I pour my heart and soul into every project
             I
             undertake.</p>
+            <img src="@/assets/img/icon-arrow-down-white-circle.svg" alt="Scroll down" class="scroll-down">
         </div>
       </div>
     </section>
@@ -285,7 +286,9 @@ onUnmounted(() => {
           </div>
         <div class="view-work">View All Work</div>
         <div class="linkup">let's link up!</div>
-        <div class="about-jason">about me</div>
+        <div class="about-jason">
+          <img src="@/assets/img/photo-jb-circle-2x.png" alt="JB">
+          <span>about me</span></div>
         </div>
       </div>
     </div>
@@ -372,7 +375,15 @@ onUnmounted(() => {
   }
 
   p {
+    font-size: 26px;
+    line-height: 46px;
     margin-bottom: 20px;
+  }
+
+  .scroll-down {
+    position: absolute;
+    right: 3vw;
+    bottom: 4vw;
   }
 
 }
@@ -544,9 +555,10 @@ onUnmounted(() => {
   gap: 20px;
 
   div {
-    height: 200px;
+    min-height: 200px;
     border-radius: 12px;
     padding: 40px;
+    color: $white;
   }
 
   .quote {
@@ -554,9 +566,12 @@ onUnmounted(() => {
   
     blockquote {
       font-size: 56px;
+      line-height: 68px;
       color: $white; 
+      font-family: $fontHeadline;
     }
   }
+  
 
   .quote,  .about-jason  {
     background: linear-gradient(66.06deg, #5600E8 34.63%, #22D9F1 98.74%);
@@ -564,16 +579,31 @@ onUnmounted(() => {
 
   .view-work {
     grid-column: span 3;
-    background-color: blue;
+    font-size: 72px;
+    font-weight: 100;
   }
 
   .view-work, .linkup {
     background-color: $blueGray;
   }
 
+  .about-jason {
+    display: flex;
+   span {
+    margin-left: -80px;
+   }
+    img {
+      max-width: 260px;
+    }
+  }
   .linkup,
   .about-jason {
     grid-column: span 5;
+    font-family: $fontHeadline;
+    font-size: 130px;
+    line-height: 110px;
+    font-weight: 700;
   }
+
 }
 </style>
