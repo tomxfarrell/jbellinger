@@ -1,32 +1,38 @@
-@use "@/styles/variables.scss" as *;
+@use '@/styles/variables.scss' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,400&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 
 strong {
-    font-weight: 700;
+  font-weight: 700;
 }
 
-h1, h2, h3 {
-    font-family: $fontHeadline;
-    font-weight: 400;
+h1,
+h2,
+h3 {
+  font-family: $fontHeadline;
+  font-weight: 400;
 }
 
 h1 {
-    font-size: 48px;
+  font-size: 48px;
 }
 
 h2 {
-    font-size: 86px;
+  font-size: 86px;
+  @media (max-width: $breakpoint-sm) {
+    font-size: 55px;
+  }
 }
 
-h3, .like-h3 {
-    font-size: 36px;
-    line-height: 42px;
+h3,
+.like-h3 {
+  font-size: 36px;
+  line-height: 42px;
 }
 
 p {
-    font-size: 16px;
-    line-height: 24px;
+  font-size: 16px;
+  line-height: 24px;
 }

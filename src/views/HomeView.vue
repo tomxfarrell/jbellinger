@@ -284,6 +284,7 @@ onUnmounted(() => {
         loop
         muted
         autoplay
+        playsinline
         ref="bgVideo"
       ></video>
 
@@ -323,7 +324,14 @@ onUnmounted(() => {
       </svg>
 
       <div class="bg-gradient" ref="bgGradient">
-        <video class="other-video" autoplay muted loop ref="otherVideo">
+        <video
+          class="other-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          ref="otherVideo"
+        >
           <source src="@/assets/img/1037517047-preview.mp4" type="video/mp4" />
         </video>
         <div class="container">
@@ -627,6 +635,15 @@ onUnmounted(() => {
     max-width: 900px;
   }
 
+  @media (max-width: $breakpoint-sm) {
+    align-items: start;
+    padding-top: 100px;
+
+    .container {
+      position: relative;
+    }
+  }
+
   p,
   h3 {
     color: $white;
@@ -642,12 +659,20 @@ onUnmounted(() => {
     font-size: 20px;
     line-height: 40px;
     margin-bottom: 20px;
+    @media (max-width: $breakpoint-sm) {
+      font-size: 16px;
+      line-height: 32px;
+    }
   }
 
   .scroll-down {
     position: absolute;
     right: 3vw;
     bottom: 4vw;
+    @media (max-width: $breakpoint-sm) {
+      right: 20px;
+      bottom: -184px;
+    }
   }
 }
 
