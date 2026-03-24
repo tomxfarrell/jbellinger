@@ -281,7 +281,7 @@ onUnmounted(() => {
     <section class="hero-home" ref="hero">
       <video
         class="bg-video"
-        src="@/assets/img/1037517047-preview.mp4"
+        src="@/assets/img/video-bg-gradient-optimized.mp4"
         loop
         muted
         autoplay
@@ -333,7 +333,10 @@ onUnmounted(() => {
           playsinline
           ref="otherVideo"
         >
-          <source src="@/assets/img/1037517047-preview.mp4" type="video/mp4" />
+          <source
+            src="@/assets/img/video-bg-gradient-optimized.mp4"
+            type="video/mp4"
+          />
         </video>
         <div class="container">
           <p>
