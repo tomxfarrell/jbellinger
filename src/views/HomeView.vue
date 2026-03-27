@@ -555,7 +555,11 @@ onUnmounted(() => {
             <img src="@/assets/img/icon-arrow-right-gradient.svg" alt="" />
           </router-link>
 
-          <a href="mailto:jason@jasonbellinger.com" class="linkup">
+          <a
+            href="http://linkedin.com/in/jasonbellinger"
+            class="linkup"
+            target="_blank"
+          >
             let's link up!
             <img src="@/assets/img/icon-linkedin-white-txt-2x.png" alt="" />
           </a>
@@ -1041,6 +1045,8 @@ onUnmounted(() => {
     font-size: clamp(82px, 8vw, 100px);
     line-height: 0.8;
     font-weight: 700;
+    display: flex;
+    align-items: center;
   }
   .linkup {
     img {
