@@ -150,6 +150,21 @@ onMounted(() => {
       )
         return;
 
+      // Animate Hero Text In on Load
+      // We use clearProps so CSS media queries (responsive transforms) take over after animation
+      const engage = txtHero.value.querySelector('#engage');
+      const inspire = txtHero.value.querySelector('#inspire');
+      const delight = txtHero.value.querySelector('#delight');
+
+      gsap.from([engage, inspire, delight], {
+        y: 100, // Slide up from 100px below
+        opacity: 0,
+        duration: 1.5,
+        stagger: 0.2, // Stagger start times by 0.2s
+        ease: 'power3.out',
+        clearProps: 'transform,opacity',
+      });
+
       const timeline = gsap.timeline({
         scrollTrigger: {
           id: 'hero-home-pin',
@@ -609,6 +624,10 @@ onUnmounted(() => {
     min-width: 100%;
     min-height: 100%;
     z-index: -100;
+    @media (max-width: $breakpoint-sm) {
+      left: auto;
+      right: 0;
+    }
   }
 
   #mask-bg {
@@ -622,6 +641,10 @@ onUnmounted(() => {
     min-width: 100%;
     min-height: 100%;
     z-index: -100;
+    @media (max-width: $breakpoint-sm) {
+      left: auto;
+      right: 0;
+    }
   }
 }
 
@@ -938,7 +961,7 @@ onUnmounted(() => {
     justify-content: space-between;
     padding-left: 90px;
     .quote-label {
-      font-size: 24px;
+      font-size: 16px;
       font-weight: 700;
       margin-bottom: 5px;
       color: $babyBlue;
@@ -949,29 +972,30 @@ onUnmounted(() => {
     }
 
     blockquote {
-      font-size: 56px;
-      line-height: 68px;
+      font-size: clamp(38px, 4vw, 42px);
+      line-height: 1.1;
       color: $white;
       font-family: $fontHeadline;
       margin: 0 0 20px 0;
       &:before,
       &:after {
-        font-size: 160px;
+        font-size: 120px;
         line-height: 1;
         position: absolute;
       }
       &:before {
         content: '“';
-        left: 10px;
-        top: 70px;
+        left: 35px;
+        top: 65px;
       }
       &:after {
         content: '”';
+        bottom: 10px;
       }
     }
 
     figcaption {
-      font-size: 24px;
+      font-size: 16px;
     }
   }
 
@@ -982,7 +1006,7 @@ onUnmounted(() => {
 
   .view-work {
     grid-column: span 3;
-    font-size: 70px;
+    font-size: clamp(64px, 6vw, 70px);
     font-weight: 100;
   }
 
@@ -1014,8 +1038,8 @@ onUnmounted(() => {
   .about-jason {
     grid-column: span 5;
     font-family: $fontHeadline;
-    font-size: 130px;
-    line-height: 110px;
+    font-size: clamp(82px, 8vw, 100px);
+    line-height: 0.8;
     font-weight: 700;
   }
   .linkup {
@@ -1035,18 +1059,8 @@ onUnmounted(() => {
     .about-jason {
       grid-column: auto;
     }
-
-    .quote {
-      blockquote {
-        font-size: 38px;
-      }
-    }
-    .view-work {
-      font-size: 72px;
-    }
     .linkup,
     .about-jason {
-      font-size: 82px;
       line-height: 1;
     }
 
