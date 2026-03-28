@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +17,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
-     {
+    {
       path: '/work',
       name: 'work',
       // route level code-splitting
@@ -49,7 +49,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/VersaceView.vue'),
     },
-     {
+    {
       path: '/work/budweiser',
       name: 'budweiser',
       // route level code-splitting
@@ -121,12 +121,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/GameOfThronesView.vue'),
     },
-   
   ],
   scrollBehavior(to, from, savedPosition) {
     // Always scroll to top
-    return { top: 0 }
-  }
-})
+    return { top: 0 };
+  },
+});
 
-export default router
+export default router;

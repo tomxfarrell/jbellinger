@@ -551,7 +551,8 @@ onUnmounted(() => {
             </figure>
           </div>
           <router-link to="/work" class="view-work">
-            View<br />All<br />Work
+            View <br class="desktop-only" />
+            All<br />Work
             <img src="@/assets/img/icon-arrow-right-gradient.svg" alt="" />
           </router-link>
 
@@ -1012,6 +1013,8 @@ onUnmounted(() => {
     grid-column: span 3;
     font-size: clamp(64px, 6vw, 70px);
     font-weight: 100;
+    display: flex;
+    align-items: center;
   }
 
   .view-work,
@@ -1034,7 +1037,7 @@ onUnmounted(() => {
     span {
       margin-left: -80px;
     }
-    img {
+    .photo-jb-circle {
       max-width: 260px;
     }
   }
@@ -1056,6 +1059,13 @@ onUnmounted(() => {
       width: 30px;
     }
   }
+  @media (max-width: $breakpoint-md) {
+    .about-jason {
+      .photo-jb-circle {
+        max-width: 170px;
+      }
+    }
+  }
   @media (max-width: $breakpoint-sm) {
     grid-template-columns: 1fr;
 
@@ -1075,6 +1085,10 @@ onUnmounted(() => {
       flex-direction: column;
       span {
         margin-left: 0;
+        margin-top: -78px;
+      }
+      .photo-jb-circle {
+        max-width: 200px;
       }
     }
   }
