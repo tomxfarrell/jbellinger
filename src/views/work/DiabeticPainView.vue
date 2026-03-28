@@ -19,45 +19,59 @@ import diabeticEmailMobile from '@/assets/img/diabetic-email-mobile-2x.png';
 </script>
 
 <template>
+  <div class="work-page">
     <HeadlineBlock>
-        <h1>Diabetic Pain</h1>
-        <h2>Unbranded Campaign</h2>
+      <h1>Diabetic Pain</h1>
+      <h2>Unbranded Campaign</h2>
     </HeadlineBlock>
 
     <HeroBlock
-        :desktop="heroDiabeticDesktop"
-        :mobile="heroDiabeticMobile"
-        alt="Diabetic Pain"
-        className="full-width"
+      :desktop="heroDiabeticDesktop"
+      :mobile="heroDiabeticMobile"
+      alt="Diabetic Pain"
+      className="full-width"
     />
 
     <ContentBlock>
-        <p>I was tasked with developing an unbranded campaign for Diabetic Neuropathy Pain, which included a microsite, digital banners, and a social media strategy. The campaign zeroed in on one of the most common and debilitating symptoms of diabetes: foot pain. To visually represent the intensity of this pain, we crafted striking illustrations—one depicting a floor engulfed in flames and another showing the sensation of walking on spikes. To amplify the impact, we introduced subtle yet powerful animations: glowing embers flickered in the fire illustration, while sharp highlights brought the spikes to life. The result was a visually dynamic and emotionally resonant campaign that connected with audiences and highlighted the real challenges of living with diabetic neuropathy.</p>
+      <p>
+        I was tasked with developing an unbranded campaign for Diabetic
+        Neuropathy Pain, which included a microsite, digital banners, and a
+        social media strategy. The campaign zeroed in on one of the most common
+        and debilitating symptoms of diabetes: foot pain. To visually represent
+        the intensity of this pain, we crafted striking illustrations—one
+        depicting a floor engulfed in flames and another showing the sensation
+        of walking on spikes. To amplify the impact, we introduced subtle yet
+        powerful animations: glowing embers flickered in the fire illustration,
+        while sharp highlights brought the spikes to life. The result was a
+        visually dynamic and emotionally resonant campaign that connected with
+        audiences and highlighted the real challenges of living with diabetic
+        neuropathy.
+      </p>
     </ContentBlock>
 
     <ImageBlock
-        :desktop="diabeticBannersDesktop"
-        :mobile="diabeticBannersMobile"
-        alt=""
-        className="full-width"
-    />
-    
-    <ImageBlock
-        :desktop="diabeticScreensDesktop"
-        :mobile="diabeticScreensMobile"
-        alt=""
-        className="mw-1440 mb-xs"
+      :desktop="diabeticBannersDesktop"
+      :mobile="diabeticBannersMobile"
+      alt=""
+      className="full-width"
     />
 
     <ImageBlock
-        :desktop="diabeticEmailDesktop"
-        :mobile="diabeticEmailMobile"
-        alt=""
-        className="mw-1440"
+      :desktop="diabeticScreensDesktop"
+      :mobile="diabeticScreensMobile"
+      alt=""
+      className="mw-1440 mb-xs"
     />
 
+    <ImageBlock
+      :desktop="diabeticEmailDesktop"
+      :mobile="diabeticEmailMobile"
+      alt=""
+      className="mw-1440"
+    />
 
     <NextProject link="/work/harley-davidson" />
+  </div>
 </template>
 
 <style lang="scss" src="@/styles/_workSingleGrid.scss"></style>
