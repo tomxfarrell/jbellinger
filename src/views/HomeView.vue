@@ -528,7 +528,22 @@ onUnmounted(() => {
             </Slide>
 
             <template #addons>
-              <Navigation />
+              <Navigation>
+                <template #next>
+                  <img
+                    src="@/assets/img/icon-arrow-right-gradient.svg"
+                    alt="Next"
+                    class="nav-icon"
+                  />
+                </template>
+                <template #prev>
+                  <img
+                    src="@/assets/img/icon-arrow-right-gradient.svg"
+                    alt="Previous"
+                    class="nav-icon rotate-180"
+                  />
+                </template>
+              </Navigation>
             </template>
           </Carousel>
 
@@ -724,7 +739,7 @@ onUnmounted(() => {
   .carousel {
     position: relative;
     overflow: hidden;
-    padding: 5rem 2rem 0 2rem;
+    padding: 5rem 3rem 0 3rem;
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -875,12 +890,38 @@ onUnmounted(() => {
   }
 }
 
+:deep(.carousel__prev) {
+  inset-inline-start: 8px;
+}
+
+:deep(.carousel__next) {
+  inset-inline-end: 8px;
+}
+
 :deep(.carousel__next),
 :deep(.carousel__prev) {
   pointer-events: auto !important;
+  background-color: transparent !important;
+  border: none !important;
+
   @media (max-width: $breakpoint-sm) {
     top: auto;
     bottom: 41%;
+  }
+
+  .nav-icon {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+    &.rotate-180 {
+      transform: rotate(180deg);
+    }
+  }
+  &:hover .nav-icon {
+    transform: scale(1.1);
+    &.rotate-180 {
+      transform: rotate(180deg) scale(1.1);
+    }
   }
 }
 
