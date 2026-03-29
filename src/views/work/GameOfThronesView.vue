@@ -63,7 +63,7 @@ import gameOfThronesCast3Mobile from '@/assets/img/game-of-thrones-cast3-mobile-
     <ContentBlock>
       <p>
         HBO and Time Warner Cable partnered to put together a five-city,
-        international Game of Thrones exhibit before season 3 premiered.I
+        international Game of Thrones exhibit before season 3 premiered. I
         designed everything from the overall space layout to the exhibit
         graphics, exterior façade, signage, and more.
       </p>

@@ -4,44 +4,48 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
 </script>
 
 <template>
-    <footer id="footer">
-      <div class="container">
-        <img :src="logoFooterWhite" alt="JBellinger logo" class="logo-footer">
-        <div class="row">
-          <div class="col footer-info">
-            <ul>
-              <li><strong>Jason (JB) Bellinger</strong></li>
-              <li>VP, Associate Creative Director</li>
-              <li>Design + UI + Experiential</li>
-            </ul>
-          </div>
-          <div class="col footer-contact">
-            <ul>
-              <li><a href="tel:9174946885">917.494.6885</a></li>
-              <li><a href="mailto:jason@jbellinger.com">jason@jbellinger.com</a></li>
-              <li><span>New York/New Jersey</span></li>
-            </ul>
-          </div>
-          <div class="col footer-links">
-            <ul>
-              <li><a href="/work">Work</a></li>
-              <li><a href="#">About & Resume</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col social">
+  <footer id="footer">
+    <div class="container">
+      <img :src="logoFooterWhite" alt="JBellinger logo" class="logo-footer" />
+      <div class="row">
+        <div class="col footer-info">
+          <ul>
+            <li><strong>Jason (JB) Bellinger</strong></li>
+            <li>VP, Associate Creative Director</li>
+            <li>Design + UI + Experiential</li>
+          </ul>
+        </div>
+        <div class="col footer-contact">
+          <ul>
+            <li><a href="tel:9174946885">917.494.6885</a></li>
+            <li>
+              <a href="mailto:jason@jbellinger.com">jason@jbellinger.com</a>
+            </li>
+            <li><span>New York/New Jersey</span></li>
+          </ul>
+        </div>
+        <div class="col footer-links">
+          <ul>
+            <li><a href="/work">Work</a></li>
+            <li><a href="#">About & Resume</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col social">
           <span>Let's Connect!</span>
-            <a href="http://linkedin.com/in/jasonbellinger" target="_blank"><img :src="linkedIn" alt="Linkedin"></a>
-          </div>
+          <a href="http://linkedin.com/in/jasonbellinger" target="_blank"
+            ><img :src="linkedIn" alt="Linkedin"
+          /></a>
         </div>
       </div>
+    </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
 #footer {
   background-color: $black;
-  padding: 70px 0;
+  padding: 150px 0 70px 0;
   .logo-footer {
     width: 180px;
     margin-bottom: 20px;
@@ -61,7 +65,8 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
         border-right: 1px solid $white;
       }
     }
-    a, ul {
+    a,
+    ul {
       color: $white;
       font-size: 16px;
     }
@@ -81,13 +86,13 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
         &:nth-child(2),
         &:nth-child(3) {
           :before {
-            content: "";
+            content: '';
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
             display: inline-block;
             width: 19px;
-            margin-right: 1em;    
+            margin-right: 1em;
           }
         }
       }
@@ -114,7 +119,7 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
           display: flex;
           align-items: center;
           &:before {
-            content: "";
+            content: '';
             background-image: url(../assets/img/icon-pin.svg);
             background-size: 14px 19px;
             height: 19px;
@@ -125,7 +130,7 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
     .footer-links {
       a {
         font-weight: 700;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         &:hover {
           color: $babyBlue;
         }
@@ -148,9 +153,9 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
         margin-right: 18px;
       }
       a {
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         &:hover {
-          opacity: .75;
+          opacity: 0.75;
         }
       }
       img {
@@ -166,14 +171,14 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
       .col {
         padding: 28px 0;
         width: 100%;
-        border-bottom: 1px solid rgba($white, .3);
-      &:not(:last-child) {
-        border-right: 0;
+        border-bottom: 1px solid rgba($white, 0.3);
+        &:not(:last-child) {
+          border-right: 0;
+        }
+        &:last-child {
+          border-bottom: 0;
+        }
       }
-      &:last-child {
-        border-bottom: 0;
-      }
-    }
     }
   }
 }

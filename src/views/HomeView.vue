@@ -561,7 +561,7 @@ onUnmounted(() => {
             class="linkup"
             target="_blank"
           >
-            let's link up!
+            let’s link up!
             <img src="@/assets/img/icon-linkedin-white-txt-2x.png" alt="" />
           </a>
           <router-link to="/about" class="about-jason">

@@ -249,10 +249,10 @@ const aboutCarouselConfig = {
                     ><strong
                       >Strong expertise in concepting and ideation,</strong
                     >
-                    and leveraging Midjourney for rapid ideation, delivering
-                    unique and thoughtful art direction, smart design solutions,
-                    and strategic creative thinking to drive innovative user
-                    experiences.</span
+                    and leveraging AI Image Generators for rapid ideation,
+                    delivering unique and thoughtful art direction, smart design
+                    solutions, and strategic creative thinking to drive
+                    innovative user experiences.</span
                   >
                 </li>
                 <li>
