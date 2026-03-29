@@ -1,18 +1,18 @@
 <script setup>
-  import linkedIn from '@/assets/img/icon-linkedin-2x.png';
+import linkedIn from '@/assets/img/icon-linkedin-2x.png';
 
-  defineProps({
-    showModal: {
-      type: Boolean,
-      required: true
-    }
-  });
-  
-  const emit = defineEmits(['close'])
+defineProps({
+  showModal: {
+    type: Boolean,
+    required: true,
+  },
+});
 
-  function close() {
-    emit('close')
-  }
+const emit = defineEmits(['close']);
+
+function close() {
+  emit('close');
+}
 </script>
 
 <template>
@@ -21,10 +21,13 @@
       <div class="modal-content">
         <div class="row-contact">
           <div class="col-info">
-          
             <div class="img-row">
               <img src="@/assets/img/forest.gif" alt="" class="forest" />
-              <img src="@/assets/img/txt-say-hello.svg" alt="Say Hello"  class="say-hello"/>
+              <img
+                src="@/assets/img/txt-say-hello.svg"
+                alt="Say Hello"
+                class="say-hello"
+              />
             </div>
 
             <div class="contact-info">
@@ -33,12 +36,20 @@
                 <li>VP, Associate Creative Director</li>
                 <li>Graphic Design + UI + Experiential</li>
                 <li class="linkedin">
-                  <a href="https://www.linkedin.com/in/jasonbellinger/" target="_blank">
-                    <img :src="linkedIn" alt="Linkedin">
+                  <a
+                    href="https://www.linkedin.com/in/jasonbellinger/"
+                    target="_blank"
+                  >
+                    <img :src="linkedIn" alt="Linkedin" />
                   </a>
                 </li>
                 <li><strong>Mobile:</strong> 917.494.6885</li>
-                <li><strong>Email:</strong> <a href="mailto:jason@jbellinger.com">jason@jbellinger.com</a></li>
+                <li>
+                  <strong>Email:</strong>
+                  &nbsp;<a href="mailto:jason@jbellinger.com"
+                    >jason@jbellinger.com</a
+                  >
+                </li>
                 <li>New York/New Jersey</li>
               </ul>
             </div>
@@ -46,24 +57,52 @@
           <div class="col-form">
             <button @click="close" id="btn-close">
               <span>Close</span>
-              <img src="@/assets/img/icon-close-circle-white.svg" alt="Close" class="desktop-only" />
-              <img src="@/assets/img/icon-close-circle-gradient.svg" alt="Close" class="mobile-only" />
+              <img
+                src="@/assets/img/icon-close-circle-white.svg"
+                alt="Close"
+                class="desktop-only"
+              />
+              <img
+                src="@/assets/img/icon-close-circle-gradient.svg"
+                alt="Close"
+                class="mobile-only"
+              />
             </button>
             <form @submit.prevent="handleSubmit">
               <div class="form-group">
-                <input type="text" v-model="name" class="form-control" required />
+                <input
+                  type="text"
+                  v-model="name"
+                  class="form-control"
+                  required
+                />
                 <label for="name">First/Last Name*</label>
               </div>
               <div class="form-group">
-                <input type="email" v-model="email" class="form-control" required />
+                <input
+                  type="email"
+                  v-model="email"
+                  class="form-control"
+                  required
+                />
                 <label for="email">Email*</label>
               </div>
               <div class="form-group">
-                <input type="phone" v-model="phone" class="form-control" required />
+                <input
+                  type="phone"
+                  v-model="phone"
+                  class="form-control"
+                  required
+                />
                 <label for="phone">Phone*</label>
               </div>
               <div class="form-group">
-                <input type="subject" v-model="subject" class="form-control" required />
+                <input
+                  type="subject"
+                  v-model="subject"
+                  class="form-control"
+                  required
+                />
                 <label for="subject">Subject*</label>
               </div>
               <div class="form-group">
@@ -72,7 +111,6 @@
               </div>
               <button type="submit" id="btn-submit">Submit</button>
             </form>
-
           </div>
         </div>
       </div>
@@ -81,18 +119,36 @@
 </template>
 
 <style lang="scss" scoped>
-
 .modal-fade-enter-active,
 .modal-fade-leave-active {
-  transition: opacity .5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden !important; // Prevents layout snapping caused by scrollbar math
+
+  .col-info,
+  .col-form {
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
 }
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
+
+  .col-info {
+    transform: translateY(-100%);
+  }
+  .col-form {
+    transform: translateY(100%);
+  }
 }
 .modal-fade-enter-to,
 .modal-fade-leave-from {
   opacity: 1;
+  .col-info,
+  .col-form {
+    transform: translateY(0);
+  }
 }
 
 .modal-overlay {
@@ -128,7 +184,7 @@
   width: 100%;
   min-height: 0; // Important for flex children
   height: 100%;
-  justify-content: space-between; 
+  justify-content: space-between;
 
   .col-info {
     flex: 1;
@@ -186,7 +242,6 @@
         font-weight: 700;
       }
     }
-
   }
 
   .col-form {
@@ -222,7 +277,6 @@
         width: 100%;
       }
 
-
       label {
         position: absolute;
         left: 15px;
@@ -234,13 +288,13 @@
       }
 
       /* When input is focused or has content */
-      input:focus+label,
-      input:not(:placeholder-shown):valid+label,
-      textarea:focus+label,
-      textarea:not(:placeholder-shown):valid+label {
+      input:focus + label,
+      input:not(:placeholder-shown):valid + label,
+      textarea:focus + label,
+      textarea:not(:placeholder-shown):valid + label {
         top: 7px;
         font-size: 10px;
-        color: #FFFFFF80
+        color: #ffffff80;
       }
 
       #btn-submit {
@@ -248,7 +302,7 @@
         width: 139px;
         font-weight: 700;
         background-color: #fff;
-        color: #4241DC;
+        color: #4241dc;
         border: none;
         border-radius: 30px;
         cursor: pointer;
@@ -261,9 +315,9 @@
       cursor: pointer;
       display: block;
       margin: 36px 36px 36px auto;
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       &:hover {
-        transform: scale(.9);
+        transform: scale(0.9);
       }
 
       span {
@@ -281,51 +335,50 @@
   }
   @media (max-width: $breakpoint-sm) {
     grid-template-columns: 1fr;
-   
-      .col-info {
-         padding: 0 20px;
-        box-sizing: border-box;
-        margin-bottom: 30px;
 
-        .img-row {
-              grid-template-columns: 1fr;
-              position: relative;
-              z-index: 1;
-        }
-        .forest {
-          max-width: 100%;
-        }
-        .say-hello {
-          margin-top: -150px;
-          margin-left: 0;
+    .col-info {
+      padding: 0 20px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
 
-        }
-        .contact-info {
-          ul {
-            margin: 0;
-            text-align: left;
-            &:after {
-              display: none;
-            }
-          }
-        }
+      .img-row {
+        grid-template-columns: 1fr;
+        position: relative;
+        z-index: 1;
       }
-
-      .col-form {
-        padding: 40px 20px;
-        form {
-          .form-control, textarea {
-            box-sizing: border-box;
+      .forest {
+        max-width: 100%;
+      }
+      .say-hello {
+        margin-top: -150px;
+        margin-left: 0;
+      }
+      .contact-info {
+        ul {
+          margin: 0;
+          text-align: left;
+          &:after {
+            display: none;
           }
-        }
-        #btn-close {
-          position: absolute;
-          top: -20px;
-          right: -20px;
-          z-index: 10;
         }
       }
     }
-  
+
+    .col-form {
+      padding: 40px 20px;
+      form {
+        .form-control,
+        textarea {
+          box-sizing: border-box;
+        }
+      }
+      #btn-close {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        z-index: 10;
+      }
+    }
+  }
 }
 </style>
