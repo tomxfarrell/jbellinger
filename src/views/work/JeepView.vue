@@ -129,7 +129,7 @@ import jeepBleachersMobile from '@/assets/img/jeep-bleachers-mobile-2x.png';
       className="full-width"
     />
 
-    <NextProject link="/work/versace" />
+    <NextProject link="/work/magenta-therapy" />
   </div>
 </template>
 

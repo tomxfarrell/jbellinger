@@ -119,7 +119,7 @@ import bananaRepublicWoman3Mobile from '@/assets/img/banana-republic-woman3-mobi
       </div>
     </section>
 
-    <NextProject link="/work/jeep" />
+    <NextProject link="/work/peter-cooper-village" />
   </div>
 </template>
 

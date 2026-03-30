@@ -99,7 +99,7 @@ import harleyMonitorMobile from '@/assets/img/harley-monitor-mobile-2x.png';
       className="full-width"
     />
 
-    <NextProject link="/work/harley-davidson" />
+    <NextProject link="/work/the-whisky-x" />
   </div>
 </template>
 

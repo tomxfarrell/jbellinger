@@ -69,7 +69,7 @@ import peterCooperFloorMobile from '@/assets/img/peter-cooper-floor-mobile-2x.pn
       className="mw-1300 mb-20"
     />
 
-    <NextProject link="/work/banana-republic" />
+    <NextProject link="/work/jeep" />
   </div>
 </template>
 

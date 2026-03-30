@@ -258,7 +258,7 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
       </div>
     </section>
 
-    <NextProject link="/work/versace" />
+    <NextProject link="/work/harley-davidson" />
   </div>
 </template>
 

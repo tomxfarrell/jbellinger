@@ -115,7 +115,7 @@ import elitShotMobile from '@/assets/img/elit-shot-mobile-2x.png';
       className="mw-1300"
     />
 
-    <NextProject link="/work/harley-davidson" />
+    <NextProject link="/work/game-of-thrones" />
   </div>
 </template>
 

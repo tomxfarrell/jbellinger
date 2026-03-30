@@ -193,7 +193,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
               <div class="work-image">
                 <img
                   src="@/assets/img/thumb-diabetic-2x.png"
-                  alt="Magenta Therapy"
+                  alt="Diabetic Pain"
                 />
               </div>
               <h2 class="work-title">Diabetic Pain</h2>

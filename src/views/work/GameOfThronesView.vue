@@ -208,7 +208,7 @@ import gameOfThronesCast3Mobile from '@/assets/img/game-of-thrones-cast3-mobile-
       </div>
     </section>
 
-    <NextProject link="/work/diabetic-pain" />
+    <NextProject link="/work/dos-equis" />
   </div>
 </template>
 

@@ -62,7 +62,7 @@ import whiskyScreensMobile from '@/assets/img/whisky-screens-mobile-2x.png';
       className="mw-1440"
     />
 
-    <NextProject link="/work/jeep" />
+    <NextProject link="/work/budweiser" />
   </div>
 </template>
 

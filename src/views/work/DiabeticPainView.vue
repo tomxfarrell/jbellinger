@@ -70,7 +70,7 @@ import diabeticEmailMobile from '@/assets/img/diabetic-email-mobile-2x.png';
       className="mw-1440"
     />
 
-    <NextProject link="/work/harley-davidson" />
+    <NextProject link="/work/graphite-bio" />
   </div>
 </template>
 
