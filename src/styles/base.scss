@@ -1,42 +1,42 @@
-@use "@/styles/variables.scss" as *;
+@use '@/styles/variables.scss' as *;
 
 body {
-    font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 
-    // &::after {
-    //     content: "";
-    //     position: fixed;
-    //     bottom: 0;
-    //     left: 0;
-    //     right: 0;
-    //     height: 100px;
-    //     background: linear-gradient(to top, $white, rgba($white, 0));
-    //     pointer-events: none;
-    //     z-index: 90;
-    //     display: none;
+  // &::after {
+  //     content: "";
+  //     position: fixed;
+  //     bottom: 0;
+  //     left: 0;
+  //     right: 0;
+  //     height: 100px;
+  //     background: linear-gradient(to top, $white, rgba($white, 0));
+  //     pointer-events: none;
+  //     z-index: 90;
+  //     display: none;
 
-    //     @media (max-width: $breakpoint-sm) {
-    //         display: block;
-    //     }
-    // }
-  }
+  //     @media (max-width: $breakpoint-sm) {
+  //         display: block;
+  //     }
+  // }
+}
 
 .wrapper {
   margin-top: 70px;
 }
 
-  .container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  
-  .row {
-    display: flex;
-  }
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
-  /* utility classes */
+.row {
+  display: flex;
+}
+
+/* utility classes */
 
 .text-center {
   text-align: center;
@@ -57,20 +57,25 @@ body {
   }
 }
 
-.with-line {
-    position: relative;
-    margin-bottom: 20px;
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
-    &:after {
-        content: "";
-        width: 120px;
-        height: 4px;
-        background-color: $purple;
-        display: block;
-        left: 0;
-        right: 0;
-        margin: 30px auto 0 auto;
-    }
+.with-line {
+  position: relative;
+  margin-bottom: 20px;
+
+  &:after {
+    content: '';
+    width: 120px;
+    height: 4px;
+    background-color: $purple;
+    display: block;
+    left: 0;
+    right: 0;
+    margin: 30px auto 0 auto;
+  }
 }
 
 .desktop-only {

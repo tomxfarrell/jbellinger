@@ -132,14 +132,11 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
             </router-link>
           </div>
           <div class="work-block">
-            <router-link to="/work/ssetai">
+            <router-link to="/work/the-setai">
               <div class="work-image">
-                <img
-                  src="@/assets/img/thumb-thesetai-2x.png"
-                  alt="The Ssetai"
-                />
+                <img src="@/assets/img/thumb-thesetai-2x.png" alt="The Setai" />
               </div>
-              <h2 class="work-title">The Ssetai</h2>
+              <h2 class="work-title">The Setai</h2>
               <h3>Web & Digital Campaign</h3>
             </router-link>
           </div>

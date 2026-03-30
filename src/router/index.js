@@ -8,132 +8,128 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+      meta: { title: 'Portfolio' },
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
+      meta: { title: 'About' },
     },
     {
       path: '/work',
       name: 'work',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/WorkView.vue'),
+      meta: { title: 'Work' },
     },
     {
       path: '/work/elit-pristine-water-series',
       name: 'elit-pristine-water-series',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/ElitePristineView.vue'),
+      meta: { title: 'Elit Pristine Water Series' },
     },
     {
       path: '/work/harley-davidson',
       name: 'harley-davidson',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/HarleyDavidsonView.vue'),
+      meta: { title: 'Harley-Davidson' },
     },
     {
       path: '/work/versace',
       name: 'versace',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/VersaceView.vue'),
+      meta: { title: 'Versace' },
     },
     {
       path: '/work/budweiser',
       name: 'budweiser',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/BudweiserView.vue'),
+      meta: { title: 'Budweiser' },
     },
     {
       path: '/work/diabetic-pain',
       name: 'diabetic-pain',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/DiabeticPainView.vue'),
+      meta: { title: 'Diabetic Pain' },
     },
     {
       path: '/work/banana-republic',
       name: 'banana-republic',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/BananaRepublicView.vue'),
+      meta: { title: 'Banana Republic' },
     },
     {
       path: '/work/jeep',
       name: 'jeep',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/JeepView.vue'),
+      meta: { title: 'Jeep' },
     },
     {
       path: '/work/midjourney',
       name: 'midjourney',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/MidjourneyView.vue'),
+      meta: { title: 'Midjourney' },
     },
     {
       path: '/work/saphnelo',
       name: 'saphnelo',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/SaphneloView.vue'),
+      meta: { title: 'Saphnelo' },
     },
     {
       path: '/work/the-whisky-x',
       name: 'the-whisky-x',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/WhiskyXView.vue'),
+      meta: { title: 'The Whisky X' },
     },
     {
       path: '/work/peter-cooper-village',
       name: 'peter-cooper-village',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/PeterCooperVillageView.vue'),
+      meta: { title: 'Peter Cooper Village' },
     },
     {
       path: '/work/game-of-thrones',
       name: 'game-of-thrones',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/GameOfThronesView.vue'),
+      meta: { title: 'Game of Thrones' },
     },
     {
       path: '/work/graphite-bio',
       name: 'graphite-bio',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/work/GraphiteBioView.vue'),
+      meta: { title: 'Graphite Bio' },
+    },
+    {
+      path: '/work/centex-homes',
+      name: 'centex-homes',
+      component: () => import('../views/work/CentexHomesView.vue'),
+      meta: { title: 'Centex Homes' },
+    },
+    {
+      path: '/work/the-setai',
+      name: 'the-setai',
+      component: () => import('../views/work/TheSetaiView.vue'),
+      meta: { title: 'The Setai' },
+    },
+    {
+      path: '/work/stockeld-dreamery',
+      name: 'stockeld-dreamery',
+      component: () => import('../views/work/StockeldDreameryView.vue'),
+      meta: { title: 'Stockeld Dreamery' },
     },
   ],
   scrollBehavior(to, from, savedPosition) {
     // Always scroll to top
     return { top: 0 };
   },
+});
+
+router.beforeEach((to) => {
+  const baseTitle = 'Jason Bellinger';
+  document.title = to.meta.title
+    ? `${to.meta.title} | ${baseTitle}`
+    : baseTitle;
 });
 
 export default router;
