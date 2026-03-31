@@ -174,14 +174,14 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
             </router-link>
           </div>
           <div class="work-block">
-            <router-link to="/work/magenta-therapy">
+            <router-link to="/work/magenta-therapeutics">
               <div class="work-image">
                 <img
                   src="@/assets/img/thumb-magenta-2x.png"
-                  alt="Magenta Therapy"
+                  alt="Magenta Therapeutics"
                 />
               </div>
-              <h2 class="work-title">Magenta Therapy</h2>
+              <h2 class="work-title">Magenta Therapeutics</h2>
               <h3>Corporate Website</h3>
             </router-link>
           </div>

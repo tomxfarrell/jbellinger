@@ -750,6 +750,7 @@ const aboutCarouselConfig = {
 .testimonials {
   padding: 50px 0 100px 0;
   .container {
+    padding-left: 0;
     padding-right: 0;
     max-width: 100%;
   }

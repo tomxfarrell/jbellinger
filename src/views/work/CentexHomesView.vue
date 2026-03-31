@@ -8,7 +8,7 @@ import ImageInline from '@/components/ImageInline.vue';
 import NextProject from '@/components/NextProject.vue';
 
 import heroCentexHomesDesktop from '@/assets/img/hero-centex-homes-desktop-2x.png';
-import heroCentexHomesMobile from '@/assets/img/hero-centex-homes-mobile-2x.png';
+// import heroCentexHomesMobile from '@/assets/img/hero-centex-homes-mobile-2x.png';
 
 import gameOfThronesFacadeDesktop from '@/assets/img/game-of-thrones-exterior-facade-desktop-2x.png';
 import gameOfThronesFacadeMobile from '@/assets/img/game-of-thrones-exterior-facade-mobile-2x.png';
@@ -55,7 +55,7 @@ import gameOfThronesCast3Mobile from '@/assets/img/game-of-thrones-cast3-mobile-
 
     <HeroBlock
       :desktop="heroCentexHomesDesktop"
-      :mobile="heroCentexHomesMobile"
+      :mobile="heroCentexHomesDesktop"
       alt="Centex Homes"
       className="full-width"
     />

@@ -118,6 +118,12 @@ const router = createRouter({
       component: () => import('../views/work/StockeldDreameryView.vue'),
       meta: { title: 'Stockeld Dreamery' },
     },
+    {
+      path: '/work/magenta-therapeutics',
+      name: 'magenta-therapeutics',
+      component: () => import('../views/work/MagentaTherapeuticsView.vue'),
+      meta: { title: 'Magenta Therapeutics' },
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     // Always scroll to top
