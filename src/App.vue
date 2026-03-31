@@ -16,7 +16,7 @@ const onEnter = (el, done) => {
       y: 0,
       scale: 1,
       filter: 'blur(0px)',
-      duration: 0.8,
+      duration: 1,
       ease: 'expo.out',
       clearProps: 'all',
       onComplete: () => {
