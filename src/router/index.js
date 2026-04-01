@@ -126,8 +126,17 @@ const router = createRouter({
     },
   ],
   scrollBehavior(to, from, savedPosition) {
-    // Always scroll to top
-    return { top: 0 };
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    // Delay the scroll to top until the 'onLeave' animation (400ms) is finished.
+    // This prevents the page from "jumping" while the old content is still visible.
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ top: 0, left: 0 });
+      }, 400);
+    });
   },
 });
 
