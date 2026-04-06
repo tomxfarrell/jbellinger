@@ -817,6 +817,16 @@ const aboutCarouselConfig = {
     width: 9px;
     height: 9px;
   }
+
+  @media (max-width: $breakpoint-sm) {
+    .slide {
+      min-height: 370px;
+      max-width: 202px;
+    }
+    :deep(.carousel__slide) {
+      width: 202px;
+    }
+  }
 }
 
 .resume {

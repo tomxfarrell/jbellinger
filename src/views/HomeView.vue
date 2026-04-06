@@ -531,14 +531,14 @@ onUnmounted(() => {
               <Navigation>
                 <template #next>
                   <img
-                    src="@/assets/img/icon-arrow-right-gradient.svg"
+                    src="@/assets/img/icon-arrow-right-purple.svg"
                     alt="Next"
                     class="nav-icon"
                   />
                 </template>
                 <template #prev>
                   <img
-                    src="@/assets/img/icon-arrow-right-gradient.svg"
+                    src="@/assets/img/icon-arrow-right-purple.svg"
                     alt="Previous"
                     class="nav-icon rotate-180"
                   />
