@@ -19,7 +19,7 @@ import whiskyScreensMobile from '@/assets/img/whisky-screens-mobile-2x.png';
 <template>
   <div class="work-page">
     <HeadlineBlock>
-      <h1>The Whisky X</h1>
+      <h1>The WhiskyX</h1>
       <h2>Web & Digital Campaign</h2>
     </HeadlineBlock>
 

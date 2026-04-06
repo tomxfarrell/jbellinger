@@ -100,10 +100,10 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
               <div class="work-image">
                 <img
                   src="@/assets/img/thumb-the-whisky-x-2x.png"
-                  alt="The Whisky X"
+                  alt="The WhiskyX"
                 />
               </div>
-              <h2 class="work-title">The Whisky X</h2>
+              <h2 class="work-title">The WhiskyX</h2>
               <h3>Website</h3>
             </router-link>
           </div>
