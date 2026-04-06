@@ -745,6 +745,10 @@ onUnmounted(() => {
     align-items: center;
     justify-content: center;
 
+    @media (max-width: $breakpoint-sm) {
+      padding: 6rem 0 60px 0;
+    }
+
     .slide {
       @media (max-width: $breakpoint-sm) {
         display: flex;
@@ -753,7 +757,6 @@ onUnmounted(() => {
     }
     .slide-img {
       max-width: 70vw;
-      // border: 1px solid red;
       width: 100%;
       height: auto;
       object-fit: contain;
@@ -774,6 +777,14 @@ onUnmounted(() => {
     :deep(.carousel__track),
     :deep(.carousel__viewport) {
       touch-action: pan-y !important;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      .slide-img-game-of-thrones,
+      .slide-img-versace,
+      .slide-img-dos-equis {
+        max-width: 100%;
+      }
     }
   }
 
@@ -847,7 +858,6 @@ onUnmounted(() => {
       width: 100%;
       order: 1;
       margin-bottom: 30px;
-      // border: 1px solid red;
       height: 140px;
 
       text-align: right;
@@ -892,10 +902,17 @@ onUnmounted(() => {
 
 :deep(.carousel__prev) {
   inset-inline-start: 8px;
+  @media (max-width: $breakpoint-sm) {
+    left: 0;
+  }
 }
 
 :deep(.carousel__next) {
   inset-inline-end: 8px;
+  @media (max-width: $breakpoint-sm) {
+    left: 50px;
+    right: auto;
+  }
 }
 
 :deep(.carousel__next),
@@ -906,7 +923,8 @@ onUnmounted(() => {
 
   @media (max-width: $breakpoint-sm) {
     top: auto;
-    bottom: 41%;
+    bottom: 0;
+    transform: none;
   }
 
   .nav-icon {
@@ -915,12 +933,19 @@ onUnmounted(() => {
     transition: transform 0.3s ease;
     &.rotate-180 {
       transform: rotate(180deg);
+      transform-origin: center;
+    }
+    @media (max-width: $breakpoint-sm) {
+      width: 30px;
+      height: 30px;
     }
   }
-  &:hover .nav-icon {
-    transform: scale(1.1);
-    &.rotate-180 {
-      transform: rotate(180deg) scale(1.1);
+  @media (hover: hover) {
+    &:hover .nav-icon {
+      transform: scale(1.1);
+      &.rotate-180 {
+        transform: rotate(180deg) scale(1.1);
+      }
     }
   }
 }
