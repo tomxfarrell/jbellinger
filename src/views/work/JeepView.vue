@@ -1,4 +1,9 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 import HeroBlock from '@/components/HeroBlock.vue';
 import HeadlineBlock from '@/components/HeadlineBlock.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
@@ -32,6 +37,23 @@ import jeepRed2Mobile from '@/assets/img/jeep-red2-mobile-2x.png';
 
 import jeepBleachersDesktop from '@/assets/img/jeep-bleachers-desktop-2x.png';
 import jeepBleachersMobile from '@/assets/img/jeep-bleachers-mobile-2x.png';
+
+const overlayText = ref(null);
+
+onMounted(() => {
+  if (overlayText.value) {
+    gsap.from(overlayText.value, {
+      opacity: 0,
+      y: 70,
+      duration: 1,
+      ease: 'power1.in', // Changed ease to make it pop in
+      scrollTrigger: {
+        trigger: '.animate-jeep-red',
+        start: 'top 55%', // Triggers when the element has moved further into the top half of the screen
+      },
+    });
+  }
+});
 </script>
 
 <template>
@@ -68,8 +90,15 @@ import jeepBleachersMobile from '@/assets/img/jeep-bleachers-mobile-2x.png';
       :desktop="jeepRedDesktop"
       :mobile="jeepRedMobile"
       alt=""
-      className="full-width mb-lg"
-    />
+      className="full-width mb-lg animate-jeep-red"
+    >
+      <div class="overlay-content" ref="overlayText">
+        <h2>
+          FROM BLACKTOP<br />
+          TO PODIUM
+        </h2>
+      </div>
+    </ImageBlock>
 
     <ContentBlock>
       <h2 class="like-h3 with-line text-center">
@@ -134,3 +163,72 @@ import jeepBleachersMobile from '@/assets/img/jeep-bleachers-mobile-2x.png';
 </template>
 
 <style lang="scss" src="@/styles/_workSingleGrid.scss"></style>
+
+<style lang="scss" scoped>
+.animate-jeep-red {
+  padding-top: 160px; // Balanced padding to allow text to peek out without a massive gap
+  :deep(picture) {
+    position: relative;
+    z-index: 10;
+  }
+  .overlay-content {
+    position: absolute;
+    top: clamp(-238px, calc(-4.2vw - 7rem), -7rem);
+    /* 
+       Synced to Font Size Multiplier (1.4x) to lift the text higher:
+       5rem * 1.4 = 7rem | (3vw + 5rem) * 1.4 = 4.2vw + 7rem | 170px * 1.4 = 238px
+    */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 5;
+
+    h2 {
+      font-size: clamp(5rem, calc(3vw + 5rem), 170px);
+      font-weight: 700;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 870px) {
+    .overlay-content {
+      top: -16vw;
+      h2 {
+        font-size: 11vw;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding-top: 120px;
+    .overlay-content {
+      top: -14vw;
+    }
+  }
+
+  @media (max-width: $breakpoint-xs) {
+    .overlay-content {
+      top: -25vw;
+      h2 {
+        max-width: 350px;
+        text-align: center;
+        font-size: 56px;
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-xxs) {
+    .overlay-content {
+      top: -29vw;
+      h2 {
+        font-size: 52px;
+      }
+    }
+  }
+}
+</style>

@@ -27,11 +27,16 @@ defineProps({
         <source :srcset="desktop" media="(min-width: 768px)" />
         <img :src="`@/assets/img/${desktop}`" :alt="alt" />
       </picture>
+      <slot></slot>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
+.image-block .container {
+  position: relative; // Ensure children can be positioned absolutely
+}
+
 .mw-1300 {
   max-width: $breakpoint-mlg;
 }
