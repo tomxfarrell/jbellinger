@@ -41,18 +41,17 @@ import jeepBleachersMobile from '@/assets/img/jeep-bleachers-mobile-2x.png';
 const overlayText = ref(null);
 
 onMounted(() => {
-  if (overlayText.value) {
-    gsap.from(overlayText.value, {
-      opacity: 0,
-      y: 70,
-      duration: 1,
-      ease: 'power1.in', // Changed ease to make it pop in
-      scrollTrigger: {
-        trigger: '.animate-jeep-red',
-        start: 'top 55%', // Triggers when the element has moved further into the top half of the screen
-      },
-    });
-  }
+  // Dramatic parallax effect for the Jeep image
+  gsap.from('.animate-jeep-red img', {
+    y: -80,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.animate-jeep-red',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1,
+    },
+  });
 });
 </script>
 
@@ -166,14 +165,19 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .animate-jeep-red {
-  padding-top: 160px; // Balanced padding to allow text to peek out without a massive gap
+  // padding-top: 160px; // Balanced padding to allow text to peek out without a massive gap
   :deep(picture) {
     position: relative;
     z-index: 10;
+    img {
+      padding-top: 200px;
+    }
   }
   .overlay-content {
     position: absolute;
-    top: clamp(-238px, calc(-4.2vw - 7rem), -7rem);
+    // top: clamp(-238px, calc(-4.2vw - 7rem), -7rem);
+    top: 0;
+
     /* 
        Synced to Font Size Multiplier (1.4x) to lift the text higher:
        5rem * 1.4 = 7rem | (3vw + 5rem) * 1.4 = 4.2vw + 7rem | 170px * 1.4 = 238px
@@ -206,6 +210,12 @@ onMounted(() => {
     .overlay-content {
       top: -14vw;
     }
+
+    :deep(picture) {
+      img {
+        padding-top: 50px;
+      }
+    }
   }
 
   @media (max-width: $breakpoint-xs) {
@@ -218,6 +228,11 @@ onMounted(() => {
         br {
           display: none;
         }
+      }
+    }
+    :deep(picture) {
+      img {
+        padding-top: 40px;
       }
     }
   }
