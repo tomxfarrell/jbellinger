@@ -5,7 +5,7 @@ import heroAboutDesktop from '@/assets/img/hero-about-desktop-2x.png';
 import heroAboutMobile from '@/assets/img/hero-about-mobile-2x.png';
 
 import 'vue3-carousel/carousel.css';
-import { Carousel, Slide, Pagination } from 'vue3-carousel';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 import { ref } from 'vue';
 
@@ -22,7 +22,7 @@ function toggleItem(index) {
 const aboutCarouselConfig = {
   itemsToShow: 'auto',
   wrapAround: true,
-  autoplay: 5000,
+  autoplay: false,
   gap: 20,
   snapAlign: 'start',
   transition: 500,
@@ -154,6 +154,22 @@ const aboutCarouselConfig = {
             </div>
           </Slide>
           <template #addons>
+            <Navigation>
+              <template #next>
+                <img
+                  src="@/assets/img/icon-arrow-right-purple.svg"
+                  alt="Next"
+                  class="nav-icon"
+                />
+              </template>
+              <template #prev>
+                <img
+                  src="@/assets/img/icon-arrow-right-purple.svg"
+                  alt="Previous"
+                  class="nav-icon rotate-180"
+                />
+              </template>
+            </Navigation>
             <Pagination />
           </template>
         </Carousel>
@@ -816,6 +832,47 @@ const aboutCarouselConfig = {
     background-color: $purple;
     width: 9px;
     height: 9px;
+  }
+
+  :deep(.carousel__prev),
+  :deep(.carousel__next) {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    .nav-icon {
+      width: 30px;
+      height: 30px;
+      &.rotate-180 {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  :deep(.carousel__prev) {
+    left: calc(50% - 80px);
+    @media (max-width: $breakpoint-sm) {
+      left: calc(50% - 70px);
+    }
+  }
+
+  :deep(.carousel__next) {
+    right: calc(50% - 80px);
+    @media (max-width: $breakpoint-sm) {
+      right: calc(50% - 70px);
+    }
   }
 
   @media (max-width: $breakpoint-sm) {
