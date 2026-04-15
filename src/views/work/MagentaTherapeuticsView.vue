@@ -3,26 +3,16 @@ import HeroBlock from '@/components/HeroBlock.vue';
 import HeadlineBlock from '@/components/HeadlineBlock.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import ImageBlock from '@/components/ImageBlock.vue';
-import ImageInline from '@/components/ImageInline.vue';
 import NextProject from '@/components/NextProject.vue';
 
 import heroMagentaTherapeuticsDesktop from '@/assets/img/hero-magenta-therapeutics-desktop-2x.png';
 // import heroMagentaTherapeuticsMobile from '@/assets/img/hero-magenta-therapeutics-mobile-2x.png';
 
-import harleySignupDesktop from '@/assets/img/harley-signup-desktop-2x.png';
-import harleySignupMobile from '@/assets/img/harley-signup-mobile-2x.png';
+import magentaComputerDesktop from '@/assets/img/magenta-computer-desktop-2x.png';
+import magentaComputerMobile from '@/assets/img/magenta-computer-mobile-2x.png';
 
-import harleyPosterDesktop from '@/assets/img/harley-poster-desktop-2x.png';
-import harleyPosterMobile from '@/assets/img/harley-poster-mobile-2x.png';
-
-import harleyPullupDesktop from '@/assets/img/harley-pullup-desktop-2x.png';
-import harleyPullupMobile from '@/assets/img/harley-pullup-mobile-2x.png';
-
-import harleyBannerDesktop from '@/assets/img/harley-banner-desktop-2x.png';
-import harleyBannerMobile from '@/assets/img/harley-banner-mobile-2x.png';
-
-import harleyMonitorDesktop from '@/assets/img/harley-monitor-desktop-2x.png';
-import harleyMonitorMobile from '@/assets/img/harley-monitor-mobile-2x.png';
+import magentaScreensDesktop from '@/assets/img/magenta-screens-desktop-2x.png';
+import magentaScreensMobile from '@/assets/img/magenta-screens-mobile-2x.png';
 </script>
 
 <template>
@@ -54,42 +44,16 @@ import harleyMonitorMobile from '@/assets/img/harley-monitor-mobile-2x.png';
     </ContentBlock>
 
     <ImageBlock
-      :desktop="harleySignupDesktop"
-      :mobile="harleySignupMobile"
-      alt="Harley Signup"
+      :desktop="magentaComputerDesktop"
+      :mobile="magentaComputerMobile"
+      alt="Magenta Therapeutics"
       className="full-width"
     />
 
-    <section class="projects">
-      <div class="container">
-        <div class="work-single-grid">
-          <ImageInline
-            :desktop="harleyPosterDesktop"
-            :mobile="harleyPosterMobile"
-            alt=""
-            className="span-2 mb-20"
-          />
-          <ImageInline
-            :desktop="harleyPullupDesktop"
-            :mobile="harleyPullupMobile"
-            alt=""
-            className=""
-          />
-        </div>
-      </div>
-    </section>
-
     <ImageBlock
-      :desktop="harleyBannerDesktop"
-      :mobile="harleyBannerMobile"
-      alt="Harley Banner"
-      className="mw-1300 mb-20"
-    />
-
-    <ImageBlock
-      :desktop="harleyMonitorDesktop"
-      :mobile="harleyMonitorMobile"
-      alt="Harley Monitor"
+      :desktop="magentaScreensDesktop"
+      :mobile="magentaScreensMobile"
+      alt="Magenta"
       className="full-width"
     />
 
