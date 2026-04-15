@@ -16,6 +16,7 @@ const txtHero = ref(null);
 const bgGradient = ref(null);
 const projectSlider = ref(null);
 const scrollDown = ref(null);
+const scrollDownGradient = ref(null);
 const txtPassion = ref(null);
 const txtProjects = ref(null);
 
@@ -32,6 +33,7 @@ const carouselConfig = {
 let firstAnimationPlayed = false;
 let ctx; // gsap.context()
 let scrollLoop; // reference for the infinite loop tween
+let gradientScrollLoop; // loop for the first-view icon
 
 function fadeOutText() {
   if (!firstAnimationPlayed) return;
@@ -146,7 +148,8 @@ onMounted(() => {
         !txtHero.value ||
         !bgGradient.value ||
         !projectSlider.value ||
-        !scrollDown.value
+        !scrollDown.value ||
+        !scrollDownGradient.value
       )
         return;
 
@@ -156,12 +159,56 @@ onMounted(() => {
       const inspire = txtHero.value.querySelector('#inspire');
       const delight = txtHero.value.querySelector('#delight');
 
+      // Setup Gradient Scroll Down Icon (First View)
+      const gCircle = scrollDownGradient.value.querySelector(
+        '.scroll-down-gradient-circle'
+      );
+      const gArrow = scrollDownGradient.value.querySelector('.scroll-arrow');
+      gsap.set(gCircle, {
+        strokeDasharray: 151,
+        strokeDashoffset: 151,
+        rotate: -90,
+        scaleX: -1,
+        transformOrigin: 'center',
+      });
+      gsap.set(gArrow, { opacity: 0, y: 0 });
+
+      const playGradientAnimation = () => {
+        gsap.to(gCircle, {
+          strokeDashoffset: 0,
+          duration: 1.5,
+          ease: 'power2.out',
+        });
+        gsap.to(
+          gArrow,
+          {
+            opacity: 1,
+            duration: 1.5,
+            onComplete: () => {
+              if (!gradientScrollLoop) {
+                gradientScrollLoop = gsap.to(gArrow, {
+                  y: 5,
+                  duration: 0.8,
+                  yoyo: true,
+                  repeat: -1,
+                  ease: 'sine.inOut',
+                });
+              } else {
+                gradientScrollLoop.play();
+              }
+            },
+          },
+          '<'
+        );
+      };
+
       gsap.from([engage, inspire, delight], {
         y: 100, // Slide up from 100px below
         opacity: 0,
         duration: 1.5,
         stagger: 0.2, // Stagger start times by 0.2s
         ease: 'power3.out',
+        onComplete: playGradientAnimation,
         clearProps: 'transform,opacity',
       });
 
@@ -244,6 +291,7 @@ onMounted(() => {
           opacity: 0,
           ease: 'power1.inOut',
         })
+        .to(scrollDownGradient.value, { opacity: 0, duration: 0.1 }, 0)
         .from(
           bgGradient.value,
           { opacity: 0, duration: 0.25, ease: 'power1.in' },
@@ -283,6 +331,7 @@ onUnmounted(() => {
   ctx?.revert();
   firstAnimationPlayed = false;
   if (scrollLoop) scrollLoop.kill();
+  if (gradientScrollLoop) gradientScrollLoop.kill();
 
   // Remove all GSAP inline styles from *everything* in this component
   if (homeContainer.value) {
@@ -337,6 +386,44 @@ onUnmounted(() => {
         </mask>
 
         <rect width="100%" height="100%" id="mask-bg"></rect>
+      </svg>
+
+      <svg
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="scroll-down-gradient"
+        ref="scrollDownGradient"
+      >
+        <circle
+          cx="25"
+          cy="25"
+          r="24"
+          stroke="url(#paint0_linear_388_7975)"
+          stroke-width="2"
+          class="scroll-down-gradient-circle"
+        />
+        <path
+          d="M19.2987 21.3926L24.5067 26.6007L29.7148 21.3926C30.2383 20.8691 31.0839 20.8691 31.6074 21.3926C32.1309 21.9161 32.1309 22.7617 31.6074 23.2852L25.4463 29.4463C24.9228 29.9698 24.0772 29.9698 23.5537 29.4463L17.3926 23.2852C16.8691 22.7617 16.8691 21.9161 17.3926 21.3926C17.9161 20.8826 18.7752 20.8691 19.2987 21.3926Z"
+          fill="white"
+          class="scroll-arrow"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_388_7975"
+            x1="8.5063e-07"
+            y1="51.2228"
+            x2="55.6854"
+            y2="1.65686"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#0A09B2" />
+            <stop offset="0.5" stop-color="#4186F1" />
+            <stop offset="1" stop-color="#AC09EC" />
+          </linearGradient>
+        </defs>
       </svg>
 
       <div class="bg-gradient" ref="bgGradient">
@@ -598,7 +685,7 @@ onUnmounted(() => {
 .hero-home {
   background-color: $black;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height for better mobile support */
   position: relative;
   overflow: hidden;
   .txt-hero {
@@ -647,6 +734,16 @@ onUnmounted(() => {
     @media (max-width: $breakpoint-sm) {
       left: auto;
       right: 0;
+    }
+  }
+
+  .scroll-down-gradient {
+    position: absolute;
+    right: 3vw;
+    bottom: 6rem;
+    @media (max-width: $breakpoint-sm) {
+      right: 30px;
+      bottom: 30px;
     }
   }
 
@@ -715,10 +812,10 @@ onUnmounted(() => {
   .scroll-down {
     position: absolute;
     right: 3vw;
-    bottom: 4vw;
+    bottom: 4rem;
     @media (max-width: $breakpoint-sm) {
-      right: 20px;
-      bottom: -184px;
+      right: 30px;
+      bottom: 30px;
     }
   }
 }
