@@ -1,9 +1,11 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import HeroBlock from '@/components/HeroBlock.vue';
 import HeadlineBlock from '@/components/HeadlineBlock.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import ImageBlock from '@/components/ImageBlock.vue';
-import ImageInline from '@/components/ImageInline.vue';
 import NextProject from '@/components/NextProject.vue';
 
 import heroWhiskyXDesktop from '@/assets/img/hero-whisky-x-desktop-2x.png';
@@ -14,6 +16,55 @@ import whiskyBannersMobile from '@/assets/img/whisky-banners-mobile-2x.png';
 
 import whiskyScreensDesktop from '@/assets/img/whisky-screens-desktop-2x.png';
 import whiskyScreensMobile from '@/assets/img/whisky-screens-mobile-2x.png';
+
+import whiskyMagazineDesktop from '@/assets/img/whisky-magazine-desktop-2x.png';
+import whiskyMagazineMobile from '@/assets/img/whisky-magazine-mobile-2x.png';
+
+import whiskyCarDesktop from '@/assets/img/whisky-car-desktop-2x.png';
+import whiskyCarMobile from '@/assets/img/whisky-car-mobile-2x.png';
+
+import whiskyAlabamaDesktop from '@/assets/img/whisky-alabama-desktop-2x.png';
+
+import whiskyBottleDesktop from '@/assets/img/whisky-bottle-desktop-2x.png';
+import whiskyBottleAlabamaTextDesktop from '@/assets/img/whisky-alabama-text-desktop-2x.png';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const whiskyAlabamaTextRef = ref(null);
+let ctx; // For GSAP context cleanup
+
+onMounted(() => {
+  const mm = gsap.matchMedia();
+  ctx = mm;
+
+  mm.add(
+    {
+      isDesktop: '(min-width: 768px)',
+      isMobile: '(max-width: 767px)',
+    },
+    (context) => {
+      const { isMobile } = context.conditions;
+
+      if (whiskyAlabamaTextRef.value) {
+        gsap.from(whiskyAlabamaTextRef.value, {
+          x: isMobile ? 100 : 300,
+          opacity: 0, // Start invisible
+          ease: 'none', // Linear movement for scrub
+          scrollTrigger: {
+            trigger: '.whisky-bottle-animation', // Trigger animation when this block enters view
+            start: 'top bottom', // Start when the top of the trigger hits the bottom of the viewport
+            end: 'bottom center',
+            scrub: true, // Link animation to scroll position
+          },
+        });
+      }
+    }
+  );
+});
+
+onUnmounted(() => {
+  ctx?.revert(); // Clean up GSAP context
+});
 </script>
 
 <template>
@@ -62,8 +113,83 @@ import whiskyScreensMobile from '@/assets/img/whisky-screens-mobile-2x.png';
       className="mw-1440"
     />
 
+    <ImageBlock
+      :desktop="whiskyAlabamaDesktop"
+      :mobile="whiskyAlabamaDesktop"
+      alt=""
+      className="mw-1440 whisky-bottle-animation"
+    >
+      <img
+        :src="whiskyBottleAlabamaTextDesktop"
+        alt="ALABAMA"
+        class="whisky-alabama-text"
+        ref="whiskyAlabamaTextRef"
+      />
+      <img
+        :src="whiskyBottleDesktop"
+        alt="Whisky Bottle"
+        class="whisky-bottle"
+      />
+    </ImageBlock>
+
+    <ImageBlock
+      :desktop="whiskyMagazineDesktop"
+      :mobile="whiskyMagazineMobile"
+      alt="Whisky Magazine"
+      className="full-width"
+    />
+
+    <ImageBlock
+      :desktop="whiskyCarDesktop"
+      :mobile="whiskyCarMobile"
+      alt="Whisky Car"
+      className="mw-1300"
+    />
+
     <NextProject link="/work/budweiser" />
   </div>
 </template>
 
 <style lang="scss" src="@/styles/_workSingleGrid.scss"></style>
+
+<style lang="scss" scoped>
+.whisky-bottle-animation {
+  position: relative;
+  overflow: hidden;
+}
+.whisky-alabama-text {
+  position: absolute;
+  width: clamp(300px, 50vw, 952px);
+  left: 0;
+  right: -500px;
+  bottom: clamp(200px, 60vw, 864px);
+  margin: 0 auto;
+  z-index: 1;
+}
+.whisky-bottle {
+  width: clamp(100px, 15vw, 200px);
+  position: absolute;
+  left: 0;
+  right: -500px;
+  bottom: clamp(150px, 45vw, 600px);
+  margin: 0 auto;
+  z-index: 2;
+}
+
+@media (max-width: $breakpoint-sm) {
+  .whisky-bottle {
+    width: clamp(80px, 12vw, 160px);
+    right: -200px;
+    bottom: clamp(
+      150px,
+      48vw,
+      500px
+    ); /* Adjusted to bring the bottle up higher */
+  }
+  .whisky-alabama-text {
+    width: clamp(200px, 40vw, 500px);
+    right: -100px;
+    bottom: clamp(180px, 70vw, 600px);
+  }
+}
+</style>
