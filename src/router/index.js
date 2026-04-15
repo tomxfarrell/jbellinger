@@ -124,6 +124,12 @@ const router = createRouter({
       component: () => import('../views/work/MagentaTherapeuticsView.vue'),
       meta: { title: 'Magenta Therapeutics' },
     },
+    {
+      path: '/work/dos-equis',
+      name: 'dos-equis',
+      component: () => import('../views/work/DosEquisView.vue'),
+      meta: { title: 'Dos Equis' },
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

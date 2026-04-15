@@ -1,6 +1,10 @@
 <script setup>
+import { ref } from 'vue';
 import logoFooterWhite from '@/assets/img/logo-footer-white.svg';
 import linkedIn from '@/assets/img/icon-linkedin-2x.png';
+import ModalContact from '@/components/ModalContact.vue';
+
+const showModal = ref(false);
 </script>
 
 <template>
@@ -26,9 +30,11 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
         </div>
         <div class="col footer-links">
           <ul>
-            <li><a href="/work">Work</a></li>
-            <li><a href="#">About & Resume</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><router-link to="/work">Work</router-link></li>
+            <li><router-link to="/about">About & Resume</router-link></li>
+            <li>
+              <a href="#" @click.prevent="showModal = true">Contact</a>
+            </li>
           </ul>
         </div>
         <div class="col social">
@@ -39,6 +45,8 @@ import linkedIn from '@/assets/img/icon-linkedin-2x.png';
         </div>
       </div>
     </div>
+
+    <ModalContact :showModal="showModal" @close="showModal = false" />
   </footer>
 </template>
 

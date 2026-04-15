@@ -38,7 +38,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
           </div>
           <div class="work-block-double">
             <div class="work-block">
-              <router-link to="/work/dos-equiis">
+              <router-link to="/work/dos-equis">
                 <div class="work-image">
                   <img
                     src="@/assets/img/thumb-dosequis-2x.png"
