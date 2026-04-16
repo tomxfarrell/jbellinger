@@ -61,7 +61,7 @@ import budweiserCapMobile from '@/assets/img/budweiser-cap-mobile-2x.png';
       className="mw-1300"
     />
 
-    <NextProject link="/work/stockeld-dreamery" />
+    <NextProject link="/work/centex-homes" />
   </div>
 </template>
 

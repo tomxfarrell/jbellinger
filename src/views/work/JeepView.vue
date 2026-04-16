@@ -157,7 +157,7 @@ onMounted(() => {
       className="full-width"
     />
 
-    <NextProject link="/work/magenta-therapy" />
+    <NextProject link="/work/magenta-therapeutics" />
   </div>
 </template>
 

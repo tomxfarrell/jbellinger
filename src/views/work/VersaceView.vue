@@ -92,7 +92,7 @@ import versaceEmailPhoneMobile from '@/assets/img/versace-email-phone-mobile-2x.
       className="mw-1300"
     />
 
-    <NextProject link="/work/stockeld" />
+    <NextProject link="/work/stockeld-dreamery" />
   </div>
 </template>
 
