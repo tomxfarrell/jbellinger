@@ -64,8 +64,8 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
 <template>
   <div class="work-page">
     <HeadlineBlock>
-      <h1>Midjourney</h1>
-      <h2>AI-Driven Creative Showcase</h2>
+      <h1>AI-Driven Creative</h1>
+      <h2>Conceptual Ideas, Visualized</h2>
     </HeadlineBlock>
 
     <HeroBlock
@@ -77,28 +77,27 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
 
     <ContentBlock>
       <p>
-        As a digital artist, I’m on a mission to explore and redefine the
-        boundaries of creativity. The intersection of technology and artistry
-        has always captivated me, and with MidJourney, Runway and Luma, I’ve
-        found the perfect tools to bring my imagination to life. Every creation
-        is an experiment—a harmonious blend of code and creativity, where I let
-        the AI guide me as much as I guide it. The result is always a
-        mesmerizing, surreal visual experience, pushing the limits of what art
-        can be.
+        As a digital artist, I’m driven to explore and redefine the boundaries
+        of creativity. Technology has opened up entirely new ways to bring ideas
+        to life, from image generation to motion and video, unlocking a creative
+        process that’s constantly evolving. Every piece is an experiment, a
+        balance between intention and execution, where I shape and refine ideas
+        through an iterative process. The result is a body of work that feels
+        immersive, surreal, and in motion, pushing beyond what traditional
+        mediums can achieve.
       </p>
       <p>
         <strong
-          >Each piece I create is more than just an image; it’s a journey of
-          exploration, where I venture into new realms of design, abstraction,
-          and surrealism.</strong
+          >Each creation is more than a static image, it’s part of a broader
+          exploration into design, abstraction, and visual storytelling across
+          both still and moving forms.</strong
         >
-        MidJourney has become my personal playground, allowing me to blend
-        elements in ways that traditional mediums could never capture. It’s not
-        just about crafting beautiful visuals—it’s about embracing the limitless
-        possibilities that come from combining human creativity with
-        cutting-edge AI technology. Join me in this exciting exploration, where
-        every work is a glimpse into the future of art, a space where
-        imagination meets innovation.
+        This space has become a playground for testing ideas, blending
+        disciplines, and expanding what’s possible, from concept visuals to
+        dynamic, cinematic moments. It’s not just about crafting imagery; it’s
+        about shaping ideas in new ways and exploring how they can live, evolve,
+        and move. A glimpse into what’s next, where imagination continues to
+        expand alongside technology.
       </p>
     </ContentBlock>
 

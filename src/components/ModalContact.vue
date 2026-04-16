@@ -65,10 +65,8 @@ const handleSubmit = () => {
                 </li>
                 <li><strong>Mobile:</strong> 917.494.6885</li>
                 <li>
-                  <strong>Email:</strong>
-                  &nbsp;<a href="mailto:jason@jbellinger.com"
-                    >jason@jbellinger.com</a
-                  >
+                  <strong>Email:&nbsp;</strong>
+                  <a href="mailto:jason@jbellinger.com">jason@jbellinger.com</a>
                 </li>
                 <li>New York/New Jersey</li>
               </ul>

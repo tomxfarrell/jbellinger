@@ -68,12 +68,12 @@ import gameOfThronesCast3Mobile from '@/assets/img/game-of-thrones-cast3-mobile-
         graphics, exterior façade, signage, and more.
       </p>
       <p>
-        Before VR truly became a thing, we created an unforgettable immersive
-        experience where guests could step into a rickety 4D elevator that took
-        them to the top of the Wall. It was sensory overload — cold winds
-        blowing, the ominous creaking of the elevator, and, of course, the
-        Oculus VR headset that transported them into the heart of Westeros as
-        they ascended the wall to dizzying heights.
+        We created an unforgettable immersive experience where guests stepped
+        into a rickety 4D elevator that carried them to the top of The Wall. It
+        was full sensory immersion, cold winds blasting, the ominous creaking of
+        the lift, and an Oculus VR headset transporting them into the heart of
+        Westeros as they climbed to dizzying heights.
+        <strong>All of this before VR truly became a thing. </strong>
       </p>
       <p>
         The NYC results? Over 5,000 fans wrapped around 57th Street every day

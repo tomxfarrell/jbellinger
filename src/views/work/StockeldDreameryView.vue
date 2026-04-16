@@ -46,12 +46,12 @@ import stockeldAdMobile from '@/assets/img/stockeld-ad-mobile-2x.png';
         that represents Stockeld Dreamery Cream Cheese across multiple
         platforms. Whether it’s designing eye-catching point-of-sale materials
         and signage for various accounts, creating engaging social media posts,
-        or developing informative brochures and sales sheets, my mission is to
+        or developing informative brochures and sales sheets, my mission was to
         ensure that Stockeld Dreamery stands out in the competitive marketplace.
-        Through compelling design, I aim to not only capture the essence of the
-        brand but also convey its unique qualities to our customers, partners,
-        and audience, helping Stockeld Dreamery leave a lasting impression in
-        the minds of consumers.
+        Through compelling design, I aimed to not only capture the essence of
+        the brand but also convey its unique qualities to their customers,
+        partners, and audience, helping Stockeld Dreamery leave a lasting
+        impression in the minds of consumers.
       </p>
     </ContentBlock>
 

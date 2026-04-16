@@ -41,21 +41,24 @@ import harleyMonitorMobile from '@/assets/img/harley-monitor-mobile-2x.png';
 
     <ContentBlock>
       <p>
-        Get ready to rev your engines and feel the wind in your hair - the
-        Harley-Davidson Motorcycle Boot Camp is here! Geared towards guys who
-        are eager to dive into the world of Harley, this exciting program was an
-        introduction to riding and all things Harley. But how do you get the
-        attention of these bold individuals and entice them to sign up for the
-        Boot Camp? With designs that scream bad-ass, of course.
+        Get ready to rev your engines and feel the wind in your hair. The
+        Harley-Davidson Motorcycle Boot Camp was built for guys ready to step
+        into the world of Harley. For me, this one was personal. I grew up
+        around it. My dad is a tatted-up Harley rider with ape hangers and all,
+        the kind of presence you feel before you even hear the engine. When he
+        saw the work, he lit up in excitement, proud, and bragging to all his
+        friends. That moment said everything. This wasn’t about selling a
+        program, it was about capturing a mindset.
       </p>
       <p>
-        As the designer behind the Boot Camp’s marketing materials, I knew that
-        we needed designs that would appeal to the rugged and adventurous side
-        of our target audience. From the logo to the banners, posters, and
-        online ads, every element was carefully crafted to showcase the thrill
-        and excitement of riding a Harley-Davidson motorcycle. With these
-        eye-catching designs, we were able to effectively drive traffic to the
-        Boot Camp and get guys revved up to hit the road on their own Harley.
+        As the designer behind the Boot Camp’s marketing materials, I set out to
+        channel that same rugged, unapologetic energy into every piece. From the
+        logo to banners, posters, and digital ads, each element was crafted to
+        reflect the raw thrill of the ride and the culture that comes with it.
+        The result was a bold, cohesive visual system that didn’t just get
+        attention, it resonated. It spoke directly to the kind of guy who's been
+        thinking about it for years and just needed the right moment to finally
+        twist the throttle.
       </p>
     </ContentBlock>
 

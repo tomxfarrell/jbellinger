@@ -202,8 +202,6 @@ onMounted(() => {
         );
       };
 
-      const isMobile = window.innerWidth <= 767;
-
       gsap.from([engage, inspire, delight], {
         y: 100, // Slide up from 100px below
         opacity: 0,
@@ -219,21 +217,16 @@ onMounted(() => {
           id: 'hero-home-pin',
           trigger: hero.value,
           start: 'top +=50',
-          end: isMobile
-            ? `+=${hero.value.clientHeight * 0.75}`
-            : `+=${hero.value.clientHeight}`,
-          scrub: isMobile ? 2 : true, // Smoothing: animation takes 2s to catch up to scroll position on mobile
+          end: `+=${hero.value.clientHeight}`,
+          scrub: true,
           pin: true,
           immediateRender: false,
           anticipatePin: true,
-          snap: isMobile
-            ? null
-            : {
-                // Disable snapping on mobile to prevent "snapping" to end states
-                snapTo: 0.5,
-                duration: { min: 0.1, max: 0.3 },
-                ease: 'power1.inOut',
-              },
+          snap: {
+            snapTo: 0.5,
+            duration: { min: 0.1, max: 0.3 },
+            ease: 'power1.inOut',
+          },
         },
       });
 
@@ -294,23 +287,19 @@ onMounted(() => {
         .to(txtHero.value, {
           scale: 75,
           rotate: '-1deg',
-          duration: isMobile ? 0.6 : 0.15, // Take up 60% of the scroll track for the zoom on mobile
+          duration: 0.15,
           opacity: 0,
           ease: 'power1.inOut',
         })
-        .to(
-          scrollDownGradient.value,
-          { opacity: 0, duration: isMobile ? 0.5 : 0.1 },
-          0
-        )
+        .to(scrollDownGradient.value, { opacity: 0, duration: 0.1 }, 0)
         .from(
           bgGradient.value,
-          { opacity: 0, duration: isMobile ? 0.4 : 0.25, ease: 'power1.in' },
+          { opacity: 0, duration: 0.25, ease: 'power1.in' },
           '>'
         )
         .to(
           txtHero.value,
-          { opacity: 0, duration: isMobile ? 0.1 : 0.15, ease: 'power1.inOut' },
+          { opacity: 0, duration: 0.15, ease: 'power1.inOut' },
           '>'
         )
         .to(txtHero.value, { display: 'none', scale: 1 }, '>')
@@ -517,8 +506,8 @@ onUnmounted(() => {
                     />
                   </div>
                   <p>
-                    Handcrafted leather, die cuts, debossing—this Pristine Water
-                    brochure has all the bells & whistles.
+                    Handcrafted leather, die cuts, debossing—this Elit Pristine
+                    Water Series brochure has all the bells & whistles.
                     <strong>Oh, and it won a Graphic Design USA Award!</strong>
                   </p>
                 </div>
@@ -606,7 +595,7 @@ onUnmounted(() => {
                     />
                   </div>
                   <p>
-                    A national Masquerade Parade,a custom float, and one big
+                    A national Masquerade Parade, a custom float, and one big
                     Reggie Award—stay thirsty for greatness.
                   </p>
                 </div>

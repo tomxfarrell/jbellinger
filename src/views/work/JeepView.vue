@@ -43,7 +43,7 @@ const overlayText = ref(null);
 onMounted(() => {
   // Dramatic parallax effect for the Jeep image
   gsap.from('.animate-jeep-red img', {
-    y: -80,
+    y: 80,
     ease: 'none',
     scrollTrigger: {
       trigger: '.animate-jeep-red',
@@ -170,7 +170,8 @@ onMounted(() => {
     position: relative;
     z-index: 10;
     img {
-      padding-top: 200px;
+      // padding-top: 200px;
+      padding-top: 120px;
     }
   }
   .overlay-content {
@@ -198,7 +199,6 @@ onMounted(() => {
 
   @media (max-width: 870px) {
     .overlay-content {
-      top: -16vw;
       h2 {
         font-size: 11vw;
       }
@@ -206,10 +206,7 @@ onMounted(() => {
   }
 
   @media (max-width: $breakpoint-sm) {
-    padding-top: 120px;
-    .overlay-content {
-      top: -14vw;
-    }
+    padding-top: 50px;
 
     :deep(picture) {
       img {
@@ -219,8 +216,9 @@ onMounted(() => {
   }
 
   @media (max-width: $breakpoint-xs) {
+    padding-top: 80px;
     .overlay-content {
-      top: -25vw;
+      top: -14vw;
       h2 {
         max-width: 350px;
         text-align: center;
@@ -232,14 +230,13 @@ onMounted(() => {
     }
     :deep(picture) {
       img {
-        padding-top: 40px;
+        padding-top: 0;
       }
     }
   }
 
   @media (max-width: $breakpoint-xxs) {
     .overlay-content {
-      top: -29vw;
       h2 {
         font-size: 52px;
       }

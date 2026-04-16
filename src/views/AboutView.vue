@@ -9,14 +9,12 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 import { ref } from 'vue';
 
-const activeIndex = ref(null);
+const activeItems = ref([]);
 
 function toggleItem(index) {
-  if (activeIndex.value === index) {
-    activeIndex.value = null;
-  } else {
-    activeIndex.value = index;
-  }
+  const pos = activeItems.value.indexOf(index);
+  if (pos === -1) activeItems.value.push(index);
+  else activeItems.value.splice(pos, 1);
 }
 
 const aboutCarouselConfig = {
@@ -185,15 +183,18 @@ const aboutCarouselConfig = {
           <!-- Key Highlights -->
           <div
             class="accordion-item key-highlights"
-            :class="{ active: activeIndex === 0 }"
+            :class="{ active: activeItems.includes(0) }"
           >
             <div class="accordion-title" @click="toggleItem(0)">
               <span>Key<br />Highlights</span>
-              <span class="arrow" :class="{ open: activeIndex === 0 }">
+              <span class="arrow" :class="{ open: activeItems.includes(0) }">
                 <img src="@/assets/img/icon-plus.svg" />
               </span>
             </div>
-            <div v-if="activeIndex === 0" class="accordion-content">
+            <div
+              class="accordion-content"
+              :class="{ show: activeItems.includes(0) }"
+            >
               <ul>
                 <li>
                   <span
@@ -215,7 +216,7 @@ const aboutCarouselConfig = {
                       Team Impact Awards,</strong
                     >
                     Beverage Dynamics Advertising & Promotion Award, Reggie
-                    Award, and GD USA .</span
+                    Award, and GD USA</span
                   >
                 </li>
                 <li>
@@ -225,13 +226,13 @@ const aboutCarouselConfig = {
                       excellence,</strong
                     >
                     frequently requested by colleagues and regularly invited to
-                    collaborate on high-profile brands across the agency.</span
+                    collaborate on high-profile brands across the agency</span
                   >
                 </li>
                 <li>
                   <span
                     >Accolades have appeared in the New York Times, The Real
-                    Deal magazine, Adrants.com and Curbed.com.</span
+                    Deal magazine, Adrants.com and Curbed.com</span
                   >
                 </li>
               </ul>
@@ -241,15 +242,18 @@ const aboutCarouselConfig = {
           <!-- Specialized Skills -->
           <div
             class="accordion-item specialized-skills"
-            :class="{ active: activeIndex === 1 }"
+            :class="{ active: activeItems.includes(1) }"
           >
             <div class="accordion-title" @click="toggleItem(1)">
               <span>Specialized<br />Skills</span>
-              <span class="arrow" :class="{ open: activeIndex === 1 }">
+              <span class="arrow" :class="{ open: activeItems.includes(1) }">
                 <img src="@/assets/img/icon-plus.svg" />
               </span>
             </div>
-            <div v-if="activeIndex === 1" class="accordion-content">
+            <div
+              class="accordion-content"
+              :class="{ show: activeItems.includes(1) }"
+            >
               <ul>
                 <li>
                   <span
@@ -268,7 +272,7 @@ const aboutCarouselConfig = {
                     and leveraging AI Image Generators for rapid ideation,
                     delivering unique and thoughtful art direction, smart design
                     solutions, and strategic creative thinking to drive
-                    innovative user experiences.</span
+                    innovative user experiences</span
                   >
                 </li>
                 <li>
@@ -276,7 +280,7 @@ const aboutCarouselConfig = {
                     >Demonstrated mastery of a variety of creative tools,
                     including
                     <strong>Midjourney, Figma, Prototyping,</strong> XD, Sketch,
-                    Photoshop, Illustrator, and InDesign.</span
+                    Photoshop, Illustrator, and InDesign</span
                   >
                 </li>
                 <li>
@@ -286,7 +290,7 @@ const aboutCarouselConfig = {
                     >
                     including spirits, real estate, automotive, beauty, consumer
                     products, healthcare and pharmaceuticals, spanning multiple
-                    media platforms.</span
+                    media platforms</span
                   >
                 </li>
                 <li>
@@ -297,7 +301,7 @@ const aboutCarouselConfig = {
                     >
                     including experiential design and rendering mockups, to
                     create innovative, high-impact designs across various
-                    mediums.</span
+                    mediums</span
                   >
                 </li>
                 <li>
@@ -306,7 +310,7 @@ const aboutCarouselConfig = {
                       >Consistently deliver clean, modern, and visually
                       compelling design solutions</strong
                     >
-                    tailored for multiple media platforms.</span
+                    tailored for multiple media platforms</span
                   >
                 </li>
               </ul>
@@ -316,15 +320,18 @@ const aboutCarouselConfig = {
           <!-- Career Experience -->
           <div
             class="accordion-item career-experience"
-            :class="{ active: activeIndex === 2 }"
+            :class="{ active: activeItems.includes(2) }"
           >
             <div class="accordion-title" @click="toggleItem(2)">
               <span>Career<br />Experience</span>
-              <span class="arrow" :class="{ open: activeIndex === 2 }">
+              <span class="arrow" :class="{ open: activeItems.includes(2) }">
                 <img src="@/assets/img/icon-plus.svg" />
               </span>
             </div>
-            <div v-if="activeIndex === 2" class="accordion-content">
+            <div
+              class="accordion-content"
+              :class="{ show: activeItems.includes(2) }"
+            >
               <div class="job-title">
                 Vice President, Associate Creative Director
               </div>
@@ -570,15 +577,18 @@ const aboutCarouselConfig = {
           <!-- Education -->
           <div
             class="accordion-item education"
-            :class="{ active: activeIndex === 3 }"
+            :class="{ active: activeItems.includes(3) }"
           >
             <div class="accordion-title" @click="toggleItem(3)">
               <span>Education</span>
-              <span class="arrow" :class="{ open: activeIndex === 3 }">
+              <span class="arrow" :class="{ open: activeItems.includes(3) }">
                 <img src="@/assets/img/icon-plus.svg" />
               </span>
             </div>
-            <div v-if="activeIndex === 3" class="accordion-content">
+            <div
+              class="accordion-content"
+              :class="{ show: activeItems.includes(3) }"
+            >
               <ul>
                 <li>
                   <span
@@ -989,9 +999,11 @@ const aboutCarouselConfig = {
   }
 
   .accordion-content {
-    padding: 40px 60px;
+    padding: 0 60px;
+    max-height: 0;
+    opacity: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     color: $white;
     font-size: 18px;
     line-height: 26px;
@@ -1040,8 +1052,10 @@ const aboutCarouselConfig = {
   }
 
   .accordion-content.show {
-    max-height: 200px;
-    /* Adjust as needed */
+    max-height: 6000px; /* High enough to contain the longest career experience */
+    padding-top: 40px;
+    padding-bottom: 40px;
+    opacity: 1;
   }
 
   .arrow {

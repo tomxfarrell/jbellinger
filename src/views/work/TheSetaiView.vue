@@ -37,17 +37,17 @@ import theSetaiLogo from '@/assets/img/the-setai-logo-2x.png';
 
     <ContentBlock>
       <p>
+        The Setai is an intimate, serene, Asian-inspired luxury resort, spa and
+        condos in the heart of South Beach and New York City. To bring the
+        resort to life I designed this campaign that merges the breathtaking
+        skylines of each city with the soul of the brand.
+      </p>
+      <p>
         The brand also needed a sophisticated brochure that would speak to each
         buyer’s high-end sensibilities. With that in mind, I designed a
         hard-cover, perfect bound brochure that lays inside a traditional
         Japanese-red colored box, captivating the senses and promising an
         experience as exquisite as the destination it represents.
-      </p>
-      <p>
-        The Setai is an intimate, serene, Asian-inspired luxury resort, spa and
-        condos in the heart of South Beach and New York City. To bring the
-        resort to life I designed this campaign that merges the breathtaking
-        skylines of each city with the soul of the brand.
       </p>
     </ContentBlock>
 
