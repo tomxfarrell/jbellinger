@@ -22,7 +22,7 @@ function toggleItem(index) {
 const aboutCarouselConfig = {
   itemsToShow: 'auto',
   wrapAround: true,
-  autoplay: false,
+  autoplay: 0,
   gap: 20,
   snapAlign: 'start',
   transition: 500,

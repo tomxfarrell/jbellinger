@@ -24,7 +24,7 @@ const carouselConfig = {
   itemsToShow: 1,
   wrapAround: true,
   // autoplay: 10000,
-  autoplay: false,
+  autoplay: 0,
   transition: 600,
   mouseDrag: false,
   touchDrag: false,
@@ -202,6 +202,8 @@ onMounted(() => {
         );
       };
 
+      const isMobile = window.innerWidth <= 767;
+
       gsap.from([engage, inspire, delight], {
         y: 100, // Slide up from 100px below
         opacity: 0,
@@ -287,14 +289,18 @@ onMounted(() => {
         .to(txtHero.value, {
           scale: 75,
           rotate: '-1deg',
-          duration: 0.15,
+          duration: isMobile ? 0.5 : 0.15,
           opacity: 0,
           ease: 'power1.inOut',
         })
-        .to(scrollDownGradient.value, { opacity: 0, duration: 0.1 }, 0)
+        .to(
+          scrollDownGradient.value,
+          { opacity: 0, duration: isMobile ? 0.5 : 0.1 },
+          0
+        )
         .from(
           bgGradient.value,
-          { opacity: 0, duration: 0.25, ease: 'power1.in' },
+          { opacity: 0, duration: isMobile ? 0.5 : 0.25, ease: 'power1.in' },
           '>'
         )
         .to(

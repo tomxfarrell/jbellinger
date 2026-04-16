@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import linkedIn from '@/assets/img/icon-linkedin-2x.png';
 
 defineProps({
@@ -13,6 +14,25 @@ const emit = defineEmits(['close']);
 function close() {
   emit('close');
 }
+
+const name = ref('');
+const email = ref('');
+const phone = ref('');
+const subject = ref('');
+const message = ref('');
+
+const handleSubmit = () => {
+  // You can integrate an API call or email service here
+  console.log('Form Submission:', {
+    name: name.value,
+    email: email.value,
+    phone: phone.value,
+    subject: subject.value,
+    message: message.value,
+  });
+
+  close();
+};
 </script>
 
 <template>
