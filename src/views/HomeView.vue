@@ -284,25 +284,23 @@ onMounted(() => {
       };
 
       timeline
-        .to(txtHero.value, {
-          scale: 75,
-          rotate: '-1deg',
-          duration: 0.15,
-          opacity: 0,
-          ease: 'power1.inOut',
-        })
+        .fromTo(
+          txtHero.value,
+          { scale: 1, opacity: 1, rotate: '0deg' },
+          {
+            scale: 75,
+            rotate: '-1deg',
+            duration: 0.15,
+            opacity: 0,
+            ease: 'power1.inOut',
+          }
+        )
         .to(scrollDownGradient.value, { opacity: 0, duration: 0.1 }, 0)
         .from(
           bgGradient.value,
           { opacity: 0, duration: 0.25, ease: 'power1.in' },
           '>'
         )
-        .to(
-          txtHero.value,
-          { opacity: 0, duration: 0.15, ease: 'power1.inOut' },
-          '>'
-        )
-        .to(txtHero.value, { display: 'none', scale: 1 }, '>')
         // Trigger icon animation at the end of the timeline
         .to(
           {},
@@ -694,6 +692,7 @@ onUnmounted(() => {
     left: 0;
     height: 100vh;
     width: 100vw;
+    pointer-events: none;
   }
 
   #inspire,
