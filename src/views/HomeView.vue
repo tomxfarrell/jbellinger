@@ -219,16 +219,21 @@ onMounted(() => {
           id: 'hero-home-pin',
           trigger: hero.value,
           start: 'top +=50',
-          end: isMobile ? `+=${hero.value.clientHeight * 2.5}` : `+=${hero.value.clientHeight}`,
+          end: isMobile
+            ? `+=${hero.value.clientHeight * 0.75}`
+            : `+=${hero.value.clientHeight}`,
           scrub: isMobile ? 2 : true, // Smoothing: animation takes 2s to catch up to scroll position on mobile
           pin: true,
           immediateRender: false,
           anticipatePin: true,
-          snap: isMobile ? null : { // Disable snapping on mobile to prevent "snapping" to end states
-            snapTo: 0.5,
-            duration: { min: 0.1, max: 0.3 },
-            ease: 'power1.inOut',
-          },
+          snap: isMobile
+            ? null
+            : {
+                // Disable snapping on mobile to prevent "snapping" to end states
+                snapTo: 0.5,
+                duration: { min: 0.1, max: 0.3 },
+                ease: 'power1.inOut',
+              },
         },
       });
 
@@ -293,7 +298,11 @@ onMounted(() => {
           opacity: 0,
           ease: 'power1.inOut',
         })
-        .to(scrollDownGradient.value, { opacity: 0, duration: 0.1 }, 0)
+        .to(
+          scrollDownGradient.value,
+          { opacity: 0, duration: isMobile ? 0.5 : 0.1 },
+          0
+        )
         .from(
           bgGradient.value,
           { opacity: 0, duration: isMobile ? 0.4 : 0.25, ease: 'power1.in' },
