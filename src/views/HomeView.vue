@@ -140,8 +140,10 @@ function onSlideEnd() {
 }
 
 onMounted(() => {
-  ctx = gsap.context(() => {
-    nextTick(() => {
+  nextTick(() => {
+    // Initialize context AFTER the tick to ensure DOM elements are ready
+    // and GSAP captures the triggers synchronously.
+    ctx = gsap.context(() => {
       if (
         !hero.value ||
         !txtHero.value ||
@@ -325,15 +327,15 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  ctx?.revert();
+  // 1. Explicitly revert the context to kill all triggers and timelines
+  if (ctx) {
+    ctx.revert();
+  }
+
+  // 2. Cleanup local variables
   firstAnimationPlayed = false;
   if (scrollLoop) scrollLoop.kill();
   if (gradientScrollLoop) gradientScrollLoop.kill();
-
-  // Remove all GSAP inline styles from *everything* in this component
-  if (homeContainer.value) {
-    gsap.set(homeContainer.value.querySelectorAll('*'), { clearProps: 'all' });
-  }
 });
 </script>
 
