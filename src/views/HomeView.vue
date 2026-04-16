@@ -773,7 +773,7 @@ onUnmounted(() => {
   position: absolute;
   top: 80px; // Offset the content to start below the header
   left: 0;
-  height: calc(100% - 80px); // Adjust height to fit within the padded area
+  height: 100%; // Adjust height to fit within the padded area
   display: flex;
   align-items: center;
   justify-content: center;
