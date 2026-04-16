@@ -217,7 +217,7 @@ onMounted(() => {
         scrollTrigger: {
           id: 'hero-home-pin',
           trigger: hero.value,
-          start: 'top top', // Pin when the top of the hero hits the top of the viewport
+          start: 'top top',
           end: `+=${hero.value.clientHeight}`,
           scrub: true,
           pin: true,
@@ -685,13 +685,12 @@ onUnmounted(() => {
   background-color: $black;
   width: 100vw;
   height: 100dvh;
-  margin-top: 0; // Remove margin-top to prevent pin-spacing issues
-
   position: relative;
   overflow: hidden;
+  margin-top: -80px;
   .txt-hero {
     position: absolute;
-
+    top: 80px;
     left: 0;
     height: 100%;
     width: 100%;
@@ -742,7 +741,7 @@ onUnmounted(() => {
   .scroll-down-gradient {
     position: absolute;
     right: 3vw;
-    bottom: 6rem;
+    bottom: 120px;
     @media (max-width: $breakpoint-sm) {
       right: 30px;
       bottom: 30px;
@@ -771,7 +770,7 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 80px; // Offset the content to start below the header
+  top: 0;
   left: 0;
   height: 100%; // Adjust height to fit within the padded area
   display: flex;
@@ -815,7 +814,7 @@ onUnmounted(() => {
   .scroll-down {
     position: absolute;
     right: 3vw;
-    bottom: 4rem;
+    bottom: 120px;
     @media (max-width: $breakpoint-sm) {
       right: 30px;
       bottom: 30px;
