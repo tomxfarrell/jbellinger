@@ -219,15 +219,12 @@ onMounted(() => {
           id: 'hero-home-pin',
           trigger: hero.value,
           start: 'top +=50',
-          end: isMobile
-            ? `+=${hero.value.clientHeight * 1.5}`
-            : `+=${hero.value.clientHeight}`,
-          end: `+=${hero.value.clientHeight}`,
-          scrub: true,
+          end: isMobile ? `+=${hero.value.clientHeight * 2.5}` : `+=${hero.value.clientHeight}`,
+          scrub: isMobile ? 2 : true, // Smoothing: animation takes 2s to catch up to scroll position on mobile
           pin: true,
           immediateRender: false,
           anticipatePin: true,
-          snap: {
+          snap: isMobile ? null : { // Disable snapping on mobile to prevent "snapping" to end states
             snapTo: 0.5,
             duration: { min: 0.1, max: 0.3 },
             ease: 'power1.inOut',
@@ -292,7 +289,7 @@ onMounted(() => {
         .to(txtHero.value, {
           scale: 75,
           rotate: '-1deg',
-          duration: isMobile ? 0.6 : 0.15,
+          duration: isMobile ? 0.6 : 0.15, // Take up 60% of the scroll track for the zoom on mobile
           opacity: 0,
           ease: 'power1.inOut',
         })
@@ -304,7 +301,7 @@ onMounted(() => {
         )
         .to(
           txtHero.value,
-          { opacity: 0, duration: 0.15, ease: 'power1.inOut' },
+          { opacity: 0, duration: isMobile ? 0.1 : 0.15, ease: 'power1.inOut' },
           '>'
         )
         .to(txtHero.value, { display: 'none', scale: 1 }, '>')
