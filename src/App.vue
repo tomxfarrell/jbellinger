@@ -91,15 +91,3 @@ const onLeave = (el, done) => {
 
   <Footer />
 </template>
-
-<style lang="scss">
-// Global Scroll Performance & Stability Fixes
-html,
-body {
-  // Prevents the browser from fighting GSAP's precise scroll math
-  scroll-behavior: auto !important;
-
-  // Essential: Stops the browser from "correcting" scroll position during layout shifts
-  overflow-anchor: none !important;
-}
-</style>

@@ -215,7 +215,7 @@ onMounted(() => {
         scrollTrigger: {
           id: 'hero-home-pin',
           trigger: hero.value,
-          start: 'top +=50',
+          start: 'top top', // Pin when the top of the hero hits the top of the viewport
           end: `+=${hero.value.clientHeight}`,
           scrub: true,
           pin: true,
@@ -682,15 +682,17 @@ onUnmounted(() => {
 .hero-home {
   background-color: $black;
   width: 100vw;
-  height: 100dvh; /* Use dynamic viewport height for better mobile support */
+  height: 100dvh;
+  margin-top: 0; // Remove margin-top to prevent pin-spacing issues
+
   position: relative;
   overflow: hidden;
   .txt-hero {
     position: absolute;
-    top: 0;
+
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    height: calc(100% - 80px); // Adjust height to fit within the padded area
+    width: 100%;
     pointer-events: none;
   }
 
@@ -767,8 +769,9 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
+  top: 80px; // Offset the content to start below the header
   left: 0;
+  height: calc(100% - 80px); // Adjust height to fit within the padded area
   display: flex;
   align-items: center;
   justify-content: center;
