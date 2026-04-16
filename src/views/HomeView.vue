@@ -219,6 +219,9 @@ onMounted(() => {
           id: 'hero-home-pin',
           trigger: hero.value,
           start: 'top +=50',
+          end: isMobile
+            ? `+=${hero.value.clientHeight * 1.5}`
+            : `+=${hero.value.clientHeight}`,
           end: `+=${hero.value.clientHeight}`,
           scrub: true,
           pin: true,
@@ -289,18 +292,14 @@ onMounted(() => {
         .to(txtHero.value, {
           scale: 75,
           rotate: '-1deg',
-          duration: isMobile ? 0.5 : 0.15,
+          duration: isMobile ? 0.6 : 0.15,
           opacity: 0,
           ease: 'power1.inOut',
         })
-        .to(
-          scrollDownGradient.value,
-          { opacity: 0, duration: isMobile ? 0.5 : 0.1 },
-          0
-        )
+        .to(scrollDownGradient.value, { opacity: 0, duration: 0.1 }, 0)
         .from(
           bgGradient.value,
-          { opacity: 0, duration: isMobile ? 0.5 : 0.25, ease: 'power1.in' },
+          { opacity: 0, duration: isMobile ? 0.4 : 0.25, ease: 'power1.in' },
           '>'
         )
         .to(
