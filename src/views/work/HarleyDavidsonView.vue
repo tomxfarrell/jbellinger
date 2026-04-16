@@ -71,18 +71,18 @@ import harleyMonitorMobile from '@/assets/img/harley-monitor-mobile-2x.png';
 
     <section class="projects">
       <div class="container">
-        <div class="work-single-grid">
+        <div class="work-single-grid cols-7">
           <ImageInline
             :desktop="harleyPosterDesktop"
             :mobile="harleyPosterMobile"
             alt=""
-            className="span-2 mb-20"
+            className="span-4 mb-20"
           />
           <ImageInline
             :desktop="harleyPullupDesktop"
             :mobile="harleyPullupMobile"
             alt=""
-            className=""
+            className="span-3"
           />
         </div>
       </div>

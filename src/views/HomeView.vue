@@ -864,10 +864,13 @@ onUnmounted(() => {
       }
     }
 
-    .slide-img-game-of-thrones,
     .slide-img-versace,
     .slide-img-dos-equis {
       max-width: 50vw;
+    }
+
+    .slide-img-game-of-thrones {
+      max-width: 46vw;
     }
 
     :deep(.carousel__slide),

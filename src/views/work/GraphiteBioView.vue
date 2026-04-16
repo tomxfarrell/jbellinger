@@ -99,21 +99,24 @@ import gameOfThronesFacadeMobile from '@/assets/img/game-of-thrones-exterior-fac
 <style lang="scss" scoped>
 .screenshot-backdrop {
   background-color: #eaeef7;
-  padding: 40px;
+  padding: 60px 40px 0 40px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  :deep(img) {
+    max-width: 952px;
+    margin: 0 auto;
+  }
   &.backdrop-short {
     background: linear-gradient(to bottom, #eaeef7 80%, white 80%);
   }
 }
 .graphite-bio-slider {
   max-width: 100%;
-  margin-top: -4rem;
-  background-color: #eaeef7;
-  @media (max-width: $breakpoint-sm) {
-    margin-top: -2rem;
-  }
+  margin-top: -2rem;
+  margin-bottom: -2rem;
 }
 </style>
