@@ -693,7 +693,7 @@ onUnmounted(() => {
     position: absolute;
 
     left: 0;
-    height: calc(100% - 80px); // Adjust height to fit within the padded area
+    height: 100%;
     width: 100%;
     pointer-events: none;
   }
