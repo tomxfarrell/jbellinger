@@ -144,28 +144,34 @@ const handleSubmit = () => {
 
   .col-info,
   .col-form {
-    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform;
-    backface-visibility: hidden;
+    @media (min-width: #{$breakpoint-sm + 1px}) {
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
   }
 }
 .modal-fade-enter-from,
 .modal-fade-leave-to {
   opacity: 0;
 
-  .col-info {
-    transform: translateY(-100%);
-  }
-  .col-form {
-    transform: translateY(100%);
+  @media (min-width: #{$breakpoint-sm + 1px}) {
+    .col-info {
+      transform: translateY(-100%);
+    }
+    .col-form {
+      transform: translateY(100%);
+    }
   }
 }
 .modal-fade-enter-to,
 .modal-fade-leave-from {
   opacity: 1;
-  .col-info,
-  .col-form {
-    transform: translateY(0);
+  @media (min-width: #{$breakpoint-sm + 1px}) {
+    .col-info,
+    .col-form {
+      transform: translateY(0);
+    }
   }
 }
 
