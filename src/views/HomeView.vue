@@ -23,7 +23,6 @@ const txtProjects = ref(null);
 const carouselConfig = {
   itemsToShow: 1,
   wrapAround: true,
-  // autoplay: 10000,
   autoplay: 0,
   transition: 600,
   mouseDrag: false,

@@ -22,7 +22,10 @@ body {
 }
 
 .wrapper {
-  margin-top: 70px;
+  margin-top: 80px;
+  @media (max-width: $breakpoint-sm) {
+    margin-top: 70px;
+  }
 }
 
 .container {
