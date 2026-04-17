@@ -455,32 +455,31 @@ onUnmounted(() => {
             Design isn't just what I do—it's who I am, and I pour my heart and
             soul into every project I undertake.
           </p>
-
-          <svg
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="scroll-down"
-            ref="scrollDown"
-          >
-            <circle
-              cx="25"
-              cy="25"
-              r="24"
-              stroke="white"
-              stroke-width="2"
-              class="scroll-circle"
-            />
-
-            <path
-              d="M19.2987 21.3926L24.5067 26.6007L29.7148 21.3926C30.2383 20.8691 31.0839 20.8691 31.6074 21.3926C32.1309 21.9161 32.1309 22.7617 31.6074 23.2852L25.4463 29.4463C24.9228 29.9698 24.0772 29.9698 23.5537 29.4463L17.3926 23.2852C16.8691 22.7617 16.8691 21.9161 17.3926 21.3926C17.9161 20.8826 18.7752 20.8691 19.2987 21.3926Z"
-              fill="white"
-              class="scroll-arrow"
-            />
-          </svg>
         </div>
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 50 50"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="scroll-down"
+          ref="scrollDown"
+        >
+          <circle
+            cx="25"
+            cy="25"
+            r="24"
+            stroke="white"
+            stroke-width="2"
+            class="scroll-circle"
+          />
+
+          <path
+            d="M19.2987 21.3926L24.5067 26.6007L29.7148 21.3926C30.2383 20.8691 31.0839 20.8691 31.6074 21.3926C32.1309 21.9161 32.1309 22.7617 31.6074 23.2852L25.4463 29.4463C24.9228 29.9698 24.0772 29.9698 23.5537 29.4463L17.3926 23.2852C16.8691 22.7617 16.8691 21.9161 17.3926 21.3926C17.9161 20.8826 18.7752 20.8691 19.2987 21.3926Z"
+            fill="white"
+            class="scroll-arrow"
+          />
+        </svg>
       </div>
     </section>
 
@@ -741,7 +740,7 @@ onUnmounted(() => {
   .scroll-down-gradient {
     position: absolute;
     right: 3vw;
-    bottom: 120px;
+    bottom: 60px;
     @media (max-width: $breakpoint-sm) {
       right: 30px;
       bottom: 30px;
@@ -782,8 +781,8 @@ onUnmounted(() => {
   }
 
   @media (max-width: $breakpoint-sm) {
-    align-items: start;
-    padding-top: 100px;
+    // align-items: start;
+    // padding-top: 100px;
 
     .container {
       position: relative;
@@ -799,6 +798,10 @@ onUnmounted(() => {
 
   .callout {
     @extend h3;
+    @media (max-width: $breakpoint-xxs) {
+      font-size: 22px;
+      line-height: 28px;
+    }
   }
 
   p {
@@ -809,12 +812,16 @@ onUnmounted(() => {
       font-size: 16px;
       line-height: 32px;
     }
+    @media (max-width: $breakpoint-xxs) {
+      font-size: 14px;
+      line-height: 30px;
+    }
   }
 
   .scroll-down {
     position: absolute;
     right: 3vw;
-    bottom: 120px;
+    bottom: 60px;
     @media (max-width: $breakpoint-sm) {
       right: 30px;
       bottom: 30px;
