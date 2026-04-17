@@ -2,26 +2,9 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-
-  // &::after {
-  //     content: "";
-  //     position: fixed;
-  //     bottom: 0;
-  //     left: 0;
-  //     right: 0;
-  //     height: 100px;
-  //     background: linear-gradient(to top, $white, rgba($white, 0));
-  //     pointer-events: none;
-  //     z-index: 90;
-  //     display: none;
-
-  //     @media (max-width: $breakpoint-sm) {
-  //         display: block;
-  //     }
-  // }
 }
 
-.wrapper {
+.wrapper:not(.home) {
   margin-top: 80px;
   @media (max-width: $breakpoint-sm) {
     margin-top: 70px;

@@ -223,11 +223,11 @@ onMounted(() => {
           pin: true,
           immediateRender: false,
           anticipatePin: true,
-          snap: {
-            snapTo: 0.5,
-            duration: { min: 0.1, max: 0.3 },
-            ease: 'power1.inOut',
-          },
+          // snap: {
+          //   snapTo: 1,
+          //   duration: { min: 0.1, max: 0.3 },
+          //   ease: 'power1.inOut',
+          // },
         },
       });
 

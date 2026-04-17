@@ -1,4 +1,5 @@
 <script setup>
+import { watch } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 import MainNavigation from '@/components/MainNavigation.vue';
 import Footer from '@/components/Footer.vue';
@@ -6,6 +7,19 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const route = useRoute();
+
+// Watch the route path to toggle the 'home' class on the document body
+watch(
+  () => route.path,
+  (newPath) => {
+    if (newPath === '/') {
+      document.body.classList.add('home');
+    } else {
+      document.body.classList.remove('home');
+    }
+  },
+  { immediate: true }
+);
 
 const onEnter = async (el, done) => {
   // 0. Hide the element IMMEDIATELY.
@@ -81,7 +95,7 @@ const onLeave = (el, done) => {
 <template>
   <MainNavigation />
 
-  <div class="wrapper">
+  <div :class="['wrapper', { home: route.path === '/' }]">
     <RouterView v-slot="{ Component }">
       <transition mode="out-in" :css="false" @enter="onEnter" @leave="onLeave">
         <component :is="Component" :key="route.path" />
