@@ -686,10 +686,10 @@ onUnmounted(() => {
   height: 100dvh;
   position: relative;
   overflow: hidden;
-  margin-top: -80px;
+
   .txt-hero {
     position: absolute;
-    top: 80px;
+    top: 0;
     left: 0;
     height: 100%;
     width: 100%;
