@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import HeroBlock from '@/components/HeroBlock.vue';
@@ -30,45 +30,50 @@ import whiskyBottleAlabamaTextDesktop from '@/assets/img/whisky-alabama-text-des
 
 gsap.registerPlugin(ScrollTrigger);
 
+const container = ref(null);
 const whiskyAlabamaTextRef = ref(null);
 let ctx; // For GSAP context cleanup
 
 onMounted(() => {
-  const mm = gsap.matchMedia();
-  ctx = mm;
+  nextTick(() => {
+    ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
 
-  mm.add(
-    {
-      isDesktop: '(min-width: 768px)',
-      isMobile: '(max-width: 767px)',
-    },
-    (context) => {
-      const { isMobile } = context.conditions;
+      mm.add(
+        {
+          isDesktop: '(min-width: 768px)',
+          isMobile: '(max-width: 767px)',
+        },
+        (context) => {
+          const { isMobile } = context.conditions;
 
-      if (whiskyAlabamaTextRef.value) {
-        gsap.from(whiskyAlabamaTextRef.value, {
-          x: isMobile ? 100 : 300,
-          opacity: 0, // Start invisible
-          ease: 'none', // Linear movement for scrub
-          scrollTrigger: {
-            trigger: '.whisky-bottle-animation', // Trigger animation when this block enters view
-            start: 'top bottom', // Start when the top of the trigger hits the bottom of the viewport
-            end: 'bottom center',
-            scrub: true, // Link animation to scroll position
-          },
-        });
-      }
-    }
-  );
+          if (whiskyAlabamaTextRef.value) {
+            gsap.from(whiskyAlabamaTextRef.value, {
+              x: isMobile ? 100 : 300,
+              opacity: 0,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: '.whisky-bottle-animation',
+                start: 'top bottom',
+                end: 'bottom center',
+                scrub: true,
+              },
+            });
+          }
+        }
+      );
+    }, container.value); // Scoped to this component
+  });
 });
 
 onUnmounted(() => {
   ctx?.revert(); // Clean up GSAP context
+  ScrollTrigger.refresh(); // Recalculate global scroll markers immediately
 });
 </script>
 
 <template>
-  <div class="work-page">
+  <div class="work-page" ref="container">
     <HeadlineBlock>
       <h1>The WhiskyX</h1>
       <h2>Web & Digital Campaign</h2>

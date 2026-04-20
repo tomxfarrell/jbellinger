@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -39,24 +39,35 @@ import jeepBleachersDesktop from '@/assets/img/jeep-bleachers-desktop-2x.png';
 import jeepBleachersMobile from '@/assets/img/jeep-bleachers-mobile-2x.png';
 
 const overlayText = ref(null);
+const container = ref(null);
+let ctx;
 
 onMounted(() => {
-  // Dramatic parallax effect for the Jeep image
-  gsap.from('.animate-jeep-red img', {
-    y: 80,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.animate-jeep-red',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1,
-    },
+  nextTick(() => {
+    ctx = gsap.context(() => {
+      // Dramatic parallax effect for the Jeep image
+      gsap.from('.animate-jeep-red img', {
+        y: 80,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.animate-jeep-red',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    }, container.value);
   });
+});
+
+onUnmounted(() => {
+  ctx?.revert(); // Essential cleanup to prevent "ghost" scroll triggers
+  ScrollTrigger.refresh(); // Recalculate global scroll markers immediately
 });
 </script>
 
 <template>
-  <div class="work-page">
+  <div class="work-page" ref="container">
     <HeadlineBlock>
       <h1>Jeep</h1>
       <h2>USA Basketball</h2>
@@ -187,7 +198,7 @@ onMounted(() => {
     right: 0;
     margin: 0 auto;
     text-align: center;
-    z-index: 5;
+    z-index: -1;
 
     h2 {
       font-size: clamp(5rem, calc(3vw + 5rem), 170px);

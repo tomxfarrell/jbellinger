@@ -118,5 +118,12 @@ import gameOfThronesFacadeMobile from '@/assets/img/game-of-thrones-exterior-fac
   max-width: 100%;
   margin-top: -2rem;
   margin-bottom: -2rem;
+  @media (max-width: $breakpoint-sm) {
+    margin-top: -30px;
+    margin-bottom: -50px;
+  }
+  @media (max-width: $breakpoint-xs) {
+    margin-top: -10px;
+  }
 }
 </style>

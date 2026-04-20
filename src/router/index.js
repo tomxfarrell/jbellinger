@@ -136,12 +136,11 @@ const router = createRouter({
       return savedPosition;
     }
 
-    // Delay the scroll to top until the 'onLeave' animation (400ms) is finished.
-    // This prevents the page from "jumping" while the old content is still visible.
+    // Clear GSAP memory and reset to top immediately.
+    // The manual scroll restoration in App.vue will handle the rest.
     return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({ top: 0, left: 0 });
-      }, 400);
+      ScrollTrigger.clearScrollMemory();
+      resolve({ top: 0, left: 0 });
     });
   },
 });

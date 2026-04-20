@@ -1,33 +1,29 @@
 <script setup>
-import { watch } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 import MainNavigation from '@/components/MainNavigation.vue';
 import Footer from '@/components/Footer.vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const route = useRoute();
+// 1. Register the plugin immediately so the core is initialized
+gsap.registerPlugin(ScrollTrigger);
 
-// Watch the route path to toggle the 'home' class on the document body
-watch(
-  () => route.path,
-  (newPath) => {
-    if (newPath === '/') {
-      document.body.classList.add('home');
-    } else {
-      document.body.classList.remove('home');
-    }
-  },
-  { immediate: true }
-);
+// 1. Global fix: Prevent the browser from fighting GSAP's scroll management.
+if (typeof window !== 'undefined' && 'scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+ScrollTrigger.config({
+  ignoreMobileResize: true, // Prevents jumps when mobile address bar toggles
+  autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load',
+});
+
+const route = useRoute();
 
 const onEnter = async (el, done) => {
   // 0. Hide the element IMMEDIATELY.
   // This prevents the browser from painting the raw page while we wait for the awaits below.
   gsap.set(el, { opacity: 0, visibility: 'hidden' });
-
-  // 1. Force a scroll reset for safety
-  window.scrollTo(0, 0);
 
   // 2. Identify critical images at the top of the page (e.g., Hero images)
   const criticalImages = Array.from(el.querySelectorAll('img')).slice(0, 3);
@@ -50,6 +46,11 @@ const onEnter = async (el, done) => {
   });
 
   await Promise.all(imagePromises);
+
+  // 4. Force a scroll reset and clear GSAP memory right before we reveal the content
+  window.scrollTo(0, 0);
+  ScrollTrigger.clearScrollMemory();
+  ScrollTrigger.refresh();
 
   // 4. Add a tiny buffer (150ms) to allow the browser to settle the paint
   await new Promise((resolve) => setTimeout(resolve, 150));
@@ -95,13 +96,26 @@ const onLeave = (el, done) => {
 <template>
   <MainNavigation />
 
-  <div :class="['wrapper', { home: route.path === '/' }]">
-    <RouterView v-slot="{ Component }">
-      <transition mode="out-in" :css="false" @enter="onEnter" @leave="onLeave">
-        <component :is="Component" :key="route.path" />
-      </transition>
-    </RouterView>
-  </div>
-
-  <Footer />
+  <RouterView v-slot="{ Component }">
+    <transition mode="out-in" :css="false" @enter="onEnter" @leave="onLeave">
+      <!-- Wrap component and footer together so height never collapses to zero -->
+      <div :key="route.path" class="wrapper">
+        <component :is="Component" />
+        <Footer />
+      </div>
+    </transition>
+  </RouterView>
 </template>
+
+<style lang="scss">
+// Global Scroll Performance & Stability Fixes
+html,
+body {
+  min-height: 100%;
+  height: auto;
+  scroll-behavior: auto !important;
+
+  // Essential: Stops the browser from "correcting" scroll position during transitions
+  overflow-anchor: none !important;
+}
+</style>
