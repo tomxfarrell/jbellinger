@@ -90,5 +90,13 @@ import theSetaiLogo from '@/assets/img/the-setai-logo-2x.png';
     transform: translate(-50%, -50%);
     width: clamp(150px, 40vw, 331px);
   }
+  @media (max-width: $breakpoint-xs) {
+    max-height: 100%;
+    :deep(video) {
+      max-height: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+  }
 }
 </style>
