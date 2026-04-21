@@ -431,9 +431,9 @@ watch(isMenuOpen, (isOpen) => {
         }
       }
     }
-    @media (max-width: $breakpoint-xxs) {
+    @media (max-width: $breakpoint-xs) {
       &.mobile-open {
-        transform: translateY(10vh);
+        transform: translateY(12vh);
       }
     }
   }
