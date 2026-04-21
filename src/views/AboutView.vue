@@ -863,8 +863,8 @@ const aboutCarouselConfig = {
     }
 
     .nav-icon {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       &.rotate-180 {
         transform: rotate(180deg);
       }

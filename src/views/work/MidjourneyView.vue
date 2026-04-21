@@ -71,7 +71,7 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
     <HeroBlock
       :desktop="heroMidjourneyDesktop"
       :mobile="heroMidjourneyMobile"
-      alt="Jeep"
+      alt="Midjourney AI Art"
       className="full-width"
     />
 
@@ -129,31 +129,29 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
             :desktop="midjourneyAMDesktop"
             :mobile="midjourneyAMMobile"
             alt=""
-            className="span-3 mb-xs"
+            className="span-3"
           />
           <ImageInline
             :desktop="midjourneyIBDesktop"
             :mobile="midjourneyIBMobile"
             alt=""
-            className="span-3 mb-xs"
+            className="span-3"
+          />
+          <ImageInline
+            :desktop="midjourneyVaultDesktop"
+            :mobile="midjourneyVaultMobile"
+            alt=""
+            className="span-6"
+          />
+          <ImageInline
+            :desktop="midjourneyDressDesktop"
+            :mobile="midjourneyDressMobile"
+            alt=""
+            className="span-6 mb-xs"
           />
         </div>
       </div>
     </section>
-
-    <ImageBlock
-      :desktop="midjourneyVaultDesktop"
-      :mobile="midjourneyVaultMobile"
-      alt=""
-      className="mw-1300 mb-xs"
-    />
-
-    <ImageBlock
-      :desktop="midjourneyDressDesktop"
-      :mobile="midjourneyDressMobile"
-      alt=""
-      className="mw-1300 mb-xs"
-    />
 
     <ImageBlock
       :desktop="midjourneyWomanDesktop"
@@ -245,13 +243,13 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
             :desktop="midjourneyCloseupDesktop"
             :mobile="midjourneyCloseupMobile"
             alt=""
-            className="span-2 mb-xs"
+            className="span-2"
           />
           <ImageInline
             :desktop="midjourneyWalkingDesktop"
             :mobile="midjourneyWalkingMobile"
             alt=""
-            className="mb-xs"
+            className=""
           />
         </div>
       </div>

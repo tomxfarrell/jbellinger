@@ -79,7 +79,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
                   alt="Midjourney"
                 />
               </div>
-              <h2 class="work-title">Midjourney</h2>
+              <h2 class="work-title">Ai-Driven Creative</h2>
               <h3>AI-Driven Creative Showcase</h3>
             </router-link>
           </div>

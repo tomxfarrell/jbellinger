@@ -1037,16 +1037,12 @@ onUnmounted(() => {
   }
 
   .nav-icon {
-    width: 40px;
-    height: 40px;
+    width: 25px;
+    height: 25px;
     transition: transform 0.3s ease;
     &.rotate-180 {
       transform: rotate(180deg);
       transform-origin: center;
-    }
-    @media (max-width: $breakpoint-sm) {
-      width: 30px;
-      height: 30px;
     }
   }
   @media (hover: hover) {

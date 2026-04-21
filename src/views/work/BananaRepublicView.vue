@@ -95,25 +95,25 @@ import bananaRepublicWoman3Mobile from '@/assets/img/banana-republic-woman3-mobi
             :desktop="bananaRepublicWomanDesktop"
             :mobile="bananaRepublicWomanMobile"
             alt=""
-            className="mb-20"
+            className=""
           />
           <ImageInline
             :desktop="bananaRepublicImage3Desktop"
             :mobile="bananaRepublicImage3Mobile"
             alt=""
-            className="mb-20 span-2"
+            className="span-2"
           />
           <ImageInline
             :desktop="bananaRepublicWoman2Desktop"
             :mobile="bananaRepublicWoman2Mobile"
             alt=""
-            className="mb-20 span-2"
+            className="span-2"
           />
           <ImageInline
             :desktop="bananaRepublicWoman3Desktop"
             :mobile="bananaRepublicWoman3Mobile"
             alt=""
-            className="mb-20"
+            className=""
           />
         </div>
       </div>

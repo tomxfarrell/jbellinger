@@ -109,7 +109,7 @@ import gameOfThronesCast3Mobile from '@/assets/img/game-of-thrones-cast3-mobile-
       </p>
     </ContentBlock>
 
-    <section class="projects">
+    <section class="projects mb-lg">
       <div class="container">
         <div class="work-single-grid">
           <ImageInline
@@ -129,21 +129,21 @@ import gameOfThronesCast3Mobile from '@/assets/img/game-of-thrones-cast3-mobile-
             :desktop="gameOfThronesTableDesktop"
             :mobile="gameOfThronesTableMobile"
             alt=""
-            className="mb-lg"
+            className=""
           />
 
           <ImageInline
             :desktop="gameOfThronesPosterDesktop"
             :mobile="gameOfThronesPosterMobile"
             alt=""
-            className="mb-lg"
+            className=""
           />
 
           <ImageInline
             :desktop="gameOfThronesThroneDesktop"
             :mobile="gameOfThronesThroneMobile"
             alt=""
-            className="mb-lg"
+            className=""
           />
         </div>
       </div>

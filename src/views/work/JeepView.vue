@@ -116,7 +116,7 @@ onUnmounted(() => {
       </h2>
     </ContentBlock>
 
-    <section class="projects">
+    <section class="projects mb-xs">
       <div class="container">
         <div class="work-single-grid">
           <ImageInline
@@ -135,13 +135,13 @@ onUnmounted(() => {
             :desktop="jeepWomanDesktop"
             :mobile="jeepWomanMobile"
             alt=""
-            className="mb-xs"
+            className=""
           />
           <ImageInline
             :desktop="jeepMan2Desktop"
             :mobile="jeepMan2Mobile"
             alt=""
-            className="span-2 mb-xs"
+            className="span-2"
           />
         </div>
       </div>
