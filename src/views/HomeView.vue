@@ -770,7 +770,7 @@ onUnmounted(() => {
 
 .bg-gradient {
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   position: absolute;
   top: 0;
   left: 0;
@@ -801,7 +801,7 @@ onUnmounted(() => {
 
   .callout {
     @extend h3;
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: $breakpoint-xxs) {
       font-size: 22px;
       line-height: 28px;
     }
@@ -815,7 +815,7 @@ onUnmounted(() => {
       font-size: 16px;
       line-height: 32px;
     }
-    @media (max-width: $breakpoint-xs) {
+    @media (max-width: $breakpoint-xxs) {
       font-size: 14px;
       line-height: 30px;
     }
