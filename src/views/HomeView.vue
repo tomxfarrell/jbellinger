@@ -801,7 +801,7 @@ onUnmounted(() => {
 
   .callout {
     @extend h3;
-    @media (max-width: $breakpoint-xxs) {
+    @media (max-width: $breakpoint-xs) {
       font-size: 22px;
       line-height: 28px;
     }
@@ -815,7 +815,7 @@ onUnmounted(() => {
       font-size: 16px;
       line-height: 32px;
     }
-    @media (max-width: $breakpoint-xxs) {
+    @media (max-width: $breakpoint-xs) {
       font-size: 14px;
       line-height: 30px;
     }
