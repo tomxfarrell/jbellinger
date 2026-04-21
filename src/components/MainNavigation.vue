@@ -6,36 +6,30 @@ import linkedInMobile from '@/assets/img/icon-linkedin-white-txt-2x.png';
 import { ref, onMounted, nextTick, watch } from 'vue';
 import { gsap } from 'gsap';
 
-const lines = [
-  'VP.ACD',
-  'Design',
-  'UI',
-  'Experiential'
-];
+const lines = ['VP.ACD', 'Design', 'UI', 'Experiential'];
 
-
-const container = ref(null)
-const viewport = ref(null)
+const container = ref(null);
+const viewport = ref(null);
 
 onMounted(async () => {
-  await nextTick()
+  await nextTick();
 
-  const lineHeight = container.value.clientHeight
-  const totalLines = lines.length - 1
+  const lineHeight = container.value.clientHeight;
+  const totalLines = lines.length - 1;
 
   // Position viewport initially so first line is visible
-  gsap.set(viewport.value, { y: 0 })
+  gsap.set(viewport.value, { y: 0 });
 
   // Timeline for rolodex animation (slide lines up)
-  const tl = gsap.timeline({ repeat: -1, repeatDelay: 3 })
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 3 });
 
   for (let i = 1; i <= totalLines; i++) {
     tl.to(viewport.value, {
       y: -lineHeight * i,
       duration: 1.2,
       ease: 'power2.inOut',
-      delay: 3
-    })
+      delay: 3,
+    });
   }
 
   // Reset position smoothly back to start (to loop)
@@ -43,13 +37,13 @@ onMounted(async () => {
     y: 0,
     duration: 1.2,
     ease: 'power2.inOut',
-    delay: 3
-  })
-})
+    delay: 3,
+  });
+});
 
-import ModalContact from '@/components/ModalContact.vue'
+import ModalContact from '@/components/ModalContact.vue';
 
-const showModal = ref(false)
+const showModal = ref(false);
 
 const isMenuOpen = ref(false);
 
@@ -65,7 +59,11 @@ watch(isMenuOpen, (isOpen) => {
 <template>
   <div>
     <div id="main-navigation" ref="nav">
-      <div class="mobile-menu-overlay" :class="{ 'is-open': isMenuOpen }" @click="toggleMenu"></div>
+      <div
+        class="mobile-menu-overlay"
+        :class="{ 'is-open': isMenuOpen }"
+        @click="toggleMenu"
+      ></div>
       <div class="container">
         <div class="main-logo">
           <router-link to="/">
@@ -74,44 +72,86 @@ watch(isMenuOpen, (isOpen) => {
 
               <div class="rolodex-container" ref="container">
                 <div class="rolodex-viewport" ref="viewport">
-                  <div v-for="(line, index) in lines" :key="index" class="rolodex-line">
+                  <div
+                    v-for="(line, index) in lines"
+                    :key="index"
+                    class="rolodex-line"
+                  >
                     {{ line }}
                   </div>
                 </div>
               </div>
-
             </div>
           </router-link>
         </div>
         <nav :class="{ 'mobile-open': isMenuOpen }">
           <ul>
-            <li class="link-work"><router-link to="/work"
-                :class="{ 'router-link-active': $route.path.startsWith('/work') }" @click="isMenuOpen = false">
+            <li class="link-work">
+              <router-link
+                to="/work"
+                :class="{
+                  'router-link-active': $route.path.startsWith('/work'),
+                }"
+                @click="isMenuOpen = false"
+              >
                 <div class="nav-link-text">Work</div>
                 <div class="nav-link-text-reveal" aria-hidden="true">Work</div>
-              </router-link></li>
-            <li class="link-about"><router-link to="/about" @click="isMenuOpen = false">
+              </router-link>
+            </li>
+            <li class="link-about">
+              <router-link to="/about" @click="isMenuOpen = false">
                 <div class="nav-link-text">About/<span>Resume</span></div>
-                <div class="nav-link-text-reveal" aria-hidden="true">About/<span>Resume</span></div>
-              </router-link></li>
-            <li class="link-contact"><a href="#" @click.prevent="showModal = true; isMenuOpen = false">
+                <div class="nav-link-text-reveal" aria-hidden="true">
+                  About/<span>Resume</span>
+                </div>
+              </router-link>
+            </li>
+            <li class="link-contact">
+              <a
+                href="#"
+                @click.prevent="
+                  showModal = true;
+                  isMenuOpen = false;
+                "
+              >
                 <div class="nav-link-text">Contact</div>
-                <div class="nav-link-text-reveal" aria-hidden="true">Contact</div>
-              </a></li>
-            <li class="desktop-only"><a href="http://linkedin.com/in/jasonbellinger" target="_blank" class="linkedin"><img :src="linkedIn"
-                  alt="Linkedin Logo" class="linkedin-icon"></a></li>
-            <li class="mobile-only linkedin-mobile"><a href="http://linkedin.com/in/jasonbellinger" target="_blank" class="linkedin" @click="isMenuOpen = false"><img :src="linkedInMobile"
-                  alt="Linkedin Logo" class="linkedin-icon"></a>
-                Let's Link Up!
-              </li>
+                <div class="nav-link-text-reveal" aria-hidden="true">
+                  Contact
+                </div>
+              </a>
+            </li>
+            <li class="desktop-only">
+              <a
+                href="http://linkedin.com/in/jasonbellinger"
+                target="_blank"
+                class="linkedin"
+                ><img :src="linkedIn" alt="Linkedin Logo" class="linkedin-icon"
+              /></a>
+            </li>
+            <li class="mobile-only linkedin-mobile">
+              <a
+                href="http://linkedin.com/in/jasonbellinger"
+                target="_blank"
+                class="linkedin"
+                @click="isMenuOpen = false"
+                ><img
+                  :src="linkedInMobile"
+                  alt="Linkedin Logo"
+                  class="linkedin-icon"
+              /></a>
+              Let's Link Up!
+            </li>
           </ul>
         </nav>
       </div>
-
     </div>
 
     <div class="mobile-hamburger-container" :class="{ 'is-open': isMenuOpen }">
-      <button class="mobile-hamburger" @click="toggleMenu" :class="{ 'is-open': isMenuOpen }">
+      <button
+        class="mobile-hamburger"
+        @click="toggleMenu"
+        :class="{ 'is-open': isMenuOpen }"
+      >
         <div class="hamburger-lines">
           <div class="hamburger-line"></div>
           <div class="hamburger-line"></div>
@@ -119,11 +159,9 @@ watch(isMenuOpen, (isOpen) => {
         </div>
         <div class="hamburger-text">{{ isMenuOpen ? 'Close' : 'Menu' }}</div>
       </button>
-       
     </div>
 
     <ModalContact :showModal="showModal" @close="showModal = false" />
-
   </div>
 </template>
 
@@ -266,15 +304,20 @@ watch(isMenuOpen, (isOpen) => {
           }
 
           &:after {
-            content: "";
+            content: '';
             position: absolute;
             left: 0;
             bottom: 0;
             width: 0%;
             height: 3px;
             background: rgb(172, 9, 236);
-            background: linear-gradient(90deg, rgba(172, 9, 236, 1) 0%, rgba(65, 134, 241, 1) 50%, rgba(0, 216, 255, 1) 100%);
-            transition: 1s all .3s ease;
+            background: linear-gradient(
+              90deg,
+              rgba(172, 9, 236, 1) 0%,
+              rgba(65, 134, 241, 1) 50%,
+              rgba(0, 216, 255, 1) 100%
+            );
+            transition: 1s all 0.3s ease;
           }
 
           &.router-link-active {
@@ -295,20 +338,20 @@ watch(isMenuOpen, (isOpen) => {
 
       .nav-link-text,
       .nav-link-text-reveal {
-        transition: all .15s linear .15s;
+        transition: all 0.15s linear 0.15s;
       }
     }
 
     .linkedin {
-      transition: all .2s ease;
+      transition: all 0.2s ease;
 
       img {
-        transition: all .2s ease;
+        transition: all 0.2s ease;
         transform: rotate(0);
       }
 
       &:hover {
-        opacity: .8;
+        opacity: 0.8;
 
         img {
           transform: rotate(360deg);
@@ -347,19 +390,19 @@ watch(isMenuOpen, (isOpen) => {
 
         li {
           a {
-          color: $white;
-          font-size: 48px;
-          line-height: 1;
+            color: $white;
+            font-size: 48px;
+            line-height: 1;
 
-          .nav-link-text-reveal {
-            display: none;
-          }
+            .nav-link-text-reveal {
+              display: none;
+            }
 
-          &:hover .nav-link-text {
-            transform: none;
-            color: $babyBlue;
+            &:hover .nav-link-text {
+              transform: none;
+              color: $babyBlue;
+            }
           }
-        }
         }
 
         .linkedin {
@@ -390,7 +433,7 @@ watch(isMenuOpen, (isOpen) => {
     }
     @media (max-width: $breakpoint-xxs) {
       &.mobile-open {
-        transform: translateY(14vh);
+        transform: translateY(10vh);
       }
     }
   }
@@ -425,8 +468,6 @@ watch(isMenuOpen, (isOpen) => {
         background-color: $white;
       }
     }
-
-    
   }
 
   .mobile-hamburger {
@@ -437,7 +478,7 @@ watch(isMenuOpen, (isOpen) => {
     background-color: rgba($white, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid #BFBFBF;
+    border: 1px solid #bfbfbf;
     border-radius: 50%;
     cursor: pointer;
     pointer-events: auto;

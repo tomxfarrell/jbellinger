@@ -825,6 +825,7 @@ const aboutCarouselConfig = {
 
   :deep(.carousel__viewport) {
     padding-bottom: 50px;
+    padding-left: 20px;
   }
 
   :deep(.carousel__pagination) {
