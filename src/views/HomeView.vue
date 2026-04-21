@@ -708,19 +708,22 @@ onUnmounted(() => {
 
   #engage {
     transform: translateY(-30px);
+    @media (max-width: $breakpoint-sm) {
+      transform: translateY(-10px);
+    }
   }
 
   #inspire {
     transform: translateY(110px) translateX(140px);
     @media (max-width: $breakpoint-sm) {
-      transform: translateY(60px) translateX(-20px);
+      transform: translateY(115px) translateX(-35px);
     }
   }
 
   #delight {
     transform: translateY(245px) translateX(-60px);
     @media (max-width: $breakpoint-sm) {
-      transform: translateY(158px) translateX(30px);
+      transform: translateY(240px) translateX(37px);
     }
   }
 
