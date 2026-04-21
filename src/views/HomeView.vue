@@ -218,7 +218,7 @@ onMounted(() => {
           id: 'hero-home-pin',
           trigger: hero.value,
           start: 'top top',
-          end: `+=${hero.value.clientHeight} + 2500`,
+          end: `+=${hero.value.clientHeight}`,
           scrub: true,
           pin: true,
           immediateRender: false,
@@ -686,7 +686,6 @@ onUnmounted(() => {
   height: 100dvh;
   position: relative;
   overflow: hidden;
-
   .txt-hero {
     position: absolute;
     top: 0;
@@ -701,6 +700,7 @@ onUnmounted(() => {
   #delight {
     font-family: 'DM Serif Display', serif;
     font-size: 180.23px;
+
     @media (max-width: $breakpoint-sm) {
       font-size: 30vw;
     }
@@ -734,6 +734,7 @@ onUnmounted(() => {
     min-width: 100%;
     min-height: 100%;
     z-index: -100;
+
     @media (max-width: $breakpoint-sm) {
       left: auto;
       right: 0;
@@ -811,6 +812,9 @@ onUnmounted(() => {
       font-size: 16px;
       line-height: 32px;
     }
+    @media (max-width: $breakpoint-xs) {
+      margin-top: 60px;
+    }
     @media (max-width: $breakpoint-xxs) {
       font-size: 14px;
       line-height: 30px;
@@ -830,7 +834,6 @@ onUnmounted(() => {
 
 .project-slider {
   padding-top: 4rem;
-  background-color: $white;
 
   @media (max-width: $breakpoint-sm) {
     padding-top: 0;

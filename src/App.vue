@@ -111,8 +111,9 @@ const onLeave = (el, done) => {
 // Global Scroll Performance & Stability Fixes
 html,
 body {
-  min-height: 100%;
-  height: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   scroll-behavior: auto !important;
 
   // Essential: Stops the browser from "correcting" scroll position during transitions
