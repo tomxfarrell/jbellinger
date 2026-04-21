@@ -218,7 +218,7 @@ onMounted(() => {
           id: 'hero-home-pin',
           trigger: hero.value,
           start: 'top top',
-          end: `+=${hero.value.clientHeight}`,
+          end: `+=${hero.value.clientHeight} + 2500`,
           scrub: true,
           pin: true,
           immediateRender: false,
@@ -770,11 +770,10 @@ onUnmounted(() => {
 
 .bg-gradient {
   width: 100%;
-  height: 100dvh;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%; // Adjust height to fit within the padded area
   display: flex;
   align-items: center;
   justify-content: center;
@@ -784,9 +783,6 @@ onUnmounted(() => {
   }
 
   @media (max-width: $breakpoint-sm) {
-    // align-items: start;
-    // padding-top: 100px;
-
     .container {
       position: relative;
     }
