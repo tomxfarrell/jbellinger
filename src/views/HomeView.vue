@@ -828,7 +828,7 @@ onUnmounted(() => {
       line-height: 32px;
     }
     @media (max-width: $breakpoint-xs) {
-      margin-top: 60px;
+      margin-top: 10px;
     }
     @media (max-width: $breakpoint-xxs) {
       font-size: 14px;
