@@ -686,6 +686,9 @@ onUnmounted(() => {
   height: 100dvh;
   position: relative;
   overflow: hidden;
+  @media (max-width: $breakpoint-xs) {
+    height: calc(100dvh + 80px);
+  }
   .txt-hero {
     position: absolute;
     top: 0;
@@ -739,15 +742,19 @@ onUnmounted(() => {
       left: auto;
       right: 0;
     }
+    @media (max-width: $breakpoint-xs) {
+      height: calc(100dvh + 80px);
+      min-height: calc(100dvh + 80px);
+    }
   }
 
   .scroll-down-gradient {
     position: absolute;
     right: 3vw;
-    bottom: 60px;
+    bottom: 100px;
     @media (max-width: $breakpoint-sm) {
       right: 30px;
-      bottom: 30px;
+      bottom: 80px;
     }
   }
 
@@ -765,6 +772,10 @@ onUnmounted(() => {
     @media (max-width: $breakpoint-sm) {
       left: auto;
       right: 0;
+    }
+    @media (max-width: $breakpoint-xs) {
+      height: calc(100dvh + 80px);
+      min-height: calc(100dvh + 80px);
     }
   }
 }
@@ -787,6 +798,10 @@ onUnmounted(() => {
     .container {
       position: relative;
     }
+  }
+  @media (max-width: $breakpoint-xs) {
+    height: calc(100dvh + 80px);
+    min-height: calc(100dvh + 80px);
   }
 
   p,
@@ -827,7 +842,7 @@ onUnmounted(() => {
     bottom: 60px;
     @media (max-width: $breakpoint-sm) {
       right: 30px;
-      bottom: 30px;
+      bottom: 60px;
     }
   }
 }
