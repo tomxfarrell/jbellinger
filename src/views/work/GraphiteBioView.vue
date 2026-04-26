@@ -100,6 +100,7 @@ import gameOfThronesFacadeMobile from '@/assets/img/game-of-thrones-exterior-fac
 .screenshot-backdrop {
   background-color: #eaeef7;
   padding: 60px 40px 0 40px;
+  box-sizing: border-box;
   text-align: center;
   display: flex;
   flex-direction: column;

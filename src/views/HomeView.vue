@@ -704,6 +704,9 @@ onUnmounted(() => {
     font-family: 'DM Serif Display', serif;
     font-size: 180.23px;
 
+    @media (min-width: 1780px) {
+      font-size: 280px;
+    }
     @media (max-width: $breakpoint-sm) {
       font-size: 30vw;
     }
@@ -711,6 +714,9 @@ onUnmounted(() => {
 
   #engage {
     transform: translateY(-30px);
+    @media (min-width: 1780px) {
+      transform: translateY(-100px);
+    }
     @media (max-width: $breakpoint-sm) {
       transform: translateY(-10px);
     }
@@ -718,15 +724,27 @@ onUnmounted(() => {
 
   #inspire {
     transform: translateY(110px) translateX(140px);
+    @media (min-width: 1780px) {
+      transform: translateY(120px) translateX(225px);
+    }
     @media (max-width: $breakpoint-sm) {
       transform: translateY(115px) translateX(-35px);
+    }
+    @media (max-width: $breakpoint-xs) {
+      transform: translateY(95px) translateX(-35px);
     }
   }
 
   #delight {
     transform: translateY(245px) translateX(-60px);
+    @media (min-width: 1780px) {
+      transform: translateY(335px) translateX(-90px);
+    }
     @media (max-width: $breakpoint-sm) {
       transform: translateY(240px) translateX(37px);
+    }
+    @media (max-width: $breakpoint-xs) {
+      transform: translateY(200px) translateX(30px);
     }
   }
 

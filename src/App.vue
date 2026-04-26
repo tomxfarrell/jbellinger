@@ -48,8 +48,11 @@ const onEnter = async (el, done) => {
   await Promise.all(imagePromises);
 
   // 4. Force a scroll reset and clear GSAP memory right before we reveal the content
+  // This position is more stable for desktop browsers.
   window.scrollTo(0, 0);
   ScrollTrigger.clearScrollMemory();
+
+  // 4. Refresh ScrollTrigger once the new content height is stable but before revealing the page
   ScrollTrigger.refresh();
 
   // 4. Add a tiny buffer (150ms) to allow the browser to settle the paint
