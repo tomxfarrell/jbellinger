@@ -80,7 +80,7 @@ import HeadlineBlock from '@/components/HeadlineBlock.vue';
                 />
               </div>
               <h2 class="work-title">Ai-Driven Creative</h2>
-              <h3>AI-Driven Creative Showcase</h3>
+              <h3>Conceptual Ideas, Visualized</h3>
             </router-link>
           </div>
           <div class="work-block">

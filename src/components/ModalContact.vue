@@ -404,5 +404,10 @@ const handleSubmit = () => {
       }
     }
   }
+  @media (max-width: $breakpoint-xs) {
+    .col-form {
+      padding-bottom: 100px;
+    }
+  }
 }
 </style>
