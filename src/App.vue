@@ -25,6 +25,13 @@ const onEnter = async (el, done) => {
   // This prevents the browser from painting the raw page while we wait for the awaits below.
   gsap.set(el, { opacity: 0, visibility: 'hidden' });
 
+  // MOBILE FIX: Reset scroll synchronously BEFORE async loading.
+  // This prevents mobile browsers from "snapping" to the bottom while content is loading.
+  if (window.innerWidth <= 767) {
+    window.scrollTo(0, 0);
+    ScrollTrigger.clearScrollMemory();
+  }
+
   // 2. Identify critical images at the top of the page (e.g., Hero images)
   const criticalImages = Array.from(el.querySelectorAll('img')).slice(0, 3);
 
