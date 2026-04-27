@@ -8,7 +8,7 @@ import ImageInline from '@/components/ImageInline.vue';
 import NextProject from '@/components/NextProject.vue';
 
 import heroCentexHomesDesktop from '@/assets/img/hero-centex-homes-desktop-2x.png';
-// import heroCentexHomesMobile from '@/assets/img/hero-centex-homes-mobile-2x.png';
+import heroCentexHomesMobile from '@/assets/img/hero-centex-homes-mobile-2x.png';
 
 import centexHomesBlocksDesktop from '@/assets/img/centex-homes-blocks-desktop-2x.png';
 import centexHomesBlocksMobile from '@/assets/img/centex-homes-blocks-desktop-2x.png';
@@ -32,7 +32,7 @@ import centexHomesAd3Mobile from '@/assets/img/centex-homes-ad3-mobile-2x.png';
 
     <HeroBlock
       :desktop="heroCentexHomesDesktop"
-      :mobile="heroCentexHomesDesktop"
+      :mobile="heroCentexHomesMobile"
       alt="Centex Homes"
       className="full-width"
     />
