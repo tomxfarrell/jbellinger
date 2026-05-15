@@ -9,6 +9,21 @@ import NextProject from '@/components/NextProject.vue';
 import heroMidjourneyDesktop from '@/assets/img/hero-midjourney-desktop-2x.png';
 import heroMidjourneyMobile from '@/assets/img/hero-midjourney-mobile-2x.png';
 
+import midjourneyCastleDesktop from '@/assets/img/midjourney-castle-desktop-2x.png';
+import midjourneyCastleMobile from '@/assets/img/midjourney-castle-mobile-2x.png';
+
+import midjourneyCactusDesktop from '@/assets/img/midjourney-cactus-desktop-2x.png';
+import midjourneyCactusMobile from '@/assets/img/midjourney-cactus-mobile-2x.png';
+
+import midjourneyCarTreeDesktop from '@/assets/img/midjourney-car-tree-desktop-2x.png';
+import midjourneyCarTreeMobile from '@/assets/img/midjourney-car-tree-mobile-2x.png';
+
+import midjourneyHugDesktop from '@/assets/img/midjourney-hug-desktop-2x.png';
+import midjourneyHugMobile from '@/assets/img/midjourney-hug-mobile-2x.png';
+
+import midjourneyWomanDogDesktop from '@/assets/img/midjourney-woman-dog-desktop-2x.png';
+import midjourneyWomanDogMobile from '@/assets/img/midjourney-woman-dog-mobile-2x.png';
+
 import midjourneyStairsDesktop from '@/assets/img/midjourney-stairs-desktop-2x.png';
 import midjourneyStairsMobile from '@/assets/img/midjourney-stairs-mobile-2x.png';
 
@@ -102,8 +117,8 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
     </ContentBlock>
 
     <ImageBlock
-      :desktop="midjourneyStairsDesktop"
-      :mobile="midjourneyStairsMobile"
+      :desktop="midjourneyCastleDesktop"
+      :mobile="midjourneyCastleMobile"
       alt=""
       className="full-width mb-lg"
     />
@@ -116,10 +131,52 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
     </ContentBlock>
 
     <ImageBlock
+      :desktop="midjourneyCactusDesktop"
+      :mobile="midjourneyCactusMobile"
+      alt=""
+      className="full-width mb-xs"
+    />
+
+    <ImageBlock
+      :desktop="midjourneyCarTreeDesktop"
+      :mobile="midjourneyCarTreeMobile"
+      alt=""
+      className="mw-1300 mb-xs"
+    />
+
+    <ImageBlock
+      :desktop="midjourneyHugDesktop"
+      :mobile="midjourneyHugMobile"
+      alt=""
+      className="mw-1300 mb-xs"
+    />
+
+    <ImageBlock
+      :desktop="midjourneyWomanDogDesktop"
+      :mobile="midjourneyWomanDogMobile"
+      alt=""
+      className="mw-1300 mb-xs"
+    />
+
+    <ImageBlock
+      :desktop="midjourneyVaultDesktop"
+      :mobile="midjourneyVaultMobile"
+      alt=""
+      className="mw-1300 mb-xs"
+    />
+
+    <ImageBlock
       :desktop="midjourneyRockyDesktop"
       :mobile="midjourneyRockyMobile"
       alt=""
       className="mw-1300 mb-xs"
+    />
+
+    <ImageBlock
+      :desktop="midjourneyStairsDesktop"
+      :mobile="midjourneyStairsMobile"
+      alt=""
+      className="full-width mb-xs"
     />
 
     <section class="projects">
@@ -137,12 +194,7 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
             alt=""
             className="span-3"
           />
-          <ImageInline
-            :desktop="midjourneyVaultDesktop"
-            :mobile="midjourneyVaultMobile"
-            alt=""
-            className="span-6"
-          />
+
           <ImageInline
             :desktop="midjourneyDressDesktop"
             :mobile="midjourneyDressMobile"
@@ -153,19 +205,19 @@ import midjourneyWalkingMobile from '@/assets/img/midjourney-walking-mobile-2x.p
       </div>
     </section>
 
-    <ImageBlock
+    <!-- <ImageBlock
       :desktop="midjourneyWomanDesktop"
       :mobile="midjourneyWomanMobile"
       alt=""
       className="full-width mb-xs"
-    />
+    /> -->
 
-    <ImageBlock
+    <!-- <ImageBlock
       :desktop="midjourneyFaceDesktop"
       :mobile="midjourneyFaceMobile"
       alt=""
       className="mw-1300 mb-xs"
-    />
+    /> -->
 
     <ImageBlock
       :desktop="midjourneyColorDesktop"
