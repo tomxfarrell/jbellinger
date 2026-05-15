@@ -68,7 +68,7 @@ const router = createRouter({
       path: '/work/midjourney',
       name: 'midjourney',
       component: () => import('../views/work/MidjourneyView.vue'),
-      meta: { title: 'Midjourney' },
+      meta: { title: 'AI-Driven Creative' },
     },
     {
       path: '/work/saphnelo',
