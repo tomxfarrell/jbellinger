@@ -344,7 +344,7 @@ onUnmounted(() => {
     <section class="hero-home" ref="hero">
       <video
         class="bg-video"
-        src="@/assets/img/video-bg-gradient-optimized.mp4"
+        src="@/assets/img/video-bg-gradient-new.mp4"
         loop
         muted
         autoplay
@@ -435,7 +435,7 @@ onUnmounted(() => {
           ref="otherVideo"
         >
           <source
-            src="@/assets/img/video-bg-gradient-optimized.mp4"
+            src="@/assets/img/video-bg-gradient-new.mp4"
             type="video/mp4"
           />
         </video>
@@ -807,6 +807,16 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
 
   .container {
     max-width: 900px;

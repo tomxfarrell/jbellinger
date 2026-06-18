@@ -24,6 +24,7 @@ import whiskyCarDesktop from '@/assets/img/whisky-car-desktop-2x.png';
 import whiskyCarMobile from '@/assets/img/whisky-car-mobile-2x.png';
 
 import whiskyAlabamaDesktop from '@/assets/img/whisky-alabama-desktop-2x.png';
+import whiskyAlabamaMobile from '@/assets/img/whisky-alabama-mobile-2x.png';
 
 import whiskyBottleDesktop from '@/assets/img/whisky-bottle-desktop-2x.png';
 import whiskyBottleAlabamaTextDesktop from '@/assets/img/whisky-alabama-text-desktop-2x.png';
@@ -120,7 +121,7 @@ onUnmounted(() => {
 
     <ImageBlock
       :desktop="whiskyAlabamaDesktop"
-      :mobile="whiskyAlabamaDesktop"
+      :mobile="whiskyAlabamaMobile"
       alt=""
       className="mw-1440 whisky-bottle-animation"
     >
