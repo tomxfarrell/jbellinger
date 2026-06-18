@@ -182,7 +182,7 @@ onUnmounted(() => {
     z-index: 10;
     img {
       // padding-top: 200px;
-      padding-top: 120px;
+      padding-top: 130px;
     }
   }
   .overlay-content {

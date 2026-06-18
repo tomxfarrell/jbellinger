@@ -48,12 +48,9 @@ import peterCooperFloorMobile from '@/assets/img/peter-cooper-floor-mobile-2x.pn
       </p>
     </ContentBlock>
 
-    <ImageBlock
-      :desktop="peterCooperBannersDesktop"
-      :mobile="peterCooperBannersDesktop"
-      alt=""
-      className="full-width"
-    />
+    <section>
+      <ImageInline :desktop="peterCooperBannersDesktop" alt="" />
+    </section>
 
     <ImageBlock
       :desktop="peterCooperGrassDesktop"
