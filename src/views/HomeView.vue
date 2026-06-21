@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { onBeforeRouteLeave } from 'vue-router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -336,6 +337,19 @@ onUnmounted(() => {
   firstAnimationPlayed = false;
   if (scrollLoop) scrollLoop.kill();
   if (gradientScrollLoop) gradientScrollLoop.kill();
+});
+
+onBeforeRouteLeave((to, from, next) => {
+  // Revert the entire GSAP context instantly before the routing transition triggers
+  if (ctx) {
+    ctx.revert();
+  }
+
+  // Clean up looping animation timelines explicitly
+  if (scrollLoop) scrollLoop.kill();
+  if (gradientScrollLoop) gradientScrollLoop.kill();
+
+  next();
 });
 </script>
 

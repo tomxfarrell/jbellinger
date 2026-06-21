@@ -187,15 +187,15 @@ onUnmounted(() => {
     width: clamp(80px, 12vw, 160px);
     right: -200px;
     bottom: clamp(
-      150px,
-      48vw,
+      200px,
+      55vw,
       500px
     ); /* Adjusted to bring the bottle up higher */
   }
   .whisky-alabama-text {
     width: clamp(200px, 40vw, 500px);
     right: -100px;
-    bottom: clamp(180px, 70vw, 600px);
+    bottom: clamp(250px, 80vw, 600px);
   }
 }
 </style>

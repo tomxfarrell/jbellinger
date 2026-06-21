@@ -48,9 +48,11 @@ import peterCooperFloorMobile from '@/assets/img/peter-cooper-floor-mobile-2x.pn
       </p>
     </ContentBlock>
 
-    <section>
-      <ImageInline :desktop="peterCooperBannersDesktop" alt="" />
-    </section>
+    <ImageBlock
+      :desktop="peterCooperBannersDesktop"
+      alt=""
+      className="mw-1300 mb-20"
+    />
 
     <ImageBlock
       :desktop="peterCooperGrassDesktop"
