@@ -295,6 +295,10 @@ onMounted(() => {
             duration: 0.15,
             opacity: 0,
             ease: 'power1.inOut',
+            // Force GSAP to strip out inline scale/matrix styles when scrolling back to top
+            onReverseComplete: () => {
+              gsap.set(txtHero.value, { clearProps: 'all' });
+            },
           }
         )
         .to(scrollDownGradient.value, { opacity: 0, duration: 0.1 }, 0)
