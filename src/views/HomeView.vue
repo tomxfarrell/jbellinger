@@ -999,6 +999,9 @@ onBeforeRouteLeave((to, from, next) => {
       width: 100%;
       order: 3;
     }
+    @media (min-width: 1600px) {
+      width: 200px;
+    }
   }
 
   .text-2 {
