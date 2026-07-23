@@ -14,11 +14,15 @@ import versaceLaptopMobile from '@/assets/img/versace-laptop-mobile-2x.png';
 import versaceScreenshotDesktop from '@/assets/img/versace-screenshot-desktop-2x.png';
 import versaceScreenshotMobile from '@/assets/img/versace-screenshot-mobile-2x.png';
 
+import versaceHimDesktop from '@/assets/img/versace-him-desktop-2x.png';
+import versaceTextDesktop from '@/assets/img/versace-text-desktop-2x.png';
+
 import versaceEmailsDesktop from '@/assets/img/versace-emails-desktop-2x.png';
 import versaceEmailsMobile from '@/assets/img/versace-emails-mobile-2x.png';
 
 import versaceEmailPhoneDesktop from '@/assets/img/versace-email-phone-desktop-2x.png';
 import versaceEmailPhoneMobile from '@/assets/img/versace-email-phone-mobile-2x.png';
+import ImageInline from '@/components/ImageInline.vue';
 </script>
 
 <template>
@@ -76,7 +80,20 @@ import versaceEmailPhoneMobile from '@/assets/img/versace-email-phone-mobile-2x.
       :mobile="versaceScreenshotMobile"
       alt="Versace Screenshot"
       className="mw-1440 mb-20"
-    />
+    >
+      <ImageBlock
+        :desktop="versaceHimDesktop"
+        alt="Versace Him"
+        className="versace-him-image"
+      />
+      <div class="overlay-content" ref="overlayText">
+        <ImageInline
+          :desktop="versaceTextDesktop"
+          alt="Versace Text"
+          className="versace-text"
+        />
+      </div>
+    </ImageBlock>
 
     <ImageBlock
       :desktop="versaceEmailsDesktop"
@@ -97,3 +114,29 @@ import versaceEmailPhoneMobile from '@/assets/img/versace-email-phone-mobile-2x.
 </template>
 
 <style lang="scss" src="@/styles/_workSingleGrid.scss"></style>
+
+<style lang="scss" scoped>
+.versace-him-image {
+  margin: 0 auto;
+  position: absolute;
+  top: 16.5%;
+  left: 17%;
+  z-index: 9999;
+
+  :deep(img) {
+    max-width: 318px;
+  }
+}
+
+.versace-text {
+  margin: 0 auto;
+  position: absolute;
+  top: 18.5%;
+  right: -10%;
+  z-index: 999;
+
+  :deep(img) {
+    max-width: 865px;
+  }
+}
+</style>

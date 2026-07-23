@@ -11,6 +11,7 @@ import heroBananaRepublicDesktop from '@/assets/img/hero-banana-republic-desktop
 import heroBananaRepublicMobile from '@/assets/img/hero-banana-republic-mobile-2x.png';
 
 import bananaRepublicEmailsDesktop from '@/assets/img/banana-republic-emails-desktop-2x.png';
+import bananaRepublicEmailsMobile from '@/assets/img/banana-republic-emails-mobile-2x.png';
 
 import bananaRepublicImage1Desktop from '@/assets/img/banana-republic-image1-desktop-2x.png';
 import bananaRepublicImage1Mobile from '@/assets/img/banana-republic-image1-mobile-2x.png';
@@ -69,7 +70,7 @@ import bananaRepublicWoman3Mobile from '@/assets/img/banana-republic-woman3-mobi
 
     <ImageBlock
       :desktop="bananaRepublicEmailsDesktop"
-      :mobile="bananaRepublicEmailsDesktop"
+      :mobile="bananaRepublicEmailsMobile"
       alt=""
       className="full-width"
     />

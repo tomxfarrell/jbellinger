@@ -241,7 +241,7 @@ onUnmounted(() => {
     }
     :deep(picture) {
       img {
-        padding-top: 0;
+        padding-top: 30px;
       }
     }
   }

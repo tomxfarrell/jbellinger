@@ -198,4 +198,20 @@ onUnmounted(() => {
     bottom: clamp(250px, 80vw, 600px);
   }
 }
+@media (max-width: $breakpoint-xs) {
+  .whisky-bottle {
+    width: clamp(80px, 12vw, 160px);
+    right: -200px;
+    bottom: clamp(
+      200px,
+      84vw,
+      500px
+    ); /* Adjusted to bring the bottle up higher */
+  }
+  .whisky-alabama-text {
+    width: clamp(200px, 40vw, 500px);
+    right: -100px;
+    bottom: clamp(250px, 105vw, 600px);
+  }
+}
 </style>

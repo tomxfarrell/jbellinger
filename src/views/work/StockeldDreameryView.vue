@@ -103,18 +103,18 @@ onUnmounted(() => {
 
     <section class="projects">
       <div class="container">
-        <div class="work-single-grid">
+        <div class="work-single-grid cols-7">
           <ImageInline
             :desktop="stockeldBagelAdDesktop"
             :mobile="stockeldBagelAdMobile"
             alt=""
-            className="mb-20 span-2 bagel-custom-sizing"
+            className="mb-20 span-4 bagel-custom-sizing"
           />
           <ImageInline
             :desktop="stockeldFlyerDesktop"
             :mobile="stockeldFlyerMobile"
             alt=""
-            className="mb-20 flyer-custom-sizing"
+            className="mb-20 span-3 flyer-custom-sizing"
           />
         </div>
       </div>
@@ -141,20 +141,33 @@ onUnmounted(() => {
 <style lang="scss" src="@/styles/_workSingleGrid.scss"></style>
 
 <style lang="scss" scoped>
-:deep(.bagel-custom-sizing) {
-  width: 100%;
-  max-height: 500px;
-  img {
-    max-height: 500px;
-    width: 100%;
-  }
-}
-:deep(.flyer-custom-sizing) {
-  width: 100%;
-  height: 100%;
-  max-height: 500px;
-  img {
-    height: 100%;
+// :deep(.bagel-custom-sizing) {
+//   width: 100%;
+//   max-height: 500px;
+//   img {
+//     max-height: 500px;
+//     width: 100%;
+//   }
+// }
+// :deep(.flyer-custom-sizing) {
+//   width: 100%;
+//   height: 100%;
+//   max-height: 500px;
+//   img {
+//     height: 100%;
+//   }
+// }
+
+@media (min-width: $breakpoint-md) {
+  :deep(.flyer-custom-sizing),
+  :deep(.bagel-custom-sizing) {
+    max-height: 450px;
+    overflow-y: hidden;
+
+    img {
+      height: auto;
+      object-fit: cover;
+    }
   }
 }
 

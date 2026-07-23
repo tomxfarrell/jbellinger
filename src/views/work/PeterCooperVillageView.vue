@@ -10,7 +10,7 @@ import heroPeterCooperDesktop from '@/assets/img/hero-peter-cooper-desktop-2x.pn
 import heroPeterCooperMobile from '@/assets/img/hero-peter-cooper-mobile-2x.png';
 
 import peterCooperBannersDesktop from '@/assets/img/peter-cooper-banners-desktop-2x.png';
-// import peterCooperBannersMobile from '@/assets/img/peter-cooper-banners-mobile-2x.png';
+import peterCooperBannersMobile from '@/assets/img/peter-cooper-banners-mobile-2x.png';
 
 import peterCooperGrassDesktop from '@/assets/img/peter-cooper-grass-desktop-2x.png';
 import peterCooperGrassMobile from '@/assets/img/peter-cooper-grass-mobile-2x.png';
@@ -50,8 +50,9 @@ import peterCooperFloorMobile from '@/assets/img/peter-cooper-floor-mobile-2x.pn
 
     <ImageBlock
       :desktop="peterCooperBannersDesktop"
+      :mobile="peterCooperBannersMobile"
       alt=""
-      className="mw-1300 mb-20"
+      className="full-width mb-20"
     />
 
     <ImageBlock
