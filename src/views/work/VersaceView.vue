@@ -1,4 +1,8 @@
 <script setup>
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import HeadlineBlock from '@/components/HeadlineBlock.vue';
 import ContentBlock from '@/components/ContentBlock.vue';
 import HeroBlock from '@/components/HeroBlock.vue';
@@ -23,6 +27,33 @@ import versaceEmailsMobile from '@/assets/img/versace-emails-mobile-2x.png';
 import versaceEmailPhoneDesktop from '@/assets/img/versace-email-phone-desktop-2x.png';
 import versaceEmailPhoneMobile from '@/assets/img/versace-email-phone-mobile-2x.png';
 import ImageInline from '@/components/ImageInline.vue';
+
+const overlayText = ref(null);
+const container = ref(null);
+let ctx;
+
+onMounted(() => {
+  nextTick(() => {
+    ctx = gsap.context(() => {
+      // Dramatic parallax effect for the Jeep image
+      gsap.from('.animate-versace-text', {
+        x: 60,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.animate-versace-text',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    }, container.value);
+  });
+});
+
+onUnmounted(() => {
+  ctx?.revert(); // Essential cleanup to prevent "ghost" scroll triggers
+  ScrollTrigger.refresh(); // Recalculate global scroll markers immediately
+});
 </script>
 
 <template>
@@ -77,20 +108,22 @@ import ImageInline from '@/components/ImageInline.vue';
 
     <ImageBlock
       :desktop="versaceScreenshotDesktop"
-      :mobile="versaceScreenshotMobile"
+      :mobile="versaceScreenshotDesktop"
       alt="Versace Screenshot"
-      className="mw-1440 mb-20"
+      className="mw-1440 mb-20 versace-animation"
     >
-      <ImageBlock
+      <ImageInline
         :desktop="versaceHimDesktop"
+        :mobile="versaceHimDesktop"
         alt="Versace Him"
         className="versace-him-image"
       />
       <div class="overlay-content" ref="overlayText">
         <ImageInline
           :desktop="versaceTextDesktop"
+          :mobile="versaceTextDesktop"
           alt="Versace Text"
-          className="versace-text"
+          className="versace-text animate-versace-text"
         />
       </div>
     </ImageBlock>
@@ -116,27 +149,53 @@ import ImageInline from '@/components/ImageInline.vue';
 <style lang="scss" src="@/styles/_workSingleGrid.scss"></style>
 
 <style lang="scss" scoped>
+.versace-animation {
+  overflow: hidden;
+}
 .versace-him-image {
   margin: 0 auto;
   position: absolute;
-  top: 16.5%;
-  left: 17%;
-  z-index: 9999;
+  // top: 19.5%;
+  top: clamp(10%, 19.5%, 19.5%);
+  // left: 17%;
+  left: clamp(5%, 17%, 17%);
+  z-index: 500;
 
   :deep(img) {
-    max-width: 318px;
+    // max-width: 318px;
+    width: clamp(180px, 22vw, 318px);
   }
 }
 
 .versace-text {
   margin: 0 auto;
   position: absolute;
-  top: 18.5%;
-  right: -10%;
-  z-index: 999;
+  // top: 22.5%;
+  top: clamp(15%, 22.5%, 22.5%);
+  right: 0;
+  z-index: 400;
 
   :deep(img) {
-    max-width: 865px;
+    // max-width: 800px;
+    width: clamp(350px, 55vw, 800px);
   }
 }
+
+@media (max-width: 700px) {
+  .versace-him-image {
+    :deep(img) {
+      width: 25vw;
+    }
+  }
+
+  .versace-text {
+    right: 10%;
+    :deep(img) {
+      width: 55vw;
+    }
+  }
+}
+// @media (max-width: $breakpoint-sm) {
+
+// }
 </style>
