@@ -21,17 +21,35 @@ const phone = ref('');
 const subject = ref('');
 const message = ref('');
 
-const handleSubmit = () => {
-  // You can integrate an API call or email service here
-  console.log('Form Submission:', {
-    name: name.value,
-    email: email.value,
-    phone: phone.value,
-    subject: subject.value,
-    message: message.value,
-  });
+const handleSubmit = async () => {
+  const formData = new URLSearchParams();
+  formData.append('form-name', 'contact');
+  formData.append('name', name.value);
+  formData.append('email', email.value);
+  formData.append('phone', phone.value);
+  formData.append('subject', subject.value);
+  formData.append('message', message.value);
 
-  close();
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString(),
+    });
+
+    if (response.ok) {
+      name.value = '';
+      email.value = '';
+      phone.value = '';
+      subject.value = '';
+      message.value = '';
+      close();
+    } else {
+      console.error('Form submission failed:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Form submission error:', error);
+  }
 };
 </script>
 
@@ -86,10 +104,24 @@ const handleSubmit = () => {
                 class="mobile-only"
               />
             </button>
-            <form @submit.prevent="handleSubmit">
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              @submit.prevent="handleSubmit"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="hidden-field" style="display: none">
+                <label
+                  >Don’t fill this out if you’re human: <input name="bot-field"
+                /></label>
+              </p>
+
               <div class="form-group">
                 <input
                   type="text"
+                  name="name"
                   v-model="name"
                   class="form-control"
                   required
@@ -99,6 +131,7 @@ const handleSubmit = () => {
               <div class="form-group">
                 <input
                   type="email"
+                  name="email"
                   v-model="email"
                   class="form-control"
                   required
@@ -107,7 +140,8 @@ const handleSubmit = () => {
               </div>
               <div class="form-group">
                 <input
-                  type="phone"
+                  type="tel"
+                  name="phone"
                   v-model="phone"
                   class="form-control"
                   required
@@ -116,7 +150,8 @@ const handleSubmit = () => {
               </div>
               <div class="form-group">
                 <input
-                  type="subject"
+                  type="text"
+                  name="subject"
                   v-model="subject"
                   class="form-control"
                   required
@@ -124,7 +159,12 @@ const handleSubmit = () => {
                 <label for="subject">Subject*</label>
               </div>
               <div class="form-group">
-                <textarea v-model="message" rows="7" required></textarea>
+                <textarea
+                  name="message"
+                  v-model="message"
+                  rows="7"
+                  required
+                ></textarea>
                 <label for="message">Message*</label>
               </div>
               <button type="submit" id="btn-submit">Submit</button>
