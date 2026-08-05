@@ -227,13 +227,11 @@ const handleSubmit = async () => {
   align-items: center;
   justify-content: center;
   z-index: 9999999;
-  overflow-x: hidden;
 }
 
 .modal-content {
   background: $white;
   min-width: 100%;
-  max-width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -241,7 +239,6 @@ const handleSubmit = async () => {
   flex-direction: column;
   max-height: 100vh;
   overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .row-contact {
@@ -249,7 +246,6 @@ const handleSubmit = async () => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  max-width: 100%;
   min-height: 0; // Important for flex children
   height: 100%;
   justify-content: space-between;
@@ -316,15 +312,12 @@ const handleSubmit = async () => {
     flex: 1;
     background: linear-gradient(135deg, #7f00ff, #00c6ff);
     padding: 0 20px;
-    box-sizing: border-box;
 
     form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       max-width: 440px;
-      width: 100%;
-      box-sizing: border-box;
       margin: 0 auto;
 
       .form-control,
@@ -338,6 +331,10 @@ const handleSubmit = async () => {
         font-size: 14px;
         line-height: 26px;
         box-sizing: border-box;
+
+        @media (max-width: $breakpoint-xs) {
+          font-size: 16px;
+        }
 
         &:focus {
           outline: none;
