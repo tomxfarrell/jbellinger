@@ -61,7 +61,7 @@ onUnmounted(() => {
 <template>
   <div class="work-page">
     <HeadlineBlock>
-      <h1>Stockheld Dreamery</h1>
+      <h1>Stockeld Dreamery</h1>
       <h2>Sales & Marketing Collateral</h2>
     </HeadlineBlock>
 
