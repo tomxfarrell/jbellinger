@@ -1,11 +1,5 @@
-# Redirect rule for Netlify Image CDN
-[[redirects]]
-  from = "/@/assets/img/*"
-  to = "/.netlify/images?url=/@/assets/img/:splat&fm=avif"
-  status = 200
-
-# Cache control for assets
+# Cache all files in assets and subdirectories for 1 year
 [[headers]]
-  for = "/@/assets/img/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
