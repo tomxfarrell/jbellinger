@@ -1,7 +1,7 @@
 # Redirect rule for Netlify Image CDN
 [[redirects]]
   from = "/assets/*"
-  to = "/.netlify/images?url=/assets/img/:splat&fm=avif"
+  to = "/.netlify/images?url=/assets/:splat&fm=avif"
   status = 200
 
 # Cache control for assets
