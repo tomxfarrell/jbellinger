@@ -1,11 +1,11 @@
 # Redirect rule for Netlify Image CDN
 [[redirects]]
-  from = "/img/*"
-  to = "/.netlify/images?url=/img/:splat&fm=avif"
+  from = "/assets/img/*"
+  to = "/.netlify/images?url=/assets/img/:splat&fm=avif"
   status = 200
 
 # Cache control for assets
 [[headers]]
-  for = "/img/*"
+  for = "/assets/img/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
