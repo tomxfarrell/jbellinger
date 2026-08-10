@@ -10,11 +10,18 @@ const lines = ['VP.ACD', 'Design', 'UI', 'Experiential'];
 
 const container = ref(null);
 const viewport = ref(null);
+const lineItem = ref(null);
 
 onMounted(async () => {
   await nextTick();
 
-  const lineHeight = container.value.clientHeight;
+  // Wait for mobile WebKit custom fonts to finish rendering before measuring
+  if (document.fonts?.ready) {
+    await document.fonts.ready;
+  }
+
+  // Measure a single line item height instead of full container height
+  const lineHeight = lineItem.value ? lineItem.value.offsetHeight : 20;
   const totalLines = lines.length - 1;
 
   // Position viewport initially so first line is visible
@@ -75,6 +82,11 @@ watch(isMenuOpen, (isOpen) => {
                   <div
                     v-for="(line, index) in lines"
                     :key="index"
+                    :ref="
+                      (el) => {
+                        if (index === 0) lineItem = el;
+                      }
+                    "
                     class="rolodex-line"
                   >
                     {{ line }}
@@ -524,13 +536,7 @@ watch(isMenuOpen, (isOpen) => {
 
   @media (max-width: $breakpoint-sm) {
     display: block;
-    // background: linear-gradient(to top, $black 0%, rgba($white, 0) 100%);
-    /* Create a blur gradient effect instead of a solid color fade */
-    // backdrop-filter: blur(5px);
-    // -webkit-backdrop-filter: blur(5px);
-    // mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    // -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
-    padding: 50px 0 17px; /* Increased top padding for smoother fade area */
+    padding: 50px 0 17px;
     pointer-events: none;
 
     &.is-open {
